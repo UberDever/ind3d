@@ -1,0 +1,96 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/alpha.h
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+limits.h
+-
+SDL2/SDL.h
+-
+SDL2/SDL_image.h
+-
+sys/types.h
+-
+
+../include/alphabeta.h
+alpha.h
+../include/alpha.h
+delta.h
+../include/delta.h
+gamma.h
+../include/gamma.h
+pi.h
+../include/pi.h
+omega.h
+../include/omega.h
+
+../include/delta.h
+delta/vec.h
+../include/delta/vec.h
+delta/hash_table.h
+../include/delta/hash_table.h
+delta/stack.h
+../include/delta/stack.h
+delta/queue.h
+../include/delta/queue.h
+delta/deck.h
+../include/delta/deck.h
+
+../include/delta/deck.h
+
+../include/delta/hash_table.h
+alpha.h
+../include/delta/alpha.h
+
+../include/delta/queue.h
+deck.h
+../include/delta/deck.h
+
+../include/delta/stack.h
+vec.h
+../include/delta/vec.h
+
+../include/delta/vec.h
+../alpha.h
+../include/alpha.h
+
+../include/gamma.h
+alpha.h
+../include/alpha.h
+pi.h
+../include/pi.h
+SDL2/SDL.h
+-
+SDL2/SDL_ttf.h
+-
+SDL2/SDL_image.h
+-
+
+../include/omega.h
+
+../include/pi.h
+alpha.h
+../include/alpha.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c
+projectile.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.h
+../util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+alphabeta.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/alphabeta.h
+
