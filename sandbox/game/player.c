@@ -4,25 +4,42 @@
 
 #include "player.h"
 
-static const v2 bounding_box = {0.5, 0.5};
-
-Player player = {.pos = {2, 2}, .dir = {0, 1}, .plane = {-1, 0},
+Player player = {.pos = {1.5, 7}, .dir = {0, 1}, .plane = {1, 0}, .dir_scale = 1, .plane_scale = 1.f / 3,
                  .rotation_speed = DEG2RAD(3), .angular_momentum = 0,
-                 .speed = {0.1, 0.1}, .momentum = {}};
+                 .speed = 0.1, .momentum = {},
+                 .bounding_box = {0.45, 0.45}};
+
+void player_event() {
+
+}
 
 void player_update() {
+#if 0
+    const m2 dir_rotation = {0, -1, 1, 0};
+    pi_v2(player.dir, mouse_get_pos_x() - (half_w), mouse_get_pos_y() - half_h);
+    pi_v2_mul_m2(dir_rotation, player.dir, player.plane);
+    pi_v2_normalize(player.dir, player.dir);
+    pi_v2_normalize(player.plane, player.plane);
+#endif
     pi_v2_rotate(player.dir, player.angular_momentum, player.dir);
     pi_v2_rotate(player.plane, player.angular_momentum, player.plane);
     player.angular_momentum = 0;
+
+    v2 left, right;
+    pi_v2_muls(player.dir, player.dir_scale, right);
+    pi_v2_muls(player.plane, player.plane_scale, left);
+    pi_v2_add(right, left, player.left_ray);
+    left[0] *= -1; left[1] *= -1;
+    pi_v2_add(right, left, player.right_ray);
 
     v2 tmp0 = {}; pi_v2_muls(player.dir, player.momentum[1], tmp0);
     v2 tmp1 = {}; pi_v2_muls(player.plane, player.momentum[0], tmp1);
     v2 step = {}; pi_v2_add(tmp0, tmp1, step);
 
-    v2 p0; p0[0] = player.pos[0] - bounding_box[0]; p0[1] = player.pos[1] - bounding_box[1];
-    v2 p1; p1[0] = player.pos[0] + bounding_box[0]; p1[1] = player.pos[1] - bounding_box[1];
-    v2 p2; p2[0] = player.pos[0] + bounding_box[0]; p2[1] = player.pos[1] + bounding_box[1];
-    v2 p3; p3[0] = player.pos[0] - bounding_box[0]; p3[1] = player.pos[1] + bounding_box[1];
+    const v2 p0 = {player.pos[0] - player.bounding_box[0], player.pos[1] - player.bounding_box[1]};
+    const v2 p1 = {player.pos[0] + player.bounding_box[0], player.pos[1] - player.bounding_box[1]};
+    const v2 p2 = {player.pos[0] + player.bounding_box[0], player.pos[1] + player.bounding_box[1]};
+    const v2 p3 = {player.pos[0] - player.bounding_box[0], player.pos[1] + player.bounding_box[1]};
     if (!(  map.data[(int)p0[1] * map.w + (int)(p0[0] + step[0])] ||
             map.data[(int)p1[1] * map.w + (int)(p1[0] + step[0])] ||
             map.data[(int)p2[1] * map.w + (int)(p2[0] + step[0])] ||
@@ -38,15 +55,16 @@ void player_update() {
 void player_render(vi2 pos) {
     g_screen_draw_line(pos[0],
                        pos[1],
-                       pos[0] + player.dir[0] * map.tile_w,
-                       pos[1] + player.dir[1] * map.tile_h,
-                       COLOR(red));
-    const int half_w = (g_scr.w) / 2;
-    const int half_h = (g_scr.h) / 2;
-    g_screen_draw_quat((v2){half_w - bounding_box[0] * map.tile_w, half_h - bounding_box[1] * map.tile_h},
-                       (v2){half_w + bounding_box[0] * map.tile_w, half_h - bounding_box[1] * map.tile_h},
-                       (v2){half_w + bounding_box[0] * map.tile_w, half_h + bounding_box[1] * map.tile_h},
-                       (v2){half_w - bounding_box[0] * map.tile_w, half_h + bounding_box[1] * map.tile_h},
+                       pos[0] + player.right_ray[0] * (map.tile_w << 4),
+                       pos[1] + player.right_ray[1] * (map.tile_h << 4), COLOR(cyan));
+    g_screen_draw_line(pos[0],
+                       pos[1],
+                       pos[0] + player.left_ray[0] * (map.tile_w << 4),
+                       pos[1] + player.left_ray[1] * (map.tile_h << 4), COLOR(cyan));
+    g_screen_draw_quat((v2){pos[0] - player.bounding_box[0] * map.tile_w, pos[1] - player.bounding_box[1] * map.tile_h},
+                       (v2){pos[0] + player.bounding_box[0] * map.tile_w, pos[1] - player.bounding_box[1] * map.tile_h},
+                       (v2){pos[0] + player.bounding_box[0] * map.tile_w, pos[1] + player.bounding_box[1] * map.tile_h},
+                       (v2){pos[0] - player.bounding_box[0] * map.tile_w, pos[1] + player.bounding_box[1] * map.tile_h},
                        COLOR(green));
 }
 
@@ -61,7 +79,7 @@ void player_raycast() { //TODO: REBUILD
 
     for (int x = 0; x < scrW; ++x) {
         float32 cam = 2.f * (float)x / (float)scrW - 1;
-        v2 ray; pi_v2_copy(player.plane, ray);
+        v2 ray; pi_v2(ray, -player.plane[0], -player.plane[1]);
         pi_v2_muls(ray, cam, ray);
         pi_v2_add(ray, player.dir, ray);
         vi2 pos = {player.pos[0], player.pos[1]};

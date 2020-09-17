@@ -8,10 +8,10 @@
 
 //Global typedefs
 typedef struct Player {
-    v2 pos;
+    v2 pos, momentum;
     v2 dir, plane;
-    float32 rotation_speed, angular_momentum;
-    v2 speed, momentum;
+    v2 left_ray, right_ray, bounding_box;
+    float32 speed, rotation_speed, angular_momentum, dir_scale, plane_scale;
 } Player;
 
 typedef struct Map
@@ -28,9 +28,27 @@ typedef struct Projectile
     bool is_alive;
 } Projectile;
 
+typedef enum EnemyTypes {
+    Void = 0,
+    Common = 1,
+    Strong = 2,
+    Boss = 3
+} EnemyTypes;
+
+typedef struct Enemy {
+    v2 pos, momentum;
+    float32 hitbox_radius, speed;
+    enum EnemyTypes type;
+    bool is_active, is_alive;
+} Enemy;
+
 //Globals
+extern int half_w, half_h;
+
 extern Player player;
 extern Map map;
 extern Projectile* projectiles;
+extern Enemy* enemies;
+extern Enemy* enemy_database;
 
 #endif

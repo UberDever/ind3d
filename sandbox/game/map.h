@@ -9,6 +9,6 @@
 
 void map_load(const char* path);
 
-void map_render(vi2 offset);
+void map_render(const vi2 pos, vi2 size);
 
 #endif //IND3D_MAP_H

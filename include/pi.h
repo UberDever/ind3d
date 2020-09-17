@@ -11,10 +11,24 @@
 
 #include "alpha.h"
 
-#define PI              3.14159265358979323846f
-#define TWO_PI          6.28318530717958647692f
-#define HALF_PI         1.57079632679489661923f
+#ifndef M_PI
+#define M_PI    3.1415926535897932384626433832795 
+#endif
+
+#ifndef M_2PI
+#define M_2PI   6.283185307179586476925286766559 
+#endif
+
+#ifndef M_PI_2
+#define M_PI_2  1.5707963267948966192313216916398 
+#endif
+
+#ifndef M_PI_4
+#define M_PI_4  0.78539816339744830961566084581988 
+#endif
+
 #define SQRT2           1.41421356237309504880f
+#define SQRT2_2         0.70710678118654752440f
 
 #define DEG2RAD(phi) (0.01745329f * phi)
 #define RAD2DEG(phi) (57.2957795f * phi)
@@ -115,9 +129,21 @@ static vec_float_t pi_v2_dot(const v2 vec0, const v2 vec1)
     return vec0[0] * vec1[0] + vec0[1] * vec1[1];
 }
 
-static void pi_v2_orthogonal(const v2 vec, v2 res)
+static vec_float_t pi_v2_cross(const v2 vec0, const v2 vec1)
 {
-    res[0] = vec[1]; res[1] = -vec[0];
+    return vec0[0] * vec1[1] - vec0[1] * vec1[0];
+}
+
+static void pi_v2_orthogonal_right(const v2 vec, v2 res)
+{
+    vec_float_t tmp = vec[0];
+    res[0] = vec[1]; res[1] = -tmp;
+}
+
+static void pi_v2_orthogonal_left(const v2 vec, v2 res)
+{
+    vec_float_t tmp = vec[0];
+    res[0] = -vec[1]; res[1] = tmp;
 }
 
 static vec_float_t pi_v2_len_sq(const v2 vec)
@@ -130,12 +156,20 @@ static vec_float_t pi_v2_len(const v2 vec)
     return sqrtf(pi_v2_len_sq(vec));
 }
 
+static void pi_v2_normalize(const v2 vec, v2 res)
+{
+    const vec_float_t len = pi_v2_len(vec);
+    pi_v2(res, vec[0] / len, vec[1] / len);
+}
+
 static void pi_v2_rotate(const v2 vec, const vec_float_t ang_in_rad, v2 res)
 {
     m2 mat;
     pi_m2_rotation(mat, ang_in_rad);
     pi_v2_mul_m2(mat, vec, res);
 }
+
+#define pi_v2_rotate_
 
 /*
  *  Vec3 stuff
@@ -433,8 +467,8 @@ static void pi_m3_rotationZ(m3 mat, vec_float_t ang_in_rad)
 
 static float32 wrap_angle(const float32 angle)
 {
-    const float32 mod = fmod(angle, 2 * PI);
-    return mod > PI ? mod - 2 * PI : mod;
+    const float32 mod = fmod(angle, 2 * M_PI);
+    return mod > M_PI ? mod - 2 * M_PI : mod;
 }
 
 static bool pi_aabb_box_x_point(vi2 p, vi2 box[2])

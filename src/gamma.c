@@ -104,6 +104,39 @@ void g_screen_draw_quat(const v2 vx0, const v2 vx1, const v2 vx2, const v2 vx3, 
     g_screen_draw_line(vx3[0], vx3[1], vx0[0], vx0[1], color);
 }
 
+static void circle_eight_pixels(int xc, int yc, int x, int y, color color)
+{
+    g_screen_put_pixel(x + xc,   y + yc, color);
+    g_screen_put_pixel(x + xc,  -y + yc, color);
+    g_screen_put_pixel(-x + xc, -y + yc, color);
+    g_screen_put_pixel(-x + xc,  y + yc, color);
+    g_screen_put_pixel(y + xc,   x + yc, color);
+    g_screen_put_pixel(y + xc,  -x + yc, color);
+    g_screen_put_pixel(-y + xc, -x + yc, color);
+    g_screen_put_pixel(-y + xc,  x + yc, color);
+}
+
+void g_screen_draw_circle(v2 center, int r, color color)
+{
+    int x = 0, y = r, d = 3 - (2 * r);
+    circle_eight_pixels(center[0], center[1], x, y, color);
+
+    while(x <= y)
+    {
+        if(d <= 0)
+        {
+            d += (4 * x) + 6;
+        }
+        else
+        {
+            d += 4 * (x - y) + 10;
+            y--;
+        }
+        x++;
+        circle_eight_pixels(center[0], center[1], x, y, color);
+    }
+}
+
 void g_screen_fill_quat(const v2 pos, const v2 size, color color) {
     for (int i = 0; i < size[0]; i++)
         for (int j = 0; j < size[1]; j++)

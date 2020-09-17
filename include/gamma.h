@@ -28,6 +28,7 @@ void g_screen_put_pixel(uint x, uint y, color color);
 void g_screen_draw_line(int start_x, int start_y, int end_x, int end_y, color color);
 void g_screen_draw_tri(const v2 vx0, const v2 vx1, const v2 vx2, color color);
 void g_screen_draw_quat(const v2 vx0, const v2 vx1, const v2 vx2, const v2 vx3, color color);
+void g_screen_draw_circle(v2 center, int r, color color);
 
 void g_screen_fill_quat(const v2 pos, const v2 size, color color);
 
@@ -40,37 +41,5 @@ void g_screen_buffer_clear();
 
 void g_screen_present();
 
-static void circle_eight_pixels(int xc, int yc, int x, int y, color color)
-{
-    g_screen_put_pixel(x + xc,   y + yc, color);
-    g_screen_put_pixel(x + xc,  -y + yc, color);
-    g_screen_put_pixel(-x + xc, -y + yc, color);
-    g_screen_put_pixel(-x + xc,  y + yc, color);
-    g_screen_put_pixel(y + xc,   x + yc, color);
-    g_screen_put_pixel(y + xc,  -x + yc, color);
-    g_screen_put_pixel(-y + xc, -x + yc, color);
-    g_screen_put_pixel(-y + xc,  x + yc, color);
-}
-
-static void pi_screen_draw_circle(v2 center, int r, color color)
-{
-    int x = 0, y = r, d = 3 - (2 * r);
-    circle_eight_pixels(center[0], center[1], x, y, color);
-
-    while(x <= y)
-    {
-        if(d <= 0)
-        {
-            d += (4 * x) + 6;
-        }
-        else
-        {
-            d += 4 * (x - y) + 10;
-            y--;
-        }
-        x++;
-        circle_eight_pixels(center[0], center[1], x, y, color);
-    }
-}
 
 #endif //ALPHABETA_GAMMA_H

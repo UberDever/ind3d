@@ -7,6 +7,7 @@
 
 #include "../util.h"
 
+void player_event();
 void player_update();
 void player_render(vi2 pos);
 

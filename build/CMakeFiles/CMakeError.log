@@ -1,25 +1,24 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_52f09/fast && /usr/bin/make  -f CMakeFiles/cmTC_52f09.dir/build.make CMakeFiles/cmTC_52f09.dir/build
+Run Build Command(s):/usr/bin/make cmTC_25515/fast && /usr/bin/make -f CMakeFiles/cmTC_25515.dir/build.make CMakeFiles/cmTC_25515.dir/build
 make[1]: вход в каталог «/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp»
-Building C object CMakeFiles/cmTC_52f09.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -std=gnu99 -o CMakeFiles/cmTC_52f09.dir/src.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp/src.c"
-Linking C executable cmTC_52f09
-/snap/clion/124/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52f09.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_52f09.dir/src.c.o  -o cmTC_52f09 
-CMakeFiles/cmTC_52f09.dir/src.c.o: In function `main':
+Building C object CMakeFiles/cmTC_25515.dir/src.c.o
+/usr/bin/x86_64-linux-gnu-gcc-7   -DCMAKE_HAVE_LIBC_PTHREAD   -std=gnu99 -o CMakeFiles/cmTC_25515.dir/src.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp/src.c"
+Linking C executable cmTC_25515
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_25515.dir/link.txt --verbose=1
+/usr/bin/x86_64-linux-gnu-gcc-7  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_25515.dir/src.c.o  -o cmTC_25515 
+CMakeFiles/cmTC_25515.dir/src.c.o: In function `main':
 src.c:(.text+0x3e): undefined reference to `pthread_create'
 src.c:(.text+0x4a): undefined reference to `pthread_detach'
-src.c:(.text+0x56): undefined reference to `pthread_cancel'
-src.c:(.text+0x67): undefined reference to `pthread_join'
-src.c:(.text+0x7b): undefined reference to `pthread_atfork'
+src.c:(.text+0x5b): undefined reference to `pthread_join'
+src.c:(.text+0x6f): undefined reference to `pthread_atfork'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_52f09.dir/build.make:106: recipe for target 'cmTC_52f09' failed
-make[1]: *** [cmTC_52f09] Error 1
+CMakeFiles/cmTC_25515.dir/build.make:86: recipe for target 'cmTC_25515' failed
+make[1]: *** [cmTC_25515] Error 1
 make[1]: выход из каталога «/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp»
-Makefile:141: recipe for target 'cmTC_52f09/fast' failed
-make: *** [cmTC_52f09/fast] Error 2
+Makefile:121: recipe for target 'cmTC_25515/fast' failed
+make: *** [cmTC_25515/fast] Error 2
 
 
 Source file was:
@@ -35,7 +34,6 @@ int main(void)
   pthread_t thread;
   pthread_create(&thread, NULL, test_func, NULL);
   pthread_detach(thread);
-  pthread_cancel(thread);
   pthread_join(thread, NULL);
   pthread_atfork(NULL, NULL, NULL);
   pthread_exit(NULL);
@@ -46,20 +44,20 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_0fbf1/fast && /usr/bin/make  -f CMakeFiles/cmTC_0fbf1.dir/build.make CMakeFiles/cmTC_0fbf1.dir/build
+Run Build Command(s):/usr/bin/make cmTC_bc0ce/fast && /usr/bin/make -f CMakeFiles/cmTC_bc0ce.dir/build.make CMakeFiles/cmTC_bc0ce.dir/build
 make[1]: вход в каталог «/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp»
-Building C object CMakeFiles/cmTC_0fbf1.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu99 -o CMakeFiles/cmTC_0fbf1.dir/CheckFunctionExists.c.o   -c /snap/clion/124/bin/cmake/linux/share/cmake-3.17/Modules/CheckFunctionExists.c
-Linking C executable cmTC_0fbf1
-/snap/clion/124/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0fbf1.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_0fbf1.dir/CheckFunctionExists.c.o  -o cmTC_0fbf1  -lpthreads 
+Building C object CMakeFiles/cmTC_bc0ce.dir/CheckFunctionExists.c.o
+/usr/bin/x86_64-linux-gnu-gcc-7   -DCHECK_FUNCTION_EXISTS=pthread_create   -std=gnu99 -o CMakeFiles/cmTC_bc0ce.dir/CheckFunctionExists.c.o   -c /usr/local/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bc0ce
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc0ce.dir/link.txt --verbose=1
+/usr/bin/x86_64-linux-gnu-gcc-7  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_bc0ce.dir/CheckFunctionExists.c.o  -o cmTC_bc0ce  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_0fbf1.dir/build.make:106: recipe for target 'cmTC_0fbf1' failed
-make[1]: *** [cmTC_0fbf1] Error 1
+CMakeFiles/cmTC_bc0ce.dir/build.make:86: recipe for target 'cmTC_bc0ce' failed
+make[1]: *** [cmTC_bc0ce] Error 1
 make[1]: выход из каталога «/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/CMakeTmp»
-Makefile:141: recipe for target 'cmTC_0fbf1/fast' failed
-make: *** [cmTC_0fbf1/fast] Error 2
+Makefile:121: recipe for target 'cmTC_bc0ce/fast' failed
+make: *** [cmTC_bc0ce/fast] Error 2
 
 
 

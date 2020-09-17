@@ -36,16 +36,16 @@ void projectile_update() {
 }
 
 void projectile_render(vi2 offset) {
-    const int rad = proj_radius * map.tile_w;
     offset[0] -= player.pos[0] * map.tile_w; offset[1] -= player.pos[1] * map.tile_h;
     for (uint i = 0; i < vec_get_cap(projectiles); i++)
     {
         if (projectiles[i].is_alive)
         {
-            pi_screen_draw_circle((v2){
-                                    offset[0] + projectiles[i].pos[0] * map.tile_w,
-                                    offset[1] + projectiles[i].pos[1] * map.tile_h},
-                                    rad, COLOR(blue));
+            const int rad = projectiles[i].radius * map.tile_w;
+            v2 screen_pos = { offset[0] + projectiles[i].pos[0] * map.tile_w, offset[1] + projectiles[i].pos[1] * map.tile_h};
+            if (screen_pos[0] > rad && screen_pos[1] > rad &&
+                screen_pos[0] < (g_scr.w - rad) && screen_pos[1] < (g_scr.h - rad))
+                g_screen_draw_circle(screen_pos, rad, COLOR(blue));
         }
     }
 }

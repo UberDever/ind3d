@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/ind3d.dir/sandbox/game.c.o"
+  "CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o"
   "CMakeFiles/ind3d.dir/sandbox/game/map.c.o"
   "CMakeFiles/ind3d.dir/sandbox/game/player.c.o"
   "CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o"

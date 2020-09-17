@@ -126,6 +126,12 @@
 		<Unit filename="/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.h">
 			<Option target="ind3d"/>
 		</Unit>
+		<Unit filename="/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c">
+			<Option target="ind3d"/>
+		</Unit>
+		<Unit filename="/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.h">
+			<Option target="ind3d"/>
+		</Unit>
 		<Unit filename="/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c">
 			<Option target="ind3d"/>
 		</Unit>
