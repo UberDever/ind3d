@@ -7,6 +7,8 @@
 
 #include "util.h"
 
+#include "gl/model.h"
+
 #include "game/map.h"
 #include "game/player.h"
 #include "game/projectile.h"

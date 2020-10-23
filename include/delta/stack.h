@@ -12,7 +12,7 @@
  * Designed for handling pointer data, but otherwise work too
  * Contents of pointed data must be cleared separately via arr_delete_contents
  */
-
+#if 0
 #define _stack_get_raw_elements_num _vec_get_raw_elements_num
 
 #define stack_is_empty(st) vec_is_empty(st)
@@ -25,5 +25,5 @@
 #define stack_pop(st) vec_pop(st)
 #define stack_top(st) vec_last(st)
 #define stack_free(st) vec_free(st)
-
+#endif
 #endif //ALPHABETA_STACK_H

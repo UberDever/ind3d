@@ -33,7 +33,7 @@ void g_screen_draw_circle(v2 center, int r, color color);
 void g_screen_fill_quat(const v2 pos, const v2 size, color color);
 
 void g_screen_draw_symbol(uint x, uint y, uint8 symbol, color color);
-void g_screen_draw_number(uint x, uint y, uint number, color color);
+void g_screen_draw_number(uint x, uint y, int number, color color);
 void g_screen_draw_string(uint x, uint y, const char* string, color color);
 
 void g_screen_buffer_update();

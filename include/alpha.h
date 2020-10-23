@@ -66,21 +66,23 @@ typedef struct color
     };
 } color;
 enum colors {
-    color_red        = 0xFF0000FF,
-    color_green      = 0xFF00FF00,
-    color_blue       = 0xFFFF0000,
-    color_white      = 0xFFFFFFFF,
-    color_black      = 0x0,
-    color_magenta    = 0xFFA100FF,
-    color_cyan       = 0xFFFFFF00,
-    color_yellow     = 0xFF00FFFF,
-    color_orange     = 0xFF00A1FF,
-    color_gray       = 0xFF808080,
-    color_light_gray = 0xFFD3D3D3
+    color_red           = 0xFF0000FF,
+    color_green         = 0xFF00FF00,
+    color_blue          = 0xFFFF0000,
+    color_white         = 0xFFFFFFFF,
+    color_black         = 0x0,
+    color_magenta       = 0xFFA100FF,
+    color_cyan          = 0xFFFFFF00,
+    color_yellow        = 0xFF00FFFF,
+    color_orange        = 0xFF00A1FF,
+    color_gray          = 0xFF808080,
+    color_light_gray    = 0xFFD3D3D3,
+    color_golden        = 0xFF00D7FF,
+    color_dark_golden   = 0xFF20A5DA
 };
 
 #ifdef LITTLE_ENDIAN
-#define COLOR(x) ((struct color){color_##x}) //Available colors: r, g, b, white, black, magenta, cyan, yellow, orange, gray, light_gray
+#define COLOR(x) ((struct color){color_##x}) //Available colors: r, g, b, white, black, magenta, cyan, yellow, orange, gray, light_gray, golden, dark_golden
 #else
 #define COLOR(x) ((color){~(color_##x) & 0xFFFFFFFF})
 #endif
@@ -165,6 +167,8 @@ char debug_str[DEBUG_BUFFER_SIZE];
 #define ARR_ONE_DIM_LEN(x) (sizeof(x) / sizeof(*x))
 #define ARR_TWO_DIM_LEN(x) (sizeof(x) / sizeof(**x))
 
+#define ZERO(object) memset(&object, 0, sizeof(object))
+
 #define MIN(a,b) (((a)<(b))?(a):(b)) //standart freeBSD / debian macros
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
@@ -173,6 +177,7 @@ float32 tmp_swap_float_var_; // Little hack here
 #define SWAP_INT(a, b) (tmp_swap_int_var_ = a, a = b, b = tmp_swap_int_var_)
 #define SWAP_FLOAT(a, b) (tmp_swap_float_var_ = a, a = b, b = tmp_swap_float_var_)
 
+#define PTR_TYPE(type) typedef type* type##ptr
 typedef void (*p_void_func)(void); //convenient pointer to void function(void)
 
 /*

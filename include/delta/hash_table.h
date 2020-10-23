@@ -5,7 +5,7 @@
 #ifndef ALPHABETA_HASH_TABLE_H
 #define ALPHABETA_HASH_TABLE_H
 
-#include "alpha.h"
+#include "../alpha.h"
 
 /*
  * Hash table set on fixed array, collision resolving method: open addressing.

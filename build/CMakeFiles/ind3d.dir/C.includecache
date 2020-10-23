@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../include/alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
 stdlib.h
 -
 stdio.h
@@ -22,53 +22,53 @@ SDL2/SDL_image.h
 sys/types.h
 -
 
-../include/alphabeta.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alphabeta.h
 alpha.h
-../include/alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
 delta.h
-../include/delta.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta.h
 gamma.h
-../include/gamma.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/gamma.h
 pi.h
-../include/pi.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/pi.h
 omega.h
-../include/omega.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/omega.h
 
-../include/delta.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta.h
 delta/vec.h
-../include/delta/vec.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/vec.h
 delta/hash_table.h
-../include/delta/hash_table.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/hash_table.h
 delta/stack.h
-../include/delta/stack.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/stack.h
 delta/queue.h
-../include/delta/queue.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/queue.h
 delta/deck.h
-../include/delta/deck.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/deck.h
 
-../include/delta/deck.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/deck.h
 
-../include/delta/hash_table.h
-alpha.h
-../include/delta/alpha.h
-
-../include/delta/queue.h
-deck.h
-../include/delta/deck.h
-
-../include/delta/stack.h
-vec.h
-../include/delta/vec.h
-
-../include/delta/vec.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/hash_table.h
 ../alpha.h
-../include/alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
 
-../include/gamma.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/queue.h
+deck.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/deck.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/stack.h
+vec.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/vec.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/include/delta/vec.h
+../alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/include/gamma.h
 alpha.h
-../include/alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
 pi.h
-../include/pi.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/pi.h
 SDL2/SDL.h
 -
 SDL2/SDL_ttf.h
@@ -76,21 +76,103 @@ SDL2/SDL_ttf.h
 SDL2/SDL_image.h
 -
 
-../include/omega.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/omega.h
 
-../include/pi.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/pi.h
 alpha.h
-../include/alpha.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alpha.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/config.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c
+game.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.h
+util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+gl/model.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.h
+game/map.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.h
+game/player.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.h
+game/projectile.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.h
+game/enemy.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.h
 
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c
 enemy.h
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.h
 
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.h
+enemy_states.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.h
 ../util.h
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
 
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c
+map.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.h
+../util.h
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
-alphabeta.h
-/home/uberdever/dev/5 sem/cg/ind3d/sandbox/alphabeta.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c
+player.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.h
+../util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c
+projectile.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.h
+../util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/math_3d.h
+math.h
+-
+stdio.h
+-
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c
+model.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.h
+../util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c
+game.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.c
+util.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+gl/math_3d.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/math_3d.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/util.h
+../include/alphabeta.h
+/home/uberdever/dev/5 sem/cg/ind3d/include/alphabeta.h
+GL/glew.h
+-
+GL/gl.h
+-
+GL/glu.h
+-
+gl/math_3d.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/math_3d.h
+config.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/config.h
 

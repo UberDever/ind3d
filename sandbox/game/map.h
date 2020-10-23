@@ -7,7 +7,7 @@
 
 #include "../util.h"
 
-void map_load(const char* path);
+void map_init(const char* path);
 
 void map_render(const vi2 pos, vi2 size);
 

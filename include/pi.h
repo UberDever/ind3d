@@ -156,10 +156,11 @@ static vec_float_t pi_v2_len(const v2 vec)
     return sqrtf(pi_v2_len_sq(vec));
 }
 
-static void pi_v2_normalize(const v2 vec, v2 res)
+static vec_float_t pi_v2_normalize(const v2 vec, v2 res)
 {
     const vec_float_t len = pi_v2_len(vec);
     pi_v2(res, vec[0] / len, vec[1] / len);
+    return len;
 }
 
 static void pi_v2_rotate(const v2 vec, const vec_float_t ang_in_rad, v2 res)
@@ -279,10 +280,11 @@ static vec_float_t pi_v3_len(const v3 vec)
     return sqrtf(pi_v3_len_sq(vec));
 }
 
-static void pi_v3_normalize(const v3 vec, v3 res)
+static vec_float_t pi_v3_normalize(const v3 vec, v3 res)
 {
     const vec_float_t len = pi_v3_len(vec);
     pi_v3(res, vec[0] / len, vec[1] / len, vec[2] / len);
+    return len;
 }
 
 /*
@@ -479,6 +481,51 @@ static bool pi_aabb_box_x_point(vi2 p, vi2 box[2])
 static bool pi_aabb_box_x_point_by_size(int x, int y, int box_x, int box_y, int w, int h)
 {
     return pi_aabb_box_x_point((vi2) {x, y}, (vi2[2]) {box_x, box_y, box_x + w, box_y + h});
+}
+
+static bool pi_raycast(const v2 pos_, const v2 ray_, v2 intersection_position, bool (*f)(int, int))
+{
+    v2 ray = {ray_[0], ray_[1]};
+    v2 pos = {pos_[0], pos_[1]};
+    v2 side;
+    v2 delta = {fabsf(1.f / ray[0]),fabsf(1.f / ray[1])};
+    vi2 step;
+    bool hit = false;
+    if (ray[0] > 0)
+    {
+        step[0] = 1;
+        side[0] = ((int)pos[0] - pos[0] + 1) * delta[0];
+    } else
+    {
+        step[0] = -1;
+        side[0] = (pos[0] - (int)pos[0]) * delta[0];
+    }
+    if (ray[1] > 0)
+    {
+        step[1] = 1;
+        side[1] = ((int)pos[1] - pos[1] + 1) * delta[1];
+    } else
+    {
+        step[1] = -1;
+        side[1] = (pos[1] - (int)pos[1]) * delta[1];
+    }
+    while (!hit)
+    {
+        if (side[0] < side[1])
+        {
+            side[0] += delta[0];
+            pos[0] += step[0];
+        } else
+        {
+            side[1] += delta[1];
+            pos[1] += step[1];
+        }
+        if (f(pos[0], pos[1]))
+            hit = true;
+    }
+    if (intersection_position)
+        pi_v2_copy(pos, intersection_position);
+    return hit;
 }
 
 static uint pi_log10(uint number)

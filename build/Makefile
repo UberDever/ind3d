@@ -258,6 +258,33 @@ sandbox/game/projectile.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s
 .PHONY : sandbox/game/projectile.c.s
 
+sandbox/gl/model.o: sandbox/gl/model.c.o
+
+.PHONY : sandbox/gl/model.o
+
+# target to build an object file
+sandbox/gl/model.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/model.c.o
+.PHONY : sandbox/gl/model.c.o
+
+sandbox/gl/model.i: sandbox/gl/model.c.i
+
+.PHONY : sandbox/gl/model.i
+
+# target to preprocess a source file
+sandbox/gl/model.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/model.c.i
+.PHONY : sandbox/gl/model.c.i
+
+sandbox/gl/model.s: sandbox/gl/model.c.s
+
+.PHONY : sandbox/gl/model.s
+
+# target to generate assembly for a file
+sandbox/gl/model.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/model.c.s
+.PHONY : sandbox/gl/model.c.s
+
 sandbox/main.o: sandbox/main.c.o
 
 .PHONY : sandbox/main.o
@@ -284,6 +311,33 @@ sandbox/main.s: sandbox/main.c.s
 sandbox/main.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/main.c.s
 .PHONY : sandbox/main.c.s
+
+sandbox/util.o: sandbox/util.c.o
+
+.PHONY : sandbox/util.o
+
+# target to build an object file
+sandbox/util.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.o
+.PHONY : sandbox/util.c.o
+
+sandbox/util.i: sandbox/util.c.i
+
+.PHONY : sandbox/util.i
+
+# target to preprocess a source file
+sandbox/util.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.i
+.PHONY : sandbox/util.c.i
+
+sandbox/util.s: sandbox/util.c.s
+
+.PHONY : sandbox/util.s
+
+# target to generate assembly for a file
+sandbox/util.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.s
+.PHONY : sandbox/util.c.s
 
 src/alpha.o: src/alpha.c.o
 
@@ -417,9 +471,15 @@ help:
 	@echo "... sandbox/game/projectile.o"
 	@echo "... sandbox/game/projectile.i"
 	@echo "... sandbox/game/projectile.s"
+	@echo "... sandbox/gl/model.o"
+	@echo "... sandbox/gl/model.i"
+	@echo "... sandbox/gl/model.s"
 	@echo "... sandbox/main.o"
 	@echo "... sandbox/main.i"
 	@echo "... sandbox/main.s"
+	@echo "... sandbox/util.o"
+	@echo "... sandbox/util.i"
+	@echo "... sandbox/util.s"
 	@echo "... src/alpha.o"
 	@echo "... src/alpha.i"
 	@echo "... src/alpha.s"

@@ -55,24 +55,45 @@ void g_screen_draw_symbol(uint x, uint y, uint8 symbol, color color) {
         {
             const uint x_ = (i + x);
             const uint y_ = (j + y);
-            if (pi_aabb_box_x_point_by_size(x_, y_, 0, 0, g_scr.w, g_scr.h))
-                g_scr.screen_buf[y_ * g_scr.w + x_] = alphabet[symbol][(j / 5)][(i / 4)] ? color.as_uint : 0 ;
+            //if (pi_aabb_box_x_point_by_size(x_, y_, 0, 0, g_scr.w, g_scr.h))
+                g_scr.screen_buf[y_ * g_scr.w + x_] = alphabet[symbol][(j / 5)][(i / 4)] ? color.as_uint : g_scr.screen_buf[y_ * g_scr.w + x_] ;
         }
     }
 }
 
-void g_screen_draw_number(uint x, uint y, uint number, color color)
+static void draw_minus(uint x, uint y, color color)
+{
+    uint8 minus[7][5] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    for (uint i = 0; i < LET_SCR_W; i++)
+    {
+        for (uint j = 0; j < LET_SCR_H; j++)
+        {
+            const uint x_ = (i + x);
+            const uint y_ = (j + y);
+            g_scr.screen_buf[y_ * g_scr.w + x_] = minus[(j / 5)][(i / 4)] ? color.as_uint : g_scr.screen_buf[y_ * g_scr.w + x_] ;
+        }
+    }
+}
+
+void g_screen_draw_number(uint x, uint y, int number, color color)
 {
     if (number == 0)
     {
         g_screen_draw_symbol(x, y, 0, color);
         return;
     }
-    const uint digit_count = pi_log10(number);
-    for (uint i = 0; number; i++)
+    if (number < 0)
     {
-        g_screen_draw_symbol(x + ((digit_count - i) * letter_offset), y, number % 10, color);
-        number /= 10;
+        draw_minus(x, y, color);
+        x += letter_offset;
+        number *= -1;
+    }
+    uint num = number;
+    const uint digit_count = pi_log10(num);
+    for (uint i = 0; num; i++)
+    {
+        g_screen_draw_symbol(x + ((digit_count - i) * letter_offset), y, num % 10, color);
+        num /= 10;
     }
 }
 

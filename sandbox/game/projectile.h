@@ -7,6 +7,7 @@
 
 #include "../util.h"
 
+void projectile_init();
 void projectile_create(v2 pos, v2 dir);
 void projectile_update();
 void projectile_render(vi2 offset);

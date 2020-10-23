@@ -12,12 +12,16 @@ CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game.c
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/enemy.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/enemy_states.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/map.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/math_3d.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/model.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/alpha.h
@@ -31,8 +35,11 @@ CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.c
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy_states.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/alpha.h
@@ -46,8 +53,10 @@ CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.c
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/alpha.h
@@ -61,8 +70,10 @@ CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.c
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/alpha.h
@@ -76,9 +87,28 @@ CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.c
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/util.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/config.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/math_3d.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.c
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/alphabeta.h
@@ -91,13 +121,33 @@ CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/enemy.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/enemy_states.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/map.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/math_3d.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/model.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/main.c
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/util.h
+
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../sandbox/config.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../sandbox/gl/math_3d.h
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../sandbox/util.c
+CMakeFiles/ind3d.dir/sandbox/util.c.o: ../sandbox/util.h
 
 CMakeFiles/ind3d.dir/src/alpha.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/src/alpha.c.o: ../src/alpha.c
