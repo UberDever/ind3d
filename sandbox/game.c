@@ -8,22 +8,26 @@ uint frames = 0;
 int half_w;
 int half_h;
 
+static Map map;
+static Player player;
+static v_Enemy_t enemies;
+static v_Projectile_t projectiles;
+
 void init(void)
 {
     half_w = (g_scr.w) / 2;
     half_h = (g_scr.h) / 2;
 
-    map_init("../../data/huge.map");
-    player_init();
-    enemy_init();
-    projectile_init();
+    map_init(&map, "../../data/huge.map");
+    player_init(&player);
+    enemy_init(&enemies);
+    projectile_init(&projectiles);
 
-    enemy_create((v2){6, 7}, EnemyTypes_Common);
+    enemy_create(&enemies, (v2){6, 7}, EnemyTypes_Common);
     //enemy_create((v2){3, 12}, EnemyTypes_Strong);
     //enemy_create((v2){10, 3.5}, EnemyTypes_Boss);
     SDL_SetRelativeMouseMode(SDL_TRUE);
     SDL_CaptureMouse(SDL_TRUE);
-
 }
 
 void begin_frame(void)
@@ -68,11 +72,10 @@ void event_handler(void)
         player.momentum[0] = -player.speed;
     }
     player.angular_momentum = -player.rotation_speed * mouse_get_rel_x();
-    //player_event();
-    //enemy_process_hit();
     if (mouse_left_down())
     {
-        enemies_process_hit();
+        enemies_process_hit(&map, &player, &enemies);
+        projectile_create(&projectiles, player.pos, player.dir);
     }
     if (kbd_key_pushed(SDLK_c))
     {
@@ -92,21 +95,21 @@ void update(void)
     {
         for (int y = 0; y < map.h; y++)
         {
-            if (!util_tile_is_wall(x, y))
+            if (!tile_is_wall(&map, x, y))
                 map.data[y * map.w + x] = 0;
         }
     }
-    player_update();
-    projectile_update();
-    enemy_update();
+    player_update(&map, &player);
+    projectile_update(&map, &projectiles);
+    enemy_update(&map, &player, &enemies, &projectiles);
 }
 
 void render(void)
 {
     vi2 map_size = {16, 16};
     const vi2 player_screen_pos = {g_scr.w - (map_size[0] * map.tile_w), map_size[1] * map.tile_h};
-    player_raycast();
-    map_render(player_screen_pos, map_size);
+    player_raycast(&map, &player);
+    map_render(&map, &player, &enemies, &projectiles, player_screen_pos, map_size);
 
     g_screen_draw_number(5, 5, frames, COLOR(yellow));
     frames++;
@@ -116,7 +119,8 @@ void render(void)
 
 void clean(void)
 {
-    vec_free(projectiles);
-    vec_free(enemies);
-    vec_free(enemy_database);
+    player_clean(&player);
+    enemy_clean(&enemies);
+    projectile_clean(&projectiles);
+    map_clean(&map);
 }

@@ -3,9 +3,7 @@
 //
 
 #include "enemy.h"
-
-v_Enemy_t enemies;
-v_Enemyptr_t enemies_in_chunk;
+#include "enemy_states.h"
 
 v_Enemy_t enemy_database;
 v_EnemyBehaviour_t enemy_behaviours;
@@ -19,10 +17,10 @@ v_EnemyBehaviour_t enemy_behaviours;
         vec_push(enemy_database, enemy_type);                       \
     }
 
-void enemy_init()
+void enemy_init(v_Enemy_t *enemies)
 {
-    vec_new(Enemy, enemies, 32);
-    memset(enemies.data, 0, enemies.cap * sizeof(*enemies.data));
+    vec_new(Enemy, *enemies, 32);
+    memset(enemies->data, 0, enemies->cap * sizeof(*enemies->data));
 
     EnemyBehaviour enemy_state = {};
     vec_new(EnemyBehaviour, enemy_behaviours, EnemyState_Size);
@@ -38,35 +36,35 @@ void enemy_init()
     ADD_ENEMY_TYPE(C_ENEMYTYPE_COMMON);
     ADD_ENEMY_TYPE(C_ENEMYTYPE_STRONG);
     ADD_ENEMY_TYPE(C_ENEMYTYPE_BOSS);
-
-    vec_new(Enemyptr, enemies_in_chunk, 64);
 }
 
-void enemy_create(v2 pos, enum EnemyTypes type)
+void enemy_create(v_Enemy_t* enemies, v2 pos, enum EnemyTypes type)
 {
     Enemy enemy;
     memcpy(&enemy, enemy_database.data + (type - 1), sizeof(Enemy));
     enemy.is_alive = true;
     pi_v2_copy(pos, enemy.pos);
-    vec_push(enemies, enemy);
+    vec_push(*enemies, enemy);
 }
 
-void enemy_update()
+void enemy_update(Map *map, Player* player, v_Enemy_t* enemies, v_Projectile_t* projectiles)
 {
-    for (uint i = 0; i < enemies.size; i++)
+    for (uint i = 0; i < enemies->size; i++)
     {
-        if (enemies.data[i].is_alive)
+        if (enemies->data[i].is_alive)
         {
             //Process all projectiles
-            //for (uint j = 0; j < vec_get_cap(projectiles); j++)
-            //{
-            //    v2 rel_pos; pi_v2_sub(enemies[i].pos, projectiles[j].pos, rel_pos);
-            //    const float32 hit_radius = enemies[i].hitbox_radius + projectiles[j].radius;
-            //    if (pi_v2_len_sq(rel_pos) <= hit_radius * hit_radius)
-            //        enemies[i].is_alive = false;
-            //}
+            for (uint j = 0; j < projectiles->cap; j++)
+            {
+               v2 rel_pos; pi_v2_sub(enemies->data[i].pos, projectiles->data[j].pos, rel_pos);
+               const float32 hit_radius = enemies->data[i].hitbox_radius + projectiles->data[j].radius;
+               if (pi_v2_len_sq(rel_pos) <= hit_radius * hit_radius)
+                   enemies->data[i].is_alive = false;
+            }
+            enemies->data[i].state_frame = enemies->data[i].state_frame < 10000 ? enemies->data[i].state_frame + 1 : 0;
             // Process states
-            enemies.data[i].state->act(&enemies.data[i]);
+            if (near_player(enemies->data[i].pos, player->pos, C_CHUNK_DIST))
+                enemies->data[i].state->act(map, player, &enemies->data[i]);
         }
     }
 }
@@ -75,59 +73,54 @@ void enemy_render(vi2 offset)
 {
 }
 
-static bool enemy_in_range(const v2 rel_pos)
+static bool enemy_in_range(Player* player, const v2 rel_pos)
 {
-    float32 k = player.dir[1] / player.dir[0]; // find slope
+    float32 k = player->dir[1] / player->dir[0]; // find slope
     float32 range = k * rel_pos[0];            // get corresponding point y position
     range = fabsf(range - rel_pos[1]);         // get non-corrected range
-    range *= player.dir[0];                    // assuming that player.dir.x == cos(phi), correct range, so it perpendicular
-    if (fabsf(range) <= player.hitscan_range)
+    range *= player->dir[0];                    // assuming that player->dir.x == cos(phi), correct range, so it perpendicular
+    if (fabsf(range) <= player->hitscan_range)
     {
-        if (pi_v2_dot(player.dir, rel_pos) < 0)
+        if (pi_v2_dot(player->dir, rel_pos) < 0)
             return true;
     }
     return false;
 }
 
-void enemies_process_hit()
+void enemies_process_hit(Map *map, Player* player, v_Enemy_t* enemies)
 {
-#if 0
-    float32 min_distance = FLT_MAX;
-    uint index = 0;
-    for (uint i = 0; i < enemies_spotted.size; i++)
-    {
-        v2 rel_pos;
-        pi_v2_sub(player.pos, enemies_spotted.data[i]->pos, rel_pos);
-        float32 distance = pi_v2_len(rel_pos);
-        if (distance < min_distance)
-        {
-            min_distance = distance;
-            index = i;
-        }
-    }
-    enemies_spotted.data[index]->is_alive = false;
-#endif
     float32 min_distance = FLT_MAX;
     uint index = -1;
-    for (uint i = 0; i < enemies.size; i++)
+    for (uint i = 0; i < enemies->size; i++)
     {
-        if (enemies.data[i].state->state != EnemyState_Idle &&
-            enemies.data[i].state->state != EnemyState_IdleRange)
+        if (enemies->data[i].state->state != EnemyState_Idle &&
+            enemies->data[i].state->state != EnemyState_IdleRange)
         {
             v2 rel_pos;
-            pi_v2_sub(player.pos, enemies.data[i].pos, rel_pos);
-            if (enemy_in_range(rel_pos))
+            pi_v2_sub(player->pos, enemies->data[i].pos, rel_pos);
+            if (enemy_in_range(player, rel_pos))
             {
-                float32 distance = pi_v2_len(rel_pos);
-                if (distance < min_distance)
+                int wall_x = -1, wall_y = -1;
+                linecast(map, enemies->data[i].pos[0], enemies->data[i].pos[1], player->pos[0], player->pos[1], &wall_x, &wall_y, tile_is_wall);
+                if (wall_x == -1 && wall_y == -1)
                 {
-                    min_distance = distance;
-                    index = i;
+                    float32 distance = pi_v2_len(rel_pos);
+                    if (distance < min_distance)
+                    {
+                        min_distance = distance;
+                        index = i;
+                    }
                 }
             }
         }
     }
-    debug("Enemy index: %d", index);
     if (index != -1)
-        enemies.data[index].is_alive = false;
+        enemies->data[index].is_alive = false;
+}
+
+void enemy_clean(v_Enemy_t *enemies)
+{
+    vec_free(*enemies);
+    vec_free(enemy_database);
+    vec_free(enemy_behaviours);
 }

@@ -5,9 +5,7 @@
 #ifndef IND3D_GAME_H
 #define IND3D_GAME_H
 
-#include "util.h"
-
-#include "gl/model.h"
+#include "core.h"
 
 #include "game/map.h"
 #include "game/player.h"

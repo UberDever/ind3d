@@ -4,91 +4,89 @@
 
 #include "player.h"
 
-Player player;
-
-void player_init()
+void player_init(Player* player)
 {
-    ARR_COPY_LIST(player.pos, C_PLAYER_POS);
-    ARR_COPY_LIST(player.dir, C_PLAYER_DIR);
-    ARR_COPY_LIST(player.plane, C_PLAYER_PLANE);
-    player.dir_scale = C_PLAYER_DIR_SCALE;
-    player.plane_scale = C_PLAYER_PLANE_SCALE;
-    player.shoot_scale = C_PLAYER_SHOOT_SCALE;
-    player.rotation_speed = C_PLAYER_ROTATION_SPEED;
-    player.angular_momentum = C_PLAYER_ANGULAR_MOMENTUM;
-    player.speed = C_PLAYER_SPEED;
-    ARR_COPY_LIST(player.momentum, (v2){});
-    player.hitbox_radius = C_PLAYER_HITBOX_RADIUS;
-    player.max_hp = C_PLAYER_MAX_HP;
-    player.hp = C_PLAYER_MAX_HP;
-    player.hitscan_range = C_PLAYER_HITSCAN_RANGE;
+    ARR_COPY_LIST(player->pos, C_PLAYER_POS);
+    ARR_COPY_LIST(player->dir, C_PLAYER_DIR);
+    ARR_COPY_LIST(player->plane, C_PLAYER_PLANE);
+    player->dir_scale = C_PLAYER_DIR_SCALE;
+    player->plane_scale = C_PLAYER_PLANE_SCALE;
+    player->shoot_scale = C_PLAYER_SHOOT_SCALE;
+    player->rotation_speed = C_PLAYER_ROTATION_SPEED;
+    player->angular_momentum = C_PLAYER_ANGULAR_MOMENTUM;
+    player->speed = C_PLAYER_SPEED;
+    ARR_COPY_LIST(player->momentum, (v2){});
+    player->hitbox_radius = C_PLAYER_HITBOX_RADIUS;
+    player->max_hp = C_PLAYER_MAX_HP;
+    player->hp = C_PLAYER_MAX_HP;
+    player->hitscan_range = C_PLAYER_HITSCAN_RANGE;
 }
 
 void player_event()
 {
 }
 
-void player_update()
+void player_update(Map* map, Player* player)
 {
 #if 0
     const m2 dir_rotation = {0, -1, 1, 0};
-    pi_v2(player.dir, mouse_get_pos_x() - (half_w), mouse_get_pos_y() - half_h);
-    pi_v2_mul_m2(dir_rotation, player.dir, player.plane);
-    pi_v2_normalize(player.dir, player.dir);
-    pi_v2_normalize(player.plane, player.plane);
+    pi_v2(player->dir, mouse_get_pos_x() - (half_w), mouse_get_pos_y() - half_h);
+    pi_v2_mul_m2(dir_rotation, player->dir, player->plane);
+    pi_v2_normalize(player->dir, player->dir);
+    pi_v2_normalize(player->plane, player->plane);
 #endif
 
-    pi_v2_rotate(player.dir, player.angular_momentum, player.dir);
-    pi_v2_rotate(player.plane, player.angular_momentum, player.plane);
-    player.angular_momentum = 0;
+    pi_v2_rotate(player->dir, player->angular_momentum, player->dir);
+    pi_v2_rotate(player->plane, player->angular_momentum, player->plane);
+    player->angular_momentum = 0;
 
     v2 left_frustum, right_frustum, left_shooting;
-    pi_v2_muls(player.dir, player.dir_scale, right_frustum);
-    pi_v2_muls(player.plane, player.plane_scale, left_frustum);
-    pi_v2_add(right_frustum, left_frustum, player.left_frustum_ray);
+    pi_v2_muls(player->dir, player->dir_scale, right_frustum);
+    pi_v2_muls(player->plane, player->plane_scale, left_frustum);
+    pi_v2_add(right_frustum, left_frustum, player->left_frustum_ray);
     left_frustum[0] *= -1;
     left_frustum[1] *= -1;
-    pi_v2_add(right_frustum, left_frustum, player.right_frustum_ray);
+    pi_v2_add(right_frustum, left_frustum, player->right_frustum_ray);
 
     v2 tmp0 = {};
-    pi_v2_muls(player.dir, player.momentum[1], tmp0);
+    pi_v2_muls(player->dir, player->momentum[1], tmp0);
     v2 tmp1 = {};
-    pi_v2_muls(player.plane, player.momentum[0], tmp1);
+    pi_v2_muls(player->plane, player->momentum[0], tmp1);
     v2 step = {};
     pi_v2_add(tmp0, tmp1, step);
 
     v2 test_vector = {};
-    test_vector[0] = step[0] >= 0 ? player.hitbox_radius : -player.hitbox_radius;
-    test_vector[1] = step[1] >= 0 ? player.hitbox_radius : -player.hitbox_radius;
+    test_vector[0] = step[0] >= 0 ? player->hitbox_radius : -player->hitbox_radius;
+    test_vector[1] = step[1] >= 0 ? player->hitbox_radius : -player->hitbox_radius;
     v2 test_position;
-    pi_v2_add(player.pos, step, test_position);
-    if (util_tile_is_wall(test_position[0] + test_vector[0], test_position[1]))
+    pi_v2_add(player->pos, step, test_position);
+    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1]))
         step[0] = 0;
-    if (util_tile_is_wall(test_position[0], test_position[1] + test_vector[1]))
+    if (tile_is_wall(map, test_position[0], test_position[1] + test_vector[1]))
         step[1] = 0;
     pi_v2_muls(test_vector, SQRT2_2, test_vector);
-    if (util_tile_is_wall(test_position[0] + test_vector[0], test_position[1] - test_vector[1]))
+    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1] - test_vector[1]))
         step[0] = 0;
-    if (util_tile_is_wall(test_position[0] - test_vector[0], test_position[1] + test_vector[1]))
+    if (tile_is_wall(map, test_position[0] - test_vector[0], test_position[1] + test_vector[1]))
         step[1] = 0;
-    if (util_tile_is_wall(test_position[0] + test_vector[0], test_position[1] + test_vector[1]))
+    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1] + test_vector[1]))
     {
         step[0] = 0;
         step[1] = 0;
     }
-    pi_v2_add(player.pos, step, player.pos);
+    pi_v2_add(player->pos, step, player->pos);
 
-    player.momentum[0] = 0;
-    player.momentum[1] = 0;
+    player->momentum[0] = 0;
+    player->momentum[1] = 0;
 
-    map.data[(int)player.pos[1] * map.w + (int)player.pos[0]] = 'P';
+    map->data[(int)player->pos[1] * map->w + (int)player->pos[0]] = 'P';
 }
 
 void player_render(vi2 pos)
 {
 }
 
-void player_raycast()
+void player_raycast(Map* map, Player* player)
 { //TODO: REBUILD
     int scrW = g_scr.w;
     int scrH = g_scr.h;
@@ -102,10 +100,10 @@ void player_raycast()
     {
         float32 cam = 2.f * (float)x / (float)scrW - 1;
         v2 ray;
-        pi_v2(ray, -player.plane[0], -player.plane[1]);
+        pi_v2(ray, -player->plane[0], -player->plane[1]);
         pi_v2_muls(ray, cam, ray);
-        pi_v2_add(ray, player.dir, ray);
-        vi2 pos = {player.pos[0], player.pos[1]};
+        pi_v2_add(ray, player->dir, ray);
+        vi2 pos = {player->pos[0], player->pos[1]};
         v2 side;
         v2 delta = {fabsf(1.f / ray[0]), fabsf(1.f / ray[1])};
         float32 pwd = 0;
@@ -115,22 +113,22 @@ void player_raycast()
         if (ray[0] > 0)
         {
             step[0] = 1;
-            side[0] = ((float32)pos[0] + 1 - player.pos[0]) * delta[0];
+            side[0] = ((float32)pos[0] + 1 - player->pos[0]) * delta[0];
         }
         else
         {
             step[0] = -1;
-            side[0] = (player.pos[0] - pos[0]) * delta[0];
+            side[0] = (player->pos[0] - pos[0]) * delta[0];
         }
         if (ray[1] > 0)
         {
             step[1] = 1;
-            side[1] = ((float32)pos[1] + 1 - player.pos[1]) * delta[1];
+            side[1] = ((float32)pos[1] + 1 - player->pos[1]) * delta[1];
         }
         else
         {
             step[1] = -1;
-            side[1] = (player.pos[1] - pos[1]) * delta[1];
+            side[1] = (player->pos[1] - pos[1]) * delta[1];
         }
         while (!hit)
         {
@@ -146,14 +144,14 @@ void player_raycast()
                 pos[1] += step[1];
                 NS = false;
             }
-            if (map.data[pos[1] * map.w + pos[0]])
+            if (map->data[pos[1] * map->w + pos[0]])
                 hit = true;
         }
 
         if (NS)
-            pwd = (pos[0] - player.pos[0] + (1.f - step[0]) / 2) / ray[0];
+            pwd = (pos[0] - player->pos[0] + (1.f - step[0]) / 2) / ray[0];
         else
-            pwd = (pos[1] - player.pos[1] + (1.f - step[1]) / 2) / ray[1];
+            pwd = (pos[1] - player->pos[1] + (1.f - step[1]) / 2) / ray[1];
 
         int line = (int)(2 * (float32)scrH / pwd);
         if (line) //for evading zero-length lines
@@ -173,4 +171,8 @@ void player_raycast()
     ////SDL_RenderCopy(global::renderer(), skybox, 0, &o);
     //SDL_RenderCopy(global::renderer(), global::gameScreen(), 0, 0);
     //SDL_RenderPresent(global::renderer());
+}
+
+void player_clean(Player* player) {
+    
 }

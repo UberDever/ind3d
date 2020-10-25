@@ -123,6 +123,33 @@ ind3d/fast:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/build
 .PHONY : ind3d/fast
 
+sandbox/core.o: sandbox/core.c.o
+
+.PHONY : sandbox/core.o
+
+# target to build an object file
+sandbox/core.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/core.c.o
+.PHONY : sandbox/core.c.o
+
+sandbox/core.i: sandbox/core.c.i
+
+.PHONY : sandbox/core.i
+
+# target to preprocess a source file
+sandbox/core.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/core.c.i
+.PHONY : sandbox/core.c.i
+
+sandbox/core.s: sandbox/core.c.s
+
+.PHONY : sandbox/core.s
+
+# target to generate assembly for a file
+sandbox/core.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/core.c.s
+.PHONY : sandbox/core.c.s
+
 sandbox/game.o: sandbox/game.c.o
 
 .PHONY : sandbox/game.o
@@ -176,6 +203,33 @@ sandbox/game/enemy.s: sandbox/game/enemy.c.s
 sandbox/game/enemy.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/enemy.c.s
 .PHONY : sandbox/game/enemy.c.s
+
+sandbox/game/enemy_states.o: sandbox/game/enemy_states.c.o
+
+.PHONY : sandbox/game/enemy_states.o
+
+# target to build an object file
+sandbox/game/enemy_states.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o
+.PHONY : sandbox/game/enemy_states.c.o
+
+sandbox/game/enemy_states.i: sandbox/game/enemy_states.c.i
+
+.PHONY : sandbox/game/enemy_states.i
+
+# target to preprocess a source file
+sandbox/game/enemy_states.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.i
+.PHONY : sandbox/game/enemy_states.c.i
+
+sandbox/game/enemy_states.s: sandbox/game/enemy_states.c.s
+
+.PHONY : sandbox/game/enemy_states.s
+
+# target to generate assembly for a file
+sandbox/game/enemy_states.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.s
+.PHONY : sandbox/game/enemy_states.c.s
 
 sandbox/game/map.o: sandbox/game/map.c.o
 
@@ -258,6 +312,33 @@ sandbox/game/projectile.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s
 .PHONY : sandbox/game/projectile.c.s
 
+sandbox/gl/chunk.o: sandbox/gl/chunk.c.o
+
+.PHONY : sandbox/gl/chunk.o
+
+# target to build an object file
+sandbox/gl/chunk.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o
+.PHONY : sandbox/gl/chunk.c.o
+
+sandbox/gl/chunk.i: sandbox/gl/chunk.c.i
+
+.PHONY : sandbox/gl/chunk.i
+
+# target to preprocess a source file
+sandbox/gl/chunk.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.i
+.PHONY : sandbox/gl/chunk.c.i
+
+sandbox/gl/chunk.s: sandbox/gl/chunk.c.s
+
+.PHONY : sandbox/gl/chunk.s
+
+# target to generate assembly for a file
+sandbox/gl/chunk.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.s
+.PHONY : sandbox/gl/chunk.c.s
+
 sandbox/gl/model.o: sandbox/gl/model.c.o
 
 .PHONY : sandbox/gl/model.o
@@ -311,33 +392,6 @@ sandbox/main.s: sandbox/main.c.s
 sandbox/main.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/main.c.s
 .PHONY : sandbox/main.c.s
-
-sandbox/util.o: sandbox/util.c.o
-
-.PHONY : sandbox/util.o
-
-# target to build an object file
-sandbox/util.c.o:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.o
-.PHONY : sandbox/util.c.o
-
-sandbox/util.i: sandbox/util.c.i
-
-.PHONY : sandbox/util.i
-
-# target to preprocess a source file
-sandbox/util.c.i:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.i
-.PHONY : sandbox/util.c.i
-
-sandbox/util.s: sandbox/util.c.s
-
-.PHONY : sandbox/util.s
-
-# target to generate assembly for a file
-sandbox/util.c.s:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/util.c.s
-.PHONY : sandbox/util.c.s
 
 src/alpha.o: src/alpha.c.o
 
@@ -456,12 +510,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ind3d"
+	@echo "... sandbox/core.o"
+	@echo "... sandbox/core.i"
+	@echo "... sandbox/core.s"
 	@echo "... sandbox/game.o"
 	@echo "... sandbox/game.i"
 	@echo "... sandbox/game.s"
 	@echo "... sandbox/game/enemy.o"
 	@echo "... sandbox/game/enemy.i"
 	@echo "... sandbox/game/enemy.s"
+	@echo "... sandbox/game/enemy_states.o"
+	@echo "... sandbox/game/enemy_states.i"
+	@echo "... sandbox/game/enemy_states.s"
 	@echo "... sandbox/game/map.o"
 	@echo "... sandbox/game/map.i"
 	@echo "... sandbox/game/map.s"
@@ -471,15 +531,15 @@ help:
 	@echo "... sandbox/game/projectile.o"
 	@echo "... sandbox/game/projectile.i"
 	@echo "... sandbox/game/projectile.s"
+	@echo "... sandbox/gl/chunk.o"
+	@echo "... sandbox/gl/chunk.i"
+	@echo "... sandbox/gl/chunk.s"
 	@echo "... sandbox/gl/model.o"
 	@echo "... sandbox/gl/model.i"
 	@echo "... sandbox/gl/model.s"
 	@echo "... sandbox/main.o"
 	@echo "... sandbox/main.i"
 	@echo "... sandbox/main.s"
-	@echo "... sandbox/util.o"
-	@echo "... sandbox/util.i"
-	@echo "... sandbox/util.s"
 	@echo "... src/alpha.o"
 	@echo "... src/alpha.i"
 	@echo "... src/alpha.s"

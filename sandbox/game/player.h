@@ -5,13 +5,16 @@
 #ifndef IND3D_PLAYER_H
 #define IND3D_PLAYER_H
 
-#include "../util.h"
+#include "../core.h"
 
-void player_init();
+void player_init(Player* player);
+
 void player_event();
-void player_update();
+void player_update(Map* map, Player* player);
 void player_render(vi2 pos);
 
-void player_raycast();
+void player_raycast(Map* map, Player* player);
+
+void player_clean(Player* player);
 
 #endif //IND3D_PLAYER_H

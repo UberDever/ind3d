@@ -1,6 +1,7 @@
 #ifndef IND3D_MODEL_H
 #define IND3D_MODEL_H
-#include "../util.h"
+
+#include "graphics.h"
 
 typedef struct ModelInfo
 {
