@@ -46,12 +46,16 @@ void model_generate(Model *model, Mesh *mesh)
     add_ibo(model, mesh->indices.data, mesh->indices.size);
 }
 
+ModelInfo model_get_info(Model *model) {
+    return model->info;
+}
+
 void model_clear(Model *model)
 {
     if (model->info.vao)
         glDeleteVertexArrays(1, &model->info.vao);
     if (model->buffers.size > 0)
-        glDeleteBuffers(model->buffers.size - 1,
+        glDeleteBuffers(model->buffers.size,
                         model->buffers.data);
 
     model->buffers.size = 0;

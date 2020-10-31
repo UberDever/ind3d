@@ -9,9 +9,8 @@
 
 void player_init(Player* player);
 
-void player_event();
+void player_event(Player* player);
 void player_update(Map* map, Player* player);
-void player_render(vi2 pos);
 
 void player_raycast(Map* map, Player* player);
 

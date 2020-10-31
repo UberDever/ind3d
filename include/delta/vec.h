@@ -97,7 +97,7 @@
     ((bool)(v->size >= v->capacity))
 #endif
 
-#if 0
+#if 0 //Macros, far less elegant version, than version above
 #define VEC_RAW_ELEMENTS_NUM 2
 
 #define vec_is_empty(v) ((bool)(vec_get_size(v) == 0))
@@ -204,7 +204,7 @@
     (name).empty = vec_##T##_empty; \
     (name).full = vec_##T##_full;   \
     (name).back = vec_##T##_back;   \
-    (name).new(&name, cap);
+    (name).new(&(name), cap);
 
 #define vec_new_ptr(T, name, cap)       \
     (name) = malloc(sizeof(v_##T##_t)); \
@@ -217,15 +217,15 @@
     (name)->back = vec_##T##_back;      \
     (name)->new (name, cap);
 
-#define vec_free(v) (v).free(&v)
-#define vec_push(v, el) (v).push(&v, el)
-#define vec_pop(v) (v).pop(&v)
-#define vec_empty(v) (v).empty(&v)
-#define vec_full(v) (v).full(&v)
-#define vec_back(v) (v).back(&v)
+#define vec_free(v) (v).free(&(v))
+#define vec_push(v, el) (v).push(&(v), el)
+#define vec_pop(v) (v).pop(&(v))
+#define vec_empty(v) (v).empty(&(v))
+#define vec_full(v) (v).full(&(v))
+#define vec_back(v) (v).back(&(v))
 
 #define vec_free_ptr(v) \
-    v->free(v);         \
+    (v)->free(v);         \
     free(v);
 
 #endif //ALPHABETA_VEC_H

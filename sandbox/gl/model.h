@@ -32,6 +32,13 @@ typedef struct Model
 
 void model_generate(Model *model, Mesh *mesh);
 void model_clear(Model *model);
-ModelInfo model_get_info();
+ModelInfo model_get_info(Model *model);
+
+typedef struct ChunkVx
+{
+    v3_t p;
+    v2_t t;
+    v3_t n;
+} ChunkVx;
 
 #endif

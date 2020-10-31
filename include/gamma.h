@@ -15,6 +15,8 @@ extern struct scr_t {
     uint w, h, pixel_count;
     uint32* screen_buf;
     bool is_fullscreen;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
 } g_scr;
 
 void g_init(uint w, uint h, bool is_fullscreen, SDL_WindowFlags win_flags, SDL_RendererFlags ren_flags);
@@ -26,11 +28,11 @@ void g_screen_clear();
 void g_screen_fill(color color);
 void g_screen_put_pixel(uint x, uint y, color color);
 void g_screen_draw_line(int start_x, int start_y, int end_x, int end_y, color color);
-void g_screen_draw_tri(const v2 vx0, const v2 vx1, const v2 vx2, color color);
-void g_screen_draw_quat(const v2 vx0, const v2 vx1, const v2 vx2, const v2 vx3, color color);
-void g_screen_draw_circle(v2 center, int r, color color);
+void g_screen_draw_tri(const v2_t vx0, const v2_t vx1, const v2_t vx2, color color);
+void g_screen_draw_quat(const v2_t vx0, const v2_t vx1, const v2_t vx2, const v2_t vx3, color color);
+void g_screen_draw_circle(v2_t center, int r, color color);
 
-void g_screen_fill_quat(const v2 pos, const v2 size, color color);
+void g_screen_fill_quat(const v2_t pos, const v2_t size, color color);
 
 void g_screen_draw_symbol(uint x, uint y, uint8 symbol, color color);
 void g_screen_draw_number(uint x, uint y, int number, color color);

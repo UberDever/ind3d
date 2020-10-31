@@ -4,29 +4,97 @@
 
 #include "player.h"
 
-void player_init(Player* player)
+void player_init(Player *player)
 {
-    ARR_COPY_LIST(player->pos, C_PLAYER_POS);
-    ARR_COPY_LIST(player->dir, C_PLAYER_DIR);
-    ARR_COPY_LIST(player->plane, C_PLAYER_PLANE);
-    player->dir_scale = C_PLAYER_DIR_SCALE;
-    player->plane_scale = C_PLAYER_PLANE_SCALE;
-    player->shoot_scale = C_PLAYER_SHOOT_SCALE;
-    player->rotation_speed = C_PLAYER_ROTATION_SPEED;
-    player->angular_momentum = C_PLAYER_ANGULAR_MOMENTUM;
-    player->speed = C_PLAYER_SPEED;
-    ARR_COPY_LIST(player->momentum, (v2){});
+    player->momentum = (v2_t){};
     player->hitbox_radius = C_PLAYER_HITBOX_RADIUS;
     player->max_hp = C_PLAYER_MAX_HP;
     player->hp = C_PLAYER_MAX_HP;
     player->hitscan_range = C_PLAYER_HITSCAN_RANGE;
+
+    //player->pos = (v2_t){.x = C_PLAYER_POS_X - C_CHUNK_W / 2, .y = C_PLAYER_POS_Y - C_CHUNK_H / 2};
+    player->pos = (v2_t){.x = 2, .y = 2};
+    player->camera.dir = (v3_t){.x = 0, .y = 0, .z = 1};
+    player->camera.plane = (v3_t){.x = C_PLAYER_PLANE_SCALE, .y = 0, .z = 0};
+    player->camera.horisontal_rotation = M_PI_2;
+    player->camera.sensitivity = 0.0125;
+
+    player->camera.projection_matrix = m4_perspective(C_CAMERA_FOV,
+                                                      (float32)g_scr.w / (float32)g_scr.h,
+                                                      C_CAMERA_NEAR,
+                                                      C_CAMERA_FAR);
 }
 
-void player_event()
+void player_event(Player *player)
 {
+#if 0
+    if (kbd_key_pressed(SDLK_w))
+    {
+        player->momentum.y = C_PLAYER_SPEED;
+    }
+    if (kbd_key_pressed(SDLK_s))
+    {
+        player->momentum.y = -C_PLAYER_SPEED;
+    }
+    if (kbd_key_pressed(SDLK_a))
+    {
+        player->momentum.x = C_PLAYER_SPEED;
+    }
+    if (kbd_key_pressed(SDLK_d))
+    {
+        player->momentum.x = -C_PLAYER_SPEED;
+    }
+#endif
+    int m_x = mouse_get_rel_x();
+    int m_y = mouse_get_rel_y();
+
+    player->camera.horisontal_rotation += (float32)m_x * player->camera.sensitivity;
+    player->camera.vertrical_rotation += -(float32)m_y * player->camera.sensitivity;
+
+    if (player->camera.vertrical_rotation > M_PI_2)
+        player->camera.vertrical_rotation = M_PI_2;
+    if (player->camera.vertrical_rotation < -M_PI_2)
+        player->camera.vertrical_rotation = -M_PI_2;
+
+    player->camera.dir.x = cosf(player->camera.horisontal_rotation); //* cosf(player->camera.vertrical_rotation);
+    player->camera.dir.y = sinf(player->camera.vertrical_rotation);
+    player->camera.dir.z = sinf(player->camera.horisontal_rotation); //* cosf(player->camera.vertrical_rotation);
+                                                                     //debug("%f %f %f", player->camera.dir.x, player->camera.dir.y, player->camera.dir.z);
+    player->camera.plane = v3_cross(player->camera.dir, (v3_t){0, 1, 0});
+
+    if (kbd_key_pressed(SDLK_w))
+    {
+        player->momentum.y = C_PLAYER_SPEED;
+        //player->camera.pos = v3_add(player->camera.pos,
+        //                            v3_muls((v3_t){player->camera.dir.x, 0, player->camera.dir.z},
+        //                                    player->camera.speed));
+    }
+    if (kbd_key_pressed(SDLK_a))
+    {
+        player->momentum.x = -C_PLAYER_SPEED;
+        //player->camera.pos = v3_sub(player->camera.pos,
+        //                            v3_muls(
+        //                                player->camera.plane,
+        //                                player->camera.speed));
+    }
+    if (kbd_key_pressed(SDLK_s))
+    {
+        player->momentum.y = -C_PLAYER_SPEED;
+        //player->camera.pos = v3_sub(player->camera.pos,
+        //                            v3_muls((v3_t){player->camera.dir.x, 0, player->camera.dir.z},
+        //                                    player->camera.speed));
+    }
+    if (kbd_key_pressed(SDLK_d))
+    {
+        player->momentum.x = C_PLAYER_SPEED;
+        //player->camera.pos = v3_add(player->camera.pos,
+        //                            v3_muls(
+        //                                player->camera.plane,
+        //                                player->camera.speed));
+    }
 }
 
-void player_update(Map* map, Player* player)
+void player_update(Map *map, Player *player)
 {
 #if 0
     const m2 dir_rotation = {0, -1, 1, 0};
@@ -36,58 +104,55 @@ void player_update(Map* map, Player* player)
     pi_v2_normalize(player->plane, player->plane);
 #endif
 
-    pi_v2_rotate(player->dir, player->angular_momentum, player->dir);
-    pi_v2_rotate(player->plane, player->angular_momentum, player->plane);
-    player->angular_momentum = 0;
+    //v2 left_frustum, right_frustum;
+    //pi_v2_muls(player->camera.dir, C_PLAYER_DIR_SCALE, right_frustum);
+    //pi_v2_muls(player->camera.plane, C_PLAYER_PLANE_SCALE, left_frustum);
+    //pi_v2_add(right_frustum, left_frustum, player->left_frustum_ray);
+    //left_frustum.x *= -1;
+    //left_frustum.y *= -1;
+    //pi_v2_add(right_frustum, left_frustum, player->right_frustum_ray);
+    //
+    //v2 tmp0 = {};
+    //pi_v2_muls(player->dir, player->momentum.y, tmp0);
+    //v2 tmp1 = {};
+    //pi_v2_muls(player->plane, player->momentum.x, tmp1);
+    //v2 step = {};
+    //pi_v2_add(tmp0, tmp1, step);
 
-    v2 left_frustum, right_frustum, left_shooting;
-    pi_v2_muls(player->dir, player->dir_scale, right_frustum);
-    pi_v2_muls(player->plane, player->plane_scale, left_frustum);
-    pi_v2_add(right_frustum, left_frustum, player->left_frustum_ray);
-    left_frustum[0] *= -1;
-    left_frustum[1] *= -1;
-    pi_v2_add(right_frustum, left_frustum, player->right_frustum_ray);
-
-    v2 tmp0 = {};
-    pi_v2_muls(player->dir, player->momentum[1], tmp0);
-    v2 tmp1 = {};
-    pi_v2_muls(player->plane, player->momentum[0], tmp1);
-    v2 step = {};
-    pi_v2_add(tmp0, tmp1, step);
-
-    v2 test_vector = {};
-    test_vector[0] = step[0] >= 0 ? player->hitbox_radius : -player->hitbox_radius;
-    test_vector[1] = step[1] >= 0 ? player->hitbox_radius : -player->hitbox_radius;
-    v2 test_position;
-    pi_v2_add(player->pos, step, test_position);
-    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1]))
-        step[0] = 0;
-    if (tile_is_wall(map, test_position[0], test_position[1] + test_vector[1]))
-        step[1] = 0;
-    pi_v2_muls(test_vector, SQRT2_2, test_vector);
-    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1] - test_vector[1]))
-        step[0] = 0;
-    if (tile_is_wall(map, test_position[0] - test_vector[0], test_position[1] + test_vector[1]))
-        step[1] = 0;
-    if (tile_is_wall(map, test_position[0] + test_vector[0], test_position[1] + test_vector[1]))
+    v2_t dir = (v2_t){player->camera.dir.x, player->camera.dir.z};
+    v2_t plane = (v2_t){player->camera.plane.x, player->camera.plane.z};
+    v2_t step = v2_add(v2_muls(dir, player->momentum.y), v2_muls(plane, player->momentum.x));
+    v2_t test_move = {};
+    test_move.x = step.x >= 0 ? player->hitbox_radius : -player->hitbox_radius;
+    test_move.y = step.y >= 0 ? player->hitbox_radius : -player->hitbox_radius;
+    v2_t test_position = v2_add(player->pos, step);
+    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y))
+        step.x = 0;
+    if (tile_is_wall(map, test_position.x, test_position.y + test_move.y))
+        step.y = 0;
+    test_move = v2_muls(test_move, SQRT2_2);
+    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y - test_move.y))
+        step.x = 0;
+    if (tile_is_wall(map, test_position.x - test_move.x, test_position.y + test_move.y))
+        step.y = 0;
+    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y + test_move.y))
     {
-        step[0] = 0;
-        step[1] = 0;
+        step.x = 0;
+        step.y = 0;
     }
-    pi_v2_add(player->pos, step, player->pos);
+    player->pos = v2_add(player->pos, step);
 
-    player->momentum[0] = 0;
-    player->momentum[1] = 0;
+    player->momentum.x = 0;
+    player->momentum.y = 0;
 
-    map->data[(int)player->pos[1] * map->w + (int)player->pos[0]] = 'P';
+    
+
+    // map->data[(int)player->pos.y * map->w + (int)player->pos.x] = 'P';
 }
 
-void player_render(vi2 pos)
-{
-}
-
-void player_raycast(Map* map, Player* player)
+void player_raycast(Map *map, Player *player)
 { //TODO: REBUILD
+#if 0
     int scrW = g_scr.w;
     int scrH = g_scr.h;
 
@@ -100,58 +165,58 @@ void player_raycast(Map* map, Player* player)
     {
         float32 cam = 2.f * (float)x / (float)scrW - 1;
         v2 ray;
-        pi_v2(ray, -player->plane[0], -player->plane[1]);
+        pi_v2(ray, -player->plane.x, -player->plane.y);
         pi_v2_muls(ray, cam, ray);
         pi_v2_add(ray, player->dir, ray);
-        vi2 pos = {player->pos[0], player->pos[1]};
+        vi2 pos = {player->pos.x, player->pos.y};
         v2 side;
-        v2 delta = {fabsf(1.f / ray[0]), fabsf(1.f / ray[1])};
+        v2 delta = {fabsf(1.f / ray.x), fabsf(1.f / ray.y)};
         float32 pwd = 0;
         vi2 step;
         bool hit = false, NS = true; //North-South
 
-        if (ray[0] > 0)
+        if (ray.x > 0)
         {
-            step[0] = 1;
-            side[0] = ((float32)pos[0] + 1 - player->pos[0]) * delta[0];
+            step.x = 1;
+            side.x = ((float32)pos.x + 1 - player->pos.x) * delta.x;
         }
         else
         {
-            step[0] = -1;
-            side[0] = (player->pos[0] - pos[0]) * delta[0];
+            step.x = -1;
+            side.x = (player->pos.x - pos.x) * delta.x;
         }
-        if (ray[1] > 0)
+        if (ray.y > 0)
         {
-            step[1] = 1;
-            side[1] = ((float32)pos[1] + 1 - player->pos[1]) * delta[1];
+            step.y = 1;
+            side.y = ((float32)pos.y + 1 - player->pos.y) * delta.y;
         }
         else
         {
-            step[1] = -1;
-            side[1] = (player->pos[1] - pos[1]) * delta[1];
+            step.y = -1;
+            side.y = (player->pos.y - pos.y) * delta.y;
         }
         while (!hit)
         {
-            if (side[0] < side[1])
+            if (side.x < side.y)
             {
-                side[0] += delta[0];
-                pos[0] += step[0];
+                side.x += delta.x;
+                pos.x += step.x;
                 NS = true;
             }
             else
             {
-                side[1] += delta[1];
-                pos[1] += step[1];
+                side.y += delta.y;
+                pos.y += step.y;
                 NS = false;
             }
-            if (map->data[pos[1] * map->w + pos[0]])
+            if (map->data[pos.y * map->w + pos.x])
                 hit = true;
         }
 
         if (NS)
-            pwd = (pos[0] - player->pos[0] + (1.f - step[0]) / 2) / ray[0];
+            pwd = (pos.x - player->pos.x + (1.f - step.x) / 2) / ray.x;
         else
-            pwd = (pos[1] - player->pos[1] + (1.f - step[1]) / 2) / ray[1];
+            pwd = (pos.y - player->pos.y + (1.f - step.y) / 2) / ray.y;
 
         int line = (int)(2 * (float32)scrH / pwd);
         if (line) //for evading zero-length lines
@@ -171,8 +236,9 @@ void player_raycast(Map* map, Player* player)
     ////SDL_RenderCopy(global::renderer(), skybox, 0, &o);
     //SDL_RenderCopy(global::renderer(), global::gameScreen(), 0, 0);
     //SDL_RenderPresent(global::renderer());
+#endif
 }
 
-void player_clean(Player* player) {
-    
+void player_clean(Player *player)
+{
 }

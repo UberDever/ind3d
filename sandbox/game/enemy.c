@@ -38,12 +38,12 @@ void enemy_init(v_Enemy_t *enemies)
     ADD_ENEMY_TYPE(C_ENEMYTYPE_BOSS);
 }
 
-void enemy_create(v_Enemy_t* enemies, v2 pos, enum EnemyTypes type)
+void enemy_create(v_Enemy_t* enemies, v2_t pos, enum EnemyTypes type)
 {
     Enemy enemy;
     memcpy(&enemy, enemy_database.data + (type - 1), sizeof(Enemy));
     enemy.is_alive = true;
-    pi_v2_copy(pos, enemy.pos);
+    enemy.pos = pos;
     vec_push(*enemies, enemy);
 }
 
@@ -56,9 +56,9 @@ void enemy_update(Map *map, Player* player, v_Enemy_t* enemies, v_Projectile_t* 
             //Process all projectiles
             for (uint j = 0; j < projectiles->cap; j++)
             {
-               v2 rel_pos; pi_v2_sub(enemies->data[i].pos, projectiles->data[j].pos, rel_pos);
+               v2_t rel_pos = v2_sub(enemies->data[i].pos, projectiles->data[j].pos);
                const float32 hit_radius = enemies->data[i].hitbox_radius + projectiles->data[j].radius;
-               if (pi_v2_len_sq(rel_pos) <= hit_radius * hit_radius)
+               if (v2_len_sq(rel_pos) <= hit_radius * hit_radius)
                    enemies->data[i].is_alive = false;
             }
             enemies->data[i].state_frame = enemies->data[i].state_frame < 10000 ? enemies->data[i].state_frame + 1 : 0;
@@ -69,19 +69,15 @@ void enemy_update(Map *map, Player* player, v_Enemy_t* enemies, v_Projectile_t* 
     }
 }
 
-void enemy_render(vi2 offset)
+static bool enemy_in_range(Player* player, const v2_t rel_pos)
 {
-}
-
-static bool enemy_in_range(Player* player, const v2 rel_pos)
-{
-    float32 k = player->dir[1] / player->dir[0]; // find slope
-    float32 range = k * rel_pos[0];            // get corresponding point y position
-    range = fabsf(range - rel_pos[1]);         // get non-corrected range
-    range *= player->dir[0];                    // assuming that player->dir.x == cos(phi), correct range, so it perpendicular
+    float32 k = player->camera.dir.z / player->camera.dir.x; // find slope
+    float32 range = k * rel_pos.x;            // get corresponding point y position
+    range = fabsf(range - rel_pos.y);         // get non-corrected range
+    range *= player->camera.dir.x;                    // assuming that player->dir.x == cos(phi), correct range, so it perpendicular
     if (fabsf(range) <= player->hitscan_range)
     {
-        if (pi_v2_dot(player->dir, rel_pos) < 0)
+        if (v2_dot((v2_t){player->camera.dir.x, player->camera.dir.z}, rel_pos) < 0)
             return true;
     }
     return false;
@@ -96,15 +92,14 @@ void enemies_process_hit(Map *map, Player* player, v_Enemy_t* enemies)
         if (enemies->data[i].state->state != EnemyState_Idle &&
             enemies->data[i].state->state != EnemyState_IdleRange)
         {
-            v2 rel_pos;
-            pi_v2_sub(player->pos, enemies->data[i].pos, rel_pos);
+            v2_t rel_pos = v2_sub(player->pos, enemies->data[i].pos);
             if (enemy_in_range(player, rel_pos))
             {
                 int wall_x = -1, wall_y = -1;
-                linecast(map, enemies->data[i].pos[0], enemies->data[i].pos[1], player->pos[0], player->pos[1], &wall_x, &wall_y, tile_is_wall);
+                linecast(map, enemies->data[i].pos.x, enemies->data[i].pos.y, player->pos.x, player->pos.y, &wall_x, &wall_y, tile_is_wall);
                 if (wall_x == -1 && wall_y == -1)
                 {
-                    float32 distance = pi_v2_len(rel_pos);
+                    float32 distance = v2_len(rel_pos);
                     if (distance < min_distance)
                     {
                         min_distance = distance;

@@ -213,18 +213,18 @@ CMakeFiles/ind3d.dir/sandbox/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/main.c.s"
 	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c" -o CMakeFiles/ind3d.dir/sandbox/main.c.s
 
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: CMakeFiles/ind3d.dir/flags.make
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/chunk.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c"
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o"
+	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c"
 
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c" > CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.i
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i"
+	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c" > CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i
 
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c" -o CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.s
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s"
+	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c" -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.c
@@ -253,7 +253,7 @@ ind3d_OBJECTS = \
 "CMakeFiles/ind3d.dir/sandbox/core.c.o" \
 "CMakeFiles/ind3d.dir/sandbox/game.c.o" \
 "CMakeFiles/ind3d.dir/sandbox/main.c.o" \
-"CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o" \
 "CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
 
 # External object files for target ind3d
@@ -271,7 +271,7 @@ debug/ind3d: CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/core.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/game.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/main.c.o
-debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/model.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/build.make
 debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2main.a

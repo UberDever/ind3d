@@ -5,5 +5,5 @@
         "sstream": "cpp",
         "map": "c"
     },
-    "editor.selectionClipboard": false
+    "editor.selectionHighlight": false
 }

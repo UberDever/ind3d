@@ -5,8 +5,6 @@
 
 struct scr_t g_scr;
 
-static SDL_Window* window;
-static SDL_Renderer* renderer;
 static SDL_Texture* screen;
 static color renderer_color = COLOR(black);
 
@@ -23,16 +21,16 @@ void g_init(uint w, uint h, bool is_fullscreen, SDL_WindowFlags win_flags, SDL_R
     if ((exitcode = IMG_Init(IMG_INIT_PNG)) != IMG_INIT_PNG)
         error("SDL_image couldn't init properly, error: %d", exitcode);
 
-    window = SDL_CreateWindow("Sandbox", 20, 20, g_scr.w, g_scr.h, win_flags);
+    g_scr.window = SDL_CreateWindow("Sandbox", 20, 20, g_scr.w, g_scr.h, win_flags);
 
-    if (!window)
+    if (!g_scr.window)
         error("Couldn't create SDL window")
 
-    renderer = SDL_CreateRenderer(window, -1, ren_flags);
-    if (!renderer)
+    g_scr.renderer = SDL_CreateRenderer(g_scr.window, -1, ren_flags);
+    if (!g_scr.renderer)
         error("Couldn't create SDL renderer")
 
-    screen = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, g_scr.w, g_scr.h);
+    screen = SDL_CreateTexture(g_scr.renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, g_scr.w, g_scr.h);
     g_scr.pixel_count = g_scr.w * g_scr.h;
     ARR_ALLOC(g_scr.screen_buf, g_scr.pixel_count);
     ALLOC_CHECK(g_scr.screen_buf);
@@ -43,8 +41,8 @@ void g_init(uint w, uint h, bool is_fullscreen, SDL_WindowFlags win_flags, SDL_R
 void g_clean() {
     free(g_scr.screen_buf);
     SDL_DestroyTexture(screen);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(g_scr.renderer);
+    SDL_DestroyWindow(g_scr.window);
     IMG_Quit();
     TTF_Quit();
     SDL_Quit();
@@ -52,7 +50,7 @@ void g_clean() {
 
 void g_screen_set_render_color(color color) {
     renderer_color = color;
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_SetRenderDrawColor(g_scr.renderer, color.r, color.g, color.b, color.a);
 }
 
 void g_screen_put_pixel(uint x, uint y, color color) {
@@ -61,12 +59,12 @@ void g_screen_put_pixel(uint x, uint y, color color) {
 
 void g_screen_clear() {
     g_screen_set_render_color(renderer_color);
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(g_scr.renderer);
 }
 
 void g_screen_fill(color color) {
     g_screen_set_render_color(color);
-    SDL_RenderClear(renderer);
+    SDL_RenderClear(g_scr.renderer);
 }
 
 void g_screen_draw_line(int start_x, int start_y, int end_x, int end_y, color color)
@@ -91,17 +89,17 @@ void g_screen_draw_line(int start_x, int start_y, int end_x, int end_y, color co
     }
 }
 
-void g_screen_draw_tri(const v2 vx0, const v2 vx1, const v2 vx2, color color) {
-    g_screen_draw_line(vx0[0], vx0[1], vx1[0], vx1[1], color);
-    g_screen_draw_line(vx1[0], vx1[1], vx2[0], vx2[1], color);
-    g_screen_draw_line(vx2[0], vx2[1], vx0[0], vx0[1], color);
+void g_screen_draw_tri(const v2_t vx0, const v2_t vx1, const v2_t vx2, color color) {
+    g_screen_draw_line(vx0.x, vx0.y, vx1.x, vx1.y, color);
+    g_screen_draw_line(vx1.x, vx1.y, vx2.x, vx2.y, color);
+    g_screen_draw_line(vx2.x, vx2.y, vx0.x, vx0.y, color);
 }
 
-void g_screen_draw_quat(const v2 vx0, const v2 vx1, const v2 vx2, const v2 vx3, color color) {
-    g_screen_draw_line(vx0[0], vx0[1], vx1[0], vx1[1], color);
-    g_screen_draw_line(vx1[0], vx1[1], vx2[0], vx2[1], color);
-    g_screen_draw_line(vx2[0], vx2[1], vx3[0], vx3[1], color);
-    g_screen_draw_line(vx3[0], vx3[1], vx0[0], vx0[1], color);
+void g_screen_draw_quat(const v2_t vx0, const v2_t vx1, const v2_t vx2, const v2_t vx3, color color) {
+    g_screen_draw_line(vx0.x, vx0.y, vx1.x, vx1.y, color);
+    g_screen_draw_line(vx1.x, vx1.y, vx2.x, vx2.y, color);
+    g_screen_draw_line(vx2.x, vx2.y, vx3.x, vx3.y, color);
+    g_screen_draw_line(vx3.x, vx3.y, vx0.x, vx0.y, color);
 }
 
 static void circle_eight_pixels(int xc, int yc, int x, int y, color color)
@@ -116,10 +114,10 @@ static void circle_eight_pixels(int xc, int yc, int x, int y, color color)
     g_screen_put_pixel(-y + xc,  x + yc, color);
 }
 
-void g_screen_draw_circle(v2 center, int r, color color)
+void g_screen_draw_circle(v2_t center, int r, color color)
 {
     int x = 0, y = r, d = 3 - (2 * r);
-    circle_eight_pixels(center[0], center[1], x, y, color);
+    circle_eight_pixels(center.x, center.y, x, y, color);
 
     while(x <= y)
     {
@@ -133,16 +131,16 @@ void g_screen_draw_circle(v2 center, int r, color color)
             y--;
         }
         x++;
-        circle_eight_pixels(center[0], center[1], x, y, color);
+        circle_eight_pixels(center.x, center.y, x, y, color);
     }
 }
 
-void g_screen_fill_quat(const v2 pos, const v2 size, color color) {
-    for (int i = 0; i < size[0]; i++)
-        for (int j = 0; j < size[1]; j++)
+void g_screen_fill_quat(const v2_t pos, const v2_t size, color color) {
+    for (int i = 0; i < size.x; i++)
+        for (int j = 0; j < size.y; j++)
         {
-            const int y = (j + (int)pos[1]);
-            const int x = (i + (int)pos[0]);
+            const int y = (j + (int)pos.y);
+            const int x = (i + (int)pos.x);
             if (x >= 0 && x < g_scr.w && y >= 0 && y < g_scr.h)
                 g_scr.screen_buf[y * g_scr.w + x] = color.as_uint;
         }
@@ -151,7 +149,7 @@ void g_screen_fill_quat(const v2 pos, const v2 size, color color) {
 
 void g_screen_buffer_update() {
     SDL_UpdateTexture(screen, 0, g_scr.screen_buf, sizeof(uint32) * g_scr.w);
-    SDL_RenderCopy(renderer, screen, 0, 0);
+    SDL_RenderCopy(g_scr.renderer, screen, 0, 0);
 }
 
 void g_screen_buffer_clear() {
@@ -159,7 +157,7 @@ void g_screen_buffer_clear() {
 }
 
 void g_screen_present() {
-    SDL_RenderPresent(renderer);
+    SDL_RenderPresent(g_scr.renderer);
 }
 
 

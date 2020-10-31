@@ -4,27 +4,49 @@
 #ifndef IND3D_CORE_H
 #define IND3D_CORE_H
 
-#include "gl/math_3d.h"
+//#include "gl/math_3d.h"
+#include "../include/alphabeta.h"
 #include "gl/model.h"
+#include "gl/geometry.h"
 
 #include "config.h"
+
+// 3d typedefs
+typedef struct Camera
+{
+    v3_t dir;
+    v3_t plane;
+    m4_t view_matrix;
+    m4_t projection_matrix;
+
+    float32 sensitivity;
+
+    float32 horisontal_rotation;
+    float32 vertrical_rotation;
+} Camera;
+
+typedef struct Texture
+{
+    GLuint id;
+    int w, h;
+    uint8* data;
+} Texture;
 
 //Global typedefs
 typedef struct Player
 {
-    v2 pos, momentum;
-    v2 dir, plane;
-    v2 left_frustum_ray, right_frustum_ray;
-    float32 angular_momentum, dir_scale, plane_scale, shoot_scale, hitbox_radius;
+    v2_t pos, momentum;
+    v2_t left_frustum_ray, right_frustum_ray;
+    float32 hitbox_radius;
+    Camera camera;
     // Game variables
-    float32 speed, rotation_speed;
     float32 hp, max_hp;
     float32 hitscan_range;
 } Player;
 
 typedef struct Chunk
 {
-
+    Model model;
 } Chunk;
 vec_register(Chunk);
 
@@ -33,13 +55,15 @@ typedef struct Map
     int *data;
     int w, h;
     int tile_w, tile_h;
+    // OpenGl stuff
     int chunks_w, chunks_h;
+    Texture tileset;
     v_Chunk_t chunks;
 } Map;
 
 typedef struct Projectile
 {
-    v2 pos, momentum;
+    v2_t pos, momentum;
     float32 radius, speed;
     bool is_alive;
 } Projectile;
@@ -74,13 +98,13 @@ typedef struct Enemy Enemy;
 
 typedef struct EnemyBehaviour
 {
-    void (*act)(Map* map, Player* player, Enemy *enemy);
+    void (*act)(Map *map, Player *player, Enemy *enemy);
     EnemyState state;
 } EnemyBehaviour;
 
 struct Enemy
 {
-    v2 pos, momentum, dir_to_player;
+    v2_t pos, momentum, dir_to_player;
     float32 hitbox_radius, speed, len_to_player;
     uint state_frame;
     struct EnemyBehaviour *state;
@@ -98,7 +122,7 @@ vec_register(EnemyBehaviour);
 extern int half_w, half_h;
 extern uint frames;
 
-static bool tile_is_wall(Map* map, int x, int y)
+static bool tile_is_wall(Map *map, int x, int y)
 {
     const int index = y * map->w + x;
     return map->data[index] != 0 &&
@@ -106,15 +130,15 @@ static bool tile_is_wall(Map* map, int x, int y)
            map->data[index] != 'E';
 }
 
-static bool near_player(v2 entity_pos, v2 player_pos, int range)
+static bool near_player(v2_t entity_pos, v2_t player_pos, int range)
 {
-    vi2 player_chunk_pos = {player_pos[0] / C_CHUNK_W, player_pos[1] / C_CHUNK_H};
-    vi2 entity_chunk_pos = {entity_pos[0] / C_CHUNK_W, entity_pos[1] / C_CHUNK_H};
-    return ((abs(player_chunk_pos[0] - entity_chunk_pos[0]) +
-            abs(player_chunk_pos[1] - entity_chunk_pos[1])) <= range);
+    int player_chunk_pos_x = player_pos.x / C_CHUNK_W, player_chunk_pos_y = player_pos.y / C_CHUNK_H;
+    int entity_chunk_pos_x = entity_pos.x / C_CHUNK_W, entity_chunk_pos_y = entity_pos.y / C_CHUNK_H;
+    return ((abs(player_chunk_pos_x - entity_chunk_pos_x) +
+             abs(player_chunk_pos_y - entity_chunk_pos_y)) <= range);
 }
 
-static void linecast(Map* map, int start_x, int start_y, int end_x, int end_y, int *wall_x, int *wall_y, bool (*f)(Map* map, int, int))
+static void linecast(Map *map, int start_x, int start_y, int end_x, int end_y, int *wall_x, int *wall_y, bool (*f)(Map *map, int, int))
 {
     int dx = abs(end_x - start_x), sx = start_x < end_x ? 1 : -1;
     int dy = -abs(end_y - start_y), sy = start_y < end_y ? 1 : -1;

@@ -312,32 +312,32 @@ sandbox/game/projectile.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s
 .PHONY : sandbox/game/projectile.c.s
 
-sandbox/gl/chunk.o: sandbox/gl/chunk.c.o
+sandbox/gl/geometry.o: sandbox/gl/geometry.c.o
 
-.PHONY : sandbox/gl/chunk.o
+.PHONY : sandbox/gl/geometry.o
 
 # target to build an object file
-sandbox/gl/chunk.c.o:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o
-.PHONY : sandbox/gl/chunk.c.o
+sandbox/gl/geometry.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o
+.PHONY : sandbox/gl/geometry.c.o
 
-sandbox/gl/chunk.i: sandbox/gl/chunk.c.i
+sandbox/gl/geometry.i: sandbox/gl/geometry.c.i
 
-.PHONY : sandbox/gl/chunk.i
+.PHONY : sandbox/gl/geometry.i
 
 # target to preprocess a source file
-sandbox/gl/chunk.c.i:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.i
-.PHONY : sandbox/gl/chunk.c.i
+sandbox/gl/geometry.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i
+.PHONY : sandbox/gl/geometry.c.i
 
-sandbox/gl/chunk.s: sandbox/gl/chunk.c.s
+sandbox/gl/geometry.s: sandbox/gl/geometry.c.s
 
-.PHONY : sandbox/gl/chunk.s
+.PHONY : sandbox/gl/geometry.s
 
 # target to generate assembly for a file
-sandbox/gl/chunk.c.s:
-	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.s
-.PHONY : sandbox/gl/chunk.c.s
+sandbox/gl/geometry.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s
+.PHONY : sandbox/gl/geometry.c.s
 
 sandbox/gl/model.o: sandbox/gl/model.c.o
 
@@ -531,9 +531,9 @@ help:
 	@echo "... sandbox/game/projectile.o"
 	@echo "... sandbox/game/projectile.i"
 	@echo "... sandbox/game/projectile.s"
-	@echo "... sandbox/gl/chunk.o"
-	@echo "... sandbox/gl/chunk.i"
-	@echo "... sandbox/gl/chunk.s"
+	@echo "... sandbox/gl/geometry.o"
+	@echo "... sandbox/gl/geometry.i"
+	@echo "... sandbox/gl/geometry.s"
 	@echo "... sandbox/gl/model.o"
 	@echo "... sandbox/gl/model.i"
 	@echo "... sandbox/gl/model.s"

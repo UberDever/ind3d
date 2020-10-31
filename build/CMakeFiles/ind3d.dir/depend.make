@@ -15,8 +15,8 @@ CMakeFiles/ind3d.dir/sandbox/core.c.o: ../include/pi.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/core.c
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/core.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/alpha.h
@@ -38,8 +38,8 @@ CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/enemy.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/map.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/alpha.h
@@ -58,8 +58,8 @@ CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.c
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy_states.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../include/alpha.h
@@ -77,8 +77,8 @@ CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/game/enemy_states.c
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/game/enemy_states.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/alpha.h
@@ -96,8 +96,8 @@ CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.c
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/alpha.h
@@ -115,8 +115,8 @@ CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.c
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/alpha.h
@@ -134,28 +134,27 @@ CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/config.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.c
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/model.h
 
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/alpha.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/alphabeta.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta/deck.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta/hash_table.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta/queue.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta/stack.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/delta/vec.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/gamma.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/omega.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../include/pi.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/config.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/core.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/chunk.c
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/chunk.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/math_3d.h
-CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/config.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/core.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.c
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/model.h
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alphabeta.h
@@ -190,8 +189,8 @@ CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/enemy.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/map.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/projectile.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/math_3d.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/model.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/main.c
 

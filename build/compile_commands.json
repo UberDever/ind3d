@@ -61,8 +61,8 @@
 },
 {
   "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c"
+  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c\"",
+  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c"
 },
 {
   "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",

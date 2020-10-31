@@ -102,6 +102,11 @@ void events_set_handler(p_void_func func) {
     event_handler = func;
 }
 
+static void events_clear_state()
+{
+
+}
+
 void events_process()
 {
     SDL_Event event;
@@ -246,6 +251,7 @@ void events_process()
         }
     }
     event_handler();
+    events_clear_state();
 }
 
 /* Keyboard events */

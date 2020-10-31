@@ -11,7 +11,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/game/map.c.o"
   "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/game/player.c.o"
   "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o"
-  "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/chunk.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o"
+  "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o"
   "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
   "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/sandbox/main.c.o"
   "/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/src/alpha.c.o"

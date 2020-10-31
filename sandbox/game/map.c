@@ -4,14 +4,154 @@
 
 #include "map.h"
 
-static void map_chunks_init(Map* map)
+#define vx_elements 8
+#define vx_positions 3
+#define vx_tex_coords 2
+#define vx_normals 3
+
+static GLuint shader;
+
+static GLuint matrix_view, matrix_projection;
+
+static void map_chunks_init(Map *map, const char *vertex_shader, const char *fragment_shader)
 {
     map->chunks_w = map->w / C_CHUNK_W;
     map->chunks_h = map->h / C_CHUNK_H;
     vec_new(Chunk, map->chunks, map->chunks_w * map->chunks_h);
+
+    v_GLfloat_t vertices = {};
+    v_GLuint_t indices = {};
+    vec_new(GLfloat, vertices, C_CHUNK_W * C_CHUNK_H / 4 * 8 * vx_elements);
+    vec_new(GLuint, indices, C_CHUNK_W * C_CHUNK_H / 4 * 8 * 3);
+    int ch_half_w = C_CHUNK_W / 2;
+    int ch_half_h = C_CHUNK_H / 2;
+    GLuint cur_pube_idx = 0;
+    for (int i = 0; i < map->chunks_w; i++)
+    {
+        for (int j = 0; j < map->chunks_h; j++)
+        {
+            Chunk chunk = {};
+            vec_new(GLuint, chunk.model.buffers, 1);
+
+            for (int x = -ch_half_w; x < ch_half_w; x++)
+            {
+                int map_x = i * C_CHUNK_W + ch_half_w + x;
+                for (int y = -ch_half_h; y < ch_half_h; y++)
+                {
+                    int map_y = j * C_CHUNK_H + ch_half_h + y;
+                    //debug("%d %d", map_x, map_y);
+                    if (tile_is_wall(map, map_x, map_y))
+                    {
+                        bool adj_check[4] = {1, 1, 1, 1};
+                        if (map_y - 1 < 0)
+                            adj_check[0] = false;
+                        else if (tile_is_wall(map, map_x, map_y - 1))
+                            adj_check[0] = false;
+                        if (map_x + 1 >= map->w)
+                            adj_check[1] = false;
+                        else if (tile_is_wall(map, map_x + 1, map_y))
+                            adj_check[1] = false;
+                        if (map_y + 1 >= map->h)
+                            adj_check[2] = false;
+                        else if (tile_is_wall(map, map_x, map_y + 1))
+                            adj_check[2] = false;
+                        if (map_x - 1 < 0)
+                            adj_check[3] = false;
+                        else if (tile_is_wall(map, map_x - 1, map_y))
+                            adj_check[3] = false;
+
+                        generate_pube(&vertices, &indices, adj_check, x, y, (v2_t){}, cur_pube_idx);
+                        cur_pube_idx++;
+                    }
+                }
+            }
+
+            glGenVertexArrays(1, &chunk.model.info.vao);
+            glBindVertexArray(chunk.model.info.vao);
+
+            GLuint vbo;
+            glGenBuffers(1, &vbo);
+            glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * vertices.size, vertices.data, GL_STATIC_DRAW);
+
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(
+                0,
+                vx_positions,
+                GL_FLOAT,
+                GL_FALSE,
+                vx_elements * sizeof(GLfloat),
+                (GLvoid *)0);
+
+            glEnableVertexAttribArray(1);
+            glVertexAttribPointer(
+                1,
+                vx_tex_coords,
+                GL_FLOAT,
+                GL_FALSE,
+                vx_elements * sizeof(GLfloat),
+                (GLvoid *)(vx_positions * sizeof(GLfloat)));
+
+            glEnableVertexAttribArray(2);
+            glVertexAttribPointer(
+                2,
+                vx_normals,
+                GL_FLOAT,
+                GL_FALSE,
+                vx_elements * sizeof(GLfloat),
+                (GLvoid *)((vx_positions + vx_tex_coords) * sizeof(GLfloat)));
+
+            vec_push(chunk.model.buffers, vbo);
+
+            chunk.model.info.idx_count = indices.size;
+            GLuint ibo;
+            glGenBuffers(1, &ibo);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * indices.size,
+                         indices.data, GL_STATIC_DRAW);
+
+#if 0
+            {
+                for (uint k = 0; k < vertices.size; k += 8)
+                {
+                    debug("%d. p: %f %f %f t: %f %f n: %f %f %f", k / 8, vertices.data[k], vertices.data[k + 1], vertices.data[k + 2], vertices.data[k + 3],
+                          vertices.data[k + 4], vertices.data[k + 5], vertices.data[k + 6], vertices.data[k + 7]);
+                }
+
+                for (uint k = 0; k < indices.size; k += 3)
+                {
+                    printf("%d. %d ", k / 3, indices.data[k]);
+                    printf("%d ", indices.data[k + 1]);
+                    printf("%d\n", indices.data[k + 2]);
+                }
+                debug("\n%d %d", vertices.size, indices.size);
+            }
+#endif
+            vertices.size = 0;
+            indices.size = 0;
+            cur_pube_idx = 0;
+            vec_push(map->chunks, chunk);
+        }
+    }
+
+    shader = shader_load_all(vertex_shader, fragment_shader);
+    matrix_view = glGetUniformLocation(shader, "u_view");
+    matrix_projection = glGetUniformLocation(shader, "u_projection");
+
+    glGenTextures(1, &map->tileset.id);
+    glBindTexture(GL_TEXTURE_2D, map->tileset.id);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, map->tileset.w, map->tileset.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, map->tileset.data);
+    //glGenerateMipmap(GL_TEXTURE_2D);
 }
 
-void map_init(Map *map, const char *path)
+void map_init(Map *map, const char *path, const char *tileset_path, const char *vertex_shader, const char *fragment_shader)
 {
     map->tile_w = C_MAP_TILE_W;
     map->tile_h = C_MAP_TILE_H;
@@ -44,11 +184,57 @@ void map_init(Map *map, const char *path)
         //printf("\n");
     }
 
-    map_chunks_init(map);
+    SDL_Surface *texture = IMG_Load(tileset_path);
+    if (!texture)
+        error("Cannot load texture %s", tileset_path);
+    map->tileset.data = texture->pixels;
+    map->tileset.w = texture->w;
+    map->tileset.h = texture->h;
+
+    map_chunks_init(map, vertex_shader, fragment_shader);
 }
 
-void map_render(Map* map, Player* player, v_Enemy_t *enemies, v_Projectile_t* projectiles, const vi2 pos, vi2 size)
+void map_render(Map *map, Player *player, v_Enemy_t *enemies, v_Projectile_t *projectiles, const int pos_x, const int pos_y, const int size_x, const int size_y)
 {
+    int player_pos_in_chunks_x = (int)player->pos.x / C_CHUNK_W;
+    int player_pos_in_chunks_y = (int)player->pos.y / C_CHUNK_H;
+    //chunk_index = 1;
+    //debug("%d", chunk_index);
+
+    glUseProgram(shader);
+    glBindTexture(GL_TEXTURE_2D, map->tileset.id);
+    glUniformMatrix4fv(matrix_projection, 1, GL_FALSE, player->camera.projection_matrix.m);
+    int index = 0;
+    for (int x_rel = -C_RANGE; x_rel < C_RANGE; x_rel++)
+    {
+        for (int y_rel = -C_RANGE; y_rel < C_RANGE; y_rel++)
+        {
+            if (abs(x_rel) + abs(y_rel) <= C_RANGE)
+            {
+                int chunk_pos_x = player_pos_in_chunks_x + x_rel;
+                int chunk_pos_y = player_pos_in_chunks_y + y_rel;
+                if (pi_aabb_box_x_point(chunk_pos_x, chunk_pos_y, 0, 0, map->chunks_w, map->chunks_h))
+                {
+                    v3_t view_pos = (v3_t){};
+                    view_pos.x = fmodf(player->pos.x, C_CHUNK_W) - C_CHUNK_W / 2 - .5f - C_CHUNK_W * x_rel;
+                    //view_pos.y = 4; //flight mode
+                    view_pos.z = fmodf(player->pos.y, C_CHUNK_H) - C_CHUNK_H / 2 - .5f - C_CHUNK_H * y_rel;
+
+                    player->camera.view_matrix = m4_look_at(view_pos,
+                                                            player->camera.dir,
+                                                            (v3_t){0, 1, 0});
+                    glUniformMatrix4fv(matrix_view, 1, GL_FALSE, player->camera.view_matrix.m);
+                    int chunk_index = chunk_pos_x * map->chunks_h + chunk_pos_y;
+                    glBindVertexArray(map->chunks.data[chunk_index].model.info.vao);
+                    glDrawElements(GL_TRIANGLES, map->chunks.data[chunk_index].model.info.idx_count, GL_UNSIGNED_INT, 0);
+                    index++;
+                }
+            }
+        }
+    }
+    //glBindVertexArray(0);
+
+#if 0
     //Map
     vi2 offset, map_screen_start, map_screen_end, map_screen_size;
     offset[0] = map_screen_start[0] = pos[0] - (size[0] + .5f) * map->tile_w;
@@ -195,9 +381,11 @@ void map_render(Map* map, Player* player, v_Enemy_t *enemies, v_Projectile_t* pr
     player_hp_color.b = pi_lerp(player_hp_color_start.b, player_hp_color_end.b, MAX(player->hp / player->max_hp, 0));
     g_screen_draw_number(5, g_scr.h - 40, player->hp, player_hp_color);
     g_screen_draw_number(115, g_scr.h - 40, enemies->data[0].state_frame, COLOR(green));
+#endif
 }
 
-void map_clean(Map* map) {
+void map_clean(Map *map)
+{
     free(map->data);
-    vec_free(map->chunks);    
+    vec_free(map->chunks);
 }

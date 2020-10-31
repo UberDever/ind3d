@@ -6,7 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ind3d.dir/sandbox/game/map.c.o"
   "CMakeFiles/ind3d.dir/sandbox/game/player.c.o"
   "CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o"
-  "CMakeFiles/ind3d.dir/sandbox/gl/chunk.c.o"
+  "CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o"
   "CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
   "CMakeFiles/ind3d.dir/sandbox/main.c.o"
   "CMakeFiles/ind3d.dir/src/alpha.c.o"

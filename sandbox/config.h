@@ -3,12 +3,12 @@
 
 #define ARR_COPY_LIST(var, arr) memcpy(&(var), &(arr), sizeof(arr));
 
-#define C_PLAYER_POS \
-    (v2) { 1.5, 7 }
+#define C_PLAYER_POS_X 2
+#define C_PLAYER_POS_Y 2
 #define C_PLAYER_DIR \
-    (v2) { 0, 1 }
+    (v2_t) { .x = 0, .y = 1 }
 #define C_PLAYER_PLANE \
-    (v2) { 1, 0 }
+    (v2_t) { .x = 1, .y = 0 }
 #define C_PLAYER_DIR_SCALE 1
 #define C_PLAYER_PLANE_SCALE 1 / 3.f
 #define C_PLAYER_SHOOT_SCALE 1 / 25.f
@@ -18,6 +18,10 @@
 #define C_PLAYER_HITBOX_RADIUS .45
 #define C_PLAYER_MAX_HP 100
 #define C_PLAYER_HITSCAN_RANGE 0.3f
+
+#define C_CAMERA_FOV 90
+#define C_CAMERA_NEAR 0.1F
+#define C_CAMERA_FAR 1000
 
 #define C_MAP_TILE_W 10
 #define C_MAP_TILE_H 10
@@ -52,9 +56,9 @@
         .max_hp = 200            \
     }
 
-
 #define C_CHUNK_W 32
 #define C_CHUNK_H 32
 #define C_CHUNK_DIST 1
+static int C_RANGE = 6;
 
 #endif
