@@ -80,15 +80,6 @@ void event_handler(void)
 {
     if (kbd_key_pressed(SDLK_ESCAPE))
         is_program_running = false;
-#if 0
-    float32 ro; v2 ro_dir; pi_v2_sub((v2){mouse_get_pos_x(), mouse_get_pos_y()},
-                                     (v2){half_w, half_h},
-                                     ro_dir);
-    ro = pi_v2_len(ro_dir);
-    float32 phi = last_phi;
-    last_phi = atanf(ro_dir[1] / ro_dir[0]);
-    float32 dphi = last_phi - phi;
-#endif
 
     player_event(&player);
 

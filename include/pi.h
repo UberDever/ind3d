@@ -293,6 +293,93 @@ static inline m4_t m4_perspective(float vertical_field_of_view_in_deg, float asp
         0, 0, -1, 0);
 }
 
+static inline m4_t m4_identity()
+{
+    return mat4(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_translation(v3_t offset)
+{
+    return mat4(
+        1, 0, 0, offset.x,
+        0, 1, 0, offset.y,
+        0, 0, 1, offset.z,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_scaling(v3_t scale)
+{
+    float x = scale.x, y = scale.y, z = scale.z;
+    return mat4(
+        x, 0, 0, 0,
+        0, y, 0, 0,
+        0, 0, z, 0,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_rotation_x(float angle_in_rad)
+{
+    float s = sinf(angle_in_rad), c = cosf(angle_in_rad);
+    return mat4(
+        1, 0, 0, 0,
+        0, c, -s, 0,
+        0, s, c, 0,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_rotation_y(float angle_in_rad)
+{
+    float s = sinf(angle_in_rad), c = cosf(angle_in_rad);
+    return mat4(
+        c, 0, s, 0,
+        0, 1, 0, 0,
+        -s, 0, c, 0,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_rotation_z(float angle_in_rad)
+{
+    float s = sinf(angle_in_rad), c = cosf(angle_in_rad);
+    return mat4(
+        c, -s, 0, 0,
+        s, c, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1);
+}
+
+static inline m4_t m4_transpose(m4_t matrix)
+{
+    return mat4(
+        matrix.m00, matrix.m01, matrix.m02, matrix.m03,
+        matrix.m10, matrix.m11, matrix.m12, matrix.m13,
+        matrix.m20, matrix.m21, matrix.m22, matrix.m23,
+        matrix.m30, matrix.m31, matrix.m32, matrix.m33);
+}
+
+static inline m4_t m4_mul(m4_t a, m4_t b)
+{
+    m4_t result;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            float sum = 0;
+            for (int k = 0; k < 4; k++)
+            {
+                sum += a.mat[k][j] * b.mat[i][k];
+            }
+            result.mat[i][j] = sum;
+        }
+    }
+
+    return result;
+}
+
 static inline m4_t m4_look_at(v3_t from, v3_t dir, v3_t up)
 {
     v3_t z = v3_muls(dir, -1);

@@ -3,7 +3,11 @@
     "files.associations": {
         "fstream": "cpp",
         "sstream": "cpp",
-        "map": "c"
+        "map": "c",
+        "array": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp"
     },
     "editor.selectionHighlight": false
 }

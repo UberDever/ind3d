@@ -4,14 +4,18 @@
 
 #include "map.h"
 
-#define vx_elements 8
-#define vx_positions 3
-#define vx_tex_coords 2
-#define vx_normals 3
+#define chunk_vx_elements 8
+#define chunk_vx_positions 3
+#define chunk_vx_tex_coords 2
+#define chunk_vx_normals 3
 
 static GLuint shader;
+static GLuint model_shader;
 
 static GLuint matrix_view, matrix_projection;
+static GLuint model_worldView, model_projection;
+
+Model weapon;
 
 static void map_chunks_init(Map *map, const char *vertex_shader, const char *fragment_shader)
 {
@@ -21,7 +25,7 @@ static void map_chunks_init(Map *map, const char *vertex_shader, const char *fra
 
     v_GLfloat_t vertices = {};
     v_GLuint_t indices = {};
-    vec_new(GLfloat, vertices, C_CHUNK_W * C_CHUNK_H / 4 * 8 * vx_elements);
+    vec_new(GLfloat, vertices, C_CHUNK_W * C_CHUNK_H / 4 * 8 * chunk_vx_elements);
     vec_new(GLuint, indices, C_CHUNK_W * C_CHUNK_H / 4 * 8 * 3);
     int ch_half_w = C_CHUNK_W / 2;
     int ch_half_h = C_CHUNK_H / 2;
@@ -77,29 +81,29 @@ static void map_chunks_init(Map *map, const char *vertex_shader, const char *fra
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(
                 0,
-                vx_positions,
+                chunk_vx_positions,
                 GL_FLOAT,
                 GL_FALSE,
-                vx_elements * sizeof(GLfloat),
+                chunk_vx_elements * sizeof(GLfloat),
                 (GLvoid *)0);
 
             glEnableVertexAttribArray(1);
             glVertexAttribPointer(
                 1,
-                vx_tex_coords,
+                chunk_vx_tex_coords,
                 GL_FLOAT,
                 GL_FALSE,
-                vx_elements * sizeof(GLfloat),
-                (GLvoid *)(vx_positions * sizeof(GLfloat)));
+                chunk_vx_elements * sizeof(GLfloat),
+                (GLvoid *)(chunk_vx_positions * sizeof(GLfloat)));
 
             glEnableVertexAttribArray(2);
             glVertexAttribPointer(
                 2,
-                vx_normals,
+                chunk_vx_normals,
                 GL_FLOAT,
                 GL_FALSE,
-                vx_elements * sizeof(GLfloat),
-                (GLvoid *)((vx_positions + vx_tex_coords) * sizeof(GLfloat)));
+                chunk_vx_elements * sizeof(GLfloat),
+                (GLvoid *)((chunk_vx_positions + chunk_vx_tex_coords) * sizeof(GLfloat)));
 
             vec_push(chunk.model.buffers, vbo);
 
@@ -190,12 +194,90 @@ void map_init(Map *map, const char *path, const char *tileset_path, const char *
     map->tileset.data = texture->pixels;
     map->tileset.w = texture->w;
     map->tileset.h = texture->h;
-
     map_chunks_init(map, vertex_shader, fragment_shader);
+
+    //TODO: REMOVE
+    vec_new(GLuint, weapon.buffers, 1);
+    const uint model_vx_attr0 = 3;
+    const uint model_vx_attr1 = 3;
+    const uint model_vx_attr2 = 3;
+    const uint model_vx = model_vx_attr0 + model_vx_attr1 + model_vx_attr2;
+    v_GLfloat_t vertices = {};
+    v_GLuint_t indices = {};
+    vec_new(GLfloat, vertices, 2048);
+    vec_new(GLuint, indices, 1024);
+    generate_voxel_sprite(&vertices, &indices,
+                          "../../graphics/sprites/revolver.png", //_sight
+                          "../../graphics/depthmaps/revolver.zaxis",
+                          (v3_t){0.1f, 0.1f, 0.1f});
+
+    glGenVertexArrays(1, &weapon.info.vao);
+    glBindVertexArray(weapon.info.vao);
+
+    GLuint vbo;
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * vertices.size, vertices.data, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(
+        0,
+        model_vx_attr0, // positions
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx * sizeof(GLfloat),
+        (GLvoid *)0);
+
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(
+        1,
+        model_vx_attr1, // colors
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx * sizeof(GLfloat),
+        (GLvoid *)(model_vx_attr0 * sizeof(GLfloat)));
+
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(
+        2,
+        model_vx_attr2, // normals
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx * sizeof(GLfloat),
+        (GLvoid *)((model_vx_attr0 + model_vx_attr1) * sizeof(GLfloat)));
+
+    vec_push(weapon.buffers, vbo);
+
+    weapon.info.idx_count = indices.size;
+    GLuint ibo;
+    glGenBuffers(1, &ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint) * indices.size,
+                 indices.data, GL_STATIC_DRAW);
+
+    model_shader = shader_load_all("../../graphics/shaders/weapon.vs", "../../graphics/shaders/weapon.fs");
+    model_worldView = glGetUniformLocation(model_shader, "u_modelView");
+    model_projection = glGetUniformLocation(model_shader, "u_projection");
 }
 
 void map_render(Map *map, Player *player, v_Enemy_t *enemies, v_Projectile_t *projectiles, const int pos_x, const int pos_y, const int size_x, const int size_y)
 {
+    // TODO REMOVE
+    glUseProgram(model_shader);
+    glUniformMatrix4fv(model_projection, 1, GL_FALSE, player->camera.projection_matrix.m);
+    v3_t view_pos = (v3_t){};
+    view_pos.x = fmodf(player->pos.x, C_CHUNK_W) - C_CHUNK_W / 2 - .5f;
+    view_pos.y = player_height_debug; //flight mode
+    view_pos.z = fmodf(player->pos.y, C_CHUNK_H) - C_CHUNK_H / 2 - .5f;
+    m4_t weapon_model = m4_identity(); //m4_mul(m4_translation((v3_t){view_pos.x - 1, -.3, view_pos.z + 1.3}), m4_rotation_y(DEG2RAD(100)));
+    player->camera.view_matrix = m4_mul(m4_look_at(view_pos,
+                                                   player->camera.dir,
+                                                   (v3_t){0, 1, 0}),
+                                        weapon_model);
+    glUniformMatrix4fv(model_worldView, 1, GL_FALSE, player->camera.view_matrix.m);
+    glBindVertexArray(weapon.info.vao);
+    glDrawElements(GL_TRIANGLES, weapon.info.idx_count, GL_UNSIGNED_INT, 0);
+
     int player_pos_in_chunks_x = (int)player->pos.x / C_CHUNK_W;
     int player_pos_in_chunks_y = (int)player->pos.y / C_CHUNK_H;
     //chunk_index = 1;
@@ -217,16 +299,15 @@ void map_render(Map *map, Player *player, v_Enemy_t *enemies, v_Projectile_t *pr
                 {
                     v3_t view_pos = (v3_t){};
                     view_pos.x = fmodf(player->pos.x, C_CHUNK_W) - C_CHUNK_W / 2 - .5f - C_CHUNK_W * x_rel;
-                    //view_pos.y = 4; //flight mode
+                    view_pos.y = player_height_debug; //flight mode
                     view_pos.z = fmodf(player->pos.y, C_CHUNK_H) - C_CHUNK_H / 2 - .5f - C_CHUNK_H * y_rel;
-
                     player->camera.view_matrix = m4_look_at(view_pos,
                                                             player->camera.dir,
                                                             (v3_t){0, 1, 0});
                     glUniformMatrix4fv(matrix_view, 1, GL_FALSE, player->camera.view_matrix.m);
                     int chunk_index = chunk_pos_x * map->chunks_h + chunk_pos_y;
                     glBindVertexArray(map->chunks.data[chunk_index].model.info.vao);
-                    glDrawElements(GL_TRIANGLES, map->chunks.data[chunk_index].model.info.idx_count, GL_UNSIGNED_INT, 0);
+                    //glDrawElements(GL_TRIANGLES, map->chunks.data[chunk_index].model.info.idx_count, GL_UNSIGNED_INT, 0);
                     index++;
                 }
             }

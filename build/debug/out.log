@@ -5,3 +5,6 @@
 [DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:71> Loading shaders
 [DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:75> Compiling shaders
 [DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:80> Linking program
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:71> Loading shaders
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:75> Compiling shaders
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:80> Linking program

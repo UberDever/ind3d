@@ -4,6 +4,8 @@
 
 #include "player.h"
 
+float player_height_debug = 0;
+
 void player_init(Player *player)
 {
     player->momentum = (v2_t){};
@@ -12,8 +14,7 @@ void player_init(Player *player)
     player->hp = C_PLAYER_MAX_HP;
     player->hitscan_range = C_PLAYER_HITSCAN_RANGE;
 
-    //player->pos = (v2_t){.x = C_PLAYER_POS_X - C_CHUNK_W / 2, .y = C_PLAYER_POS_Y - C_CHUNK_H / 2};
-    player->pos = (v2_t){.x = 2, .y = 2};
+    player->pos = (v2_t){.x = C_CHUNK_W / 2, .y = C_CHUNK_H / 2};
     player->camera.dir = (v3_t){.x = 0, .y = 0, .z = 1};
     player->camera.plane = (v3_t){.x = C_PLAYER_PLANE_SCALE, .y = 0, .z = 0};
     player->camera.horisontal_rotation = M_PI_2;
@@ -27,24 +28,6 @@ void player_init(Player *player)
 
 void player_event(Player *player)
 {
-#if 0
-    if (kbd_key_pressed(SDLK_w))
-    {
-        player->momentum.y = C_PLAYER_SPEED;
-    }
-    if (kbd_key_pressed(SDLK_s))
-    {
-        player->momentum.y = -C_PLAYER_SPEED;
-    }
-    if (kbd_key_pressed(SDLK_a))
-    {
-        player->momentum.x = C_PLAYER_SPEED;
-    }
-    if (kbd_key_pressed(SDLK_d))
-    {
-        player->momentum.x = -C_PLAYER_SPEED;
-    }
-#endif
     int m_x = mouse_get_rel_x();
     int m_y = mouse_get_rel_y();
 
@@ -65,32 +48,26 @@ void player_event(Player *player)
     if (kbd_key_pressed(SDLK_w))
     {
         player->momentum.y = C_PLAYER_SPEED;
-        //player->camera.pos = v3_add(player->camera.pos,
-        //                            v3_muls((v3_t){player->camera.dir.x, 0, player->camera.dir.z},
-        //                                    player->camera.speed));
     }
     if (kbd_key_pressed(SDLK_a))
     {
         player->momentum.x = -C_PLAYER_SPEED;
-        //player->camera.pos = v3_sub(player->camera.pos,
-        //                            v3_muls(
-        //                                player->camera.plane,
-        //                                player->camera.speed));
     }
     if (kbd_key_pressed(SDLK_s))
     {
         player->momentum.y = -C_PLAYER_SPEED;
-        //player->camera.pos = v3_sub(player->camera.pos,
-        //                            v3_muls((v3_t){player->camera.dir.x, 0, player->camera.dir.z},
-        //                                    player->camera.speed));
     }
     if (kbd_key_pressed(SDLK_d))
     {
         player->momentum.x = C_PLAYER_SPEED;
-        //player->camera.pos = v3_add(player->camera.pos,
-        //                            v3_muls(
-        //                                player->camera.plane,
-        //                                player->camera.speed));
+    }
+    if (kbd_key_pressed(SDLK_z))
+    {
+        player_height_debug -= 0.1f;
+    }
+    if (kbd_key_pressed(SDLK_c))
+    {
+        player_height_debug += 0.1f;
     }
 }
 
@@ -125,29 +102,27 @@ void player_update(Map *map, Player *player)
     v2_t test_move = {};
     test_move.x = step.x >= 0 ? player->hitbox_radius : -player->hitbox_radius;
     test_move.y = step.y >= 0 ? player->hitbox_radius : -player->hitbox_radius;
-    v2_t test_position = v2_add(player->pos, step);
-    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y))
-        step.x = 0;
-    if (tile_is_wall(map, test_position.x, test_position.y + test_move.y))
-        step.y = 0;
-    test_move = v2_muls(test_move, SQRT2_2);
-    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y - test_move.y))
-        step.x = 0;
-    if (tile_is_wall(map, test_position.x - test_move.x, test_position.y + test_move.y))
-        step.y = 0;
-    if (tile_is_wall(map, test_position.x + test_move.x, test_position.y + test_move.y))
-    {
-        step.x = 0;
-        step.y = 0;
-    }
+    // v2_t test_position = v2_add(player->pos, step);
+    // if (tile_is_wall(map, test_position.x + test_move.x, test_position.y))
+    //     step.x = 0;
+    // if (tile_is_wall(map, test_position.x, test_position.y + test_move.y))
+    //     step.y = 0;
+    // test_move = v2_muls(test_move, SQRT2_2);
+    // if (tile_is_wall(map, test_position.x + test_move.x, test_position.y - test_move.y))
+    //     step.x = 0;
+    // if (tile_is_wall(map, test_position.x - test_move.x, test_position.y + test_move.y))
+    //     step.y = 0;
+    // if (tile_is_wall(map, test_position.x + test_move.x, test_position.y + test_move.y))
+    // {
+    //     step.x = 0;
+    //     step.y = 0;
+    // }
     player->pos = v2_add(player->pos, step);
 
     player->momentum.x = 0;
     player->momentum.y = 0;
 
-    
-
-    // map->data[(int)player->pos.y * map->w + (int)player->pos.x] = 'P';
+        // map->data[(int)player->pos.y * map->w + (int)player->pos.x] = 'P';
 }
 
 void player_raycast(Map *map, Player *player)

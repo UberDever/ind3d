@@ -5,7 +5,7 @@
 #include "game.h"
 
 int main() {
-    alphabeta_init((gamma_info_t){1920, 1080, true, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL, 0});
+    alphabeta_init((gamma_info_t){800, 600, false, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL, 0});
 
     const uint frameskip = 1000 / 60;
     uint time = SDL_GetTicks();

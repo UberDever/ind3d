@@ -88,10 +88,10 @@ enum colors {
 #endif
 
 #define COLOR2FLOAT(c_src, c_dst) \
-    c_dst.a = (float32)c_src.a / 255.f;\
-    c_dst.r = (float32)c_src.r / 255.f;\
-    c_dst.g = (float32)c_src.g / 255.f;\
-    c_dst.b = (float32)c_src.b / 255.f;\
+    (c_dst).a = (float32)(c_src).a / 255.f;\
+    (c_dst).r = (float32)(c_src).r / 255.f;\
+    (c_dst).g = (float32)(c_src).g / 255.f;\
+    (c_dst).b = (float32)(c_src).b / 255.f;\
 
 /*
  *  Optimizing conditions

@@ -122,6 +122,9 @@ vec_register(EnemyBehaviour);
 extern int half_w, half_h;
 extern uint frames;
 
+// TODO: remove later
+extern float player_height_debug;
+
 static bool tile_is_wall(Map *map, int x, int y)
 {
     const int index = y * map->w + x;
