@@ -94,9 +94,13 @@ gl/geometry.h
 config.h
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/config.h
 
-/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c
-geometry.h
-/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c
+map.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.h
+
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.h
+../core.h
+/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.h
 
 /home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.h
 ../core.h

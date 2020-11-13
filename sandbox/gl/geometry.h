@@ -7,6 +7,6 @@ void generate_quat(v_GLfloat_t *vertices, v_GLuint_t *indices, ChunkVx vx[4], GL
 // Pube = Pipe + Cube -> Cube without top and bottom, also potentially without some sides
 void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool sides[4], int x, int y, v2_t t, GLuint cur_pube_idx);
 // Voxel sprite is 3D model, made from sprite and, optionally, heightmap. Looks like minecraft tool without hegihtmap, but with it turns into stylized model
-void generate_voxel_sprite(v_GLfloat_t *vertices, v_GLuint_t *indices, const char* sprite_path, const char* heightmap_path, v3_t voxel_dimensions);
+void generate_voxel_sprite(v_GLfloat_t *vertices, v_GLuint_t *indices, const char* sprite_path, const char* sprite_back_path, const char* depthmap_path, v3_t voxel_dimensions);
 
 #endif

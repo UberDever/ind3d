@@ -207,8 +207,9 @@ void map_init(Map *map, const char *path, const char *tileset_path, const char *
     vec_new(GLfloat, vertices, 2048);
     vec_new(GLuint, indices, 1024);
     generate_voxel_sprite(&vertices, &indices,
-                          "../../graphics/sprites/revolver.png", //_sight
-                          "../../graphics/depthmaps/revolver.zaxis",
+                          "../../graphics/sprites/revolver_sight.png", //_sight
+                          "../../graphics/sprites/revolver_sight.png", //_sight
+                          "../../graphics/depthmaps/revolver_sight.zaxis",
                           (v3_t){0.1f, 0.1f, 0.1f});
 
     glGenVertexArrays(1, &weapon.info.vao);
@@ -276,12 +277,10 @@ void map_render(Map *map, Player *player, v_Enemy_t *enemies, v_Projectile_t *pr
                                         weapon_model);
     glUniformMatrix4fv(model_worldView, 1, GL_FALSE, player->camera.view_matrix.m);
     glBindVertexArray(weapon.info.vao);
-    glDrawElements(GL_TRIANGLES, weapon.info.idx_count, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, weapon.info.idx_count, GL_UNSIGNED_INT, 0); //_ADJACENCY
 
     int player_pos_in_chunks_x = (int)player->pos.x / C_CHUNK_W;
     int player_pos_in_chunks_y = (int)player->pos.y / C_CHUNK_H;
-    //chunk_index = 1;
-    //debug("%d", chunk_index);
 
     glUseProgram(shader);
     glBindTexture(GL_TEXTURE_2D, map->tileset.id);
