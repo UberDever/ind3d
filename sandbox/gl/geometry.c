@@ -5,60 +5,79 @@
 // | /|
 // |/ |
 // 1--2
-void generate_quat(v_GLfloat_t *vertices, v_GLuint_t *indices, ChunkVx vx[4], GLuint vx_stride)
-{
-    GLuint start_index = vertices->size / vx_stride;
+// void generate_quat(v_GLfloat_t *vertices, v_GLuint_t *indices, ChunkVx vx[4], GLuint vx_stride)
+// {
+//     GLuint start_index = vertices->size / vx_stride;
 
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[0].p.v[i]);
-    for (int i = 0; i < 2; i++)
-        vec_push(*vertices, vx[0].t.v[i]);
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[0].n.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[0].p.v[i]);
+//     for (int i = 0; i < 2; i++)
+//         vec_push(*vertices, vx[0].t.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[0].n.v[i]);
 
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[1].p.v[i]);
-    for (int i = 0; i < 2; i++)
-        vec_push(*vertices, vx[1].t.v[i]);
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[1].n.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[1].p.v[i]);
+//     for (int i = 0; i < 2; i++)
+//         vec_push(*vertices, vx[1].t.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[1].n.v[i]);
 
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[2].p.v[i]);
-    for (int i = 0; i < 2; i++)
-        vec_push(*vertices, vx[2].t.v[i]);
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[2].n.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[2].p.v[i]);
+//     for (int i = 0; i < 2; i++)
+//         vec_push(*vertices, vx[2].t.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[2].n.v[i]);
 
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[3].p.v[i]);
-    for (int i = 0; i < 2; i++)
-        vec_push(*vertices, vx[3].t.v[i]);
-    for (int i = 0; i < 3; i++)
-        vec_push(*vertices, vx[3].n.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[3].p.v[i]);
+//     for (int i = 0; i < 2; i++)
+//         vec_push(*vertices, vx[3].t.v[i]);
+//     for (int i = 0; i < 3; i++)
+//         vec_push(*vertices, vx[3].n.v[i]);
 
-    vec_push(*indices, start_index + 0);
-    vec_push(*indices, start_index + 1);
-    vec_push(*indices, start_index + 3);
-    vec_push(*indices, start_index + 3);
-    vec_push(*indices, start_index + 1);
-    vec_push(*indices, start_index + 2);
-}
+//     vec_push(*indices, start_index + 0);
+//     vec_push(*indices, start_index + 1);
+//     vec_push(*indices, start_index + 3);
+//     vec_push(*indices, start_index + 3);
+//     vec_push(*indices, start_index + 1);
+//     vec_push(*indices, start_index + 2);
+// }
 
 void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4], int x, int y, v2_t t, GLuint cur_pube_idx)
 {
     const GLfloat s = 0.5f;
+    // GLfloat vx[] = {
+    //     -s, -s, -s, 4, 1.f, 0.f, 0.f, 0.f,
+    //     -s, -s, +s, 1, 1.f, 0.f, 0.f, 0.f,
+    //     -s, +s, -s, 4, 0.f, 0.f, 0.f, 0.f,
+    //     -s, +s, +s, 1, 0.f, 0.f, 0.f, 0.f,
+    //     +s, -s, -s, 3, 1.f, 0.f, 0.f, 0.f,
+    //     +s, -s, +s, 2, 1.f, 0.f, 0.f, 0.f,
+    //     +s, +s, -s, 3, 0.f, 0.f, 0.f, 0.f,
+    //     +s, +s, +s, 2, 0.f, 0.f, 0.f, 0.f,
+    //     -s, -s, -s, 0, 1.f, 0.f, 0.f, 0.f,
+    //     -s, +s, -s, 0, 0.f, 0.f, 0.f, 0.f};
     GLfloat vx[] = {
-        -s, -s, -s, 1.f, 1.f, 0.f, 0.f, 0.f,
-        -s, -s, +s, .25f, 1.f, 0.f, 0.f, 0.f,
-        -s, +s, -s, 1.f, 0.f, 0.f, 0.f, 0.f,
-        -s, +s, +s, .25f, 0.f, 0.f, 0.f, 0.f,
-        +s, -s, -s, .75f, 1.f, 0.f, 0.f, 0.f,
-        +s, -s, +s, .5f, 1.f, 0.f, 0.f, 0.f,
-        +s, +s, -s, .75f, 0.f, 0.f, 0.f, 0.f,
-        +s, +s, +s, .5f, 0.f, 0.f, 0.f, 0.f,
-        -s, -s, -s, 0.f, 1.f, 0.f, 0.f, 0.f,
-        -s, +s, -s, 0.f, 0.f, 0.f, 0.f, 0.f};
+        -s, -s, -s, 0, 1.f, -1.f, 0.f, 0.f, //lower side       0
+        -s, -s, +s, 1, 1.f, -1.f, 0.f, 0.f, // 1
+        -s, -s, +s, 1, 1.f, 0.f, 0.f, 1.f,  // 2
+        +s, -s, +s, 2, 1.f, 0.f, 0.f, 1.f,  // 3
+        +s, -s, +s, 2, 1.f, 1.f, 0.f, 0.f,  // 4
+        +s, -s, -s, 3, 1.f, 1.f, 0.f, 0.f,  // 5
+        +s, -s, -s, 3, 1.f, 0.f, 0.f, -1.f, // 6
+        -s, -s, -s, 4, 1.f, 0.f, 0.f, -1.f, // 7
+
+        -s, +s, -s, 0, 0.f, -1.f, 0.f, 0.f, //upper side       8
+        -s, +s, +s, 1, 0.f, -1.f, 0.f, 0.f, // 9
+        -s, +s, +s, 1, 0.f, 0.f, 0.f, 1.f,  // 10
+        +s, +s, +s, 2, 0.f, 0.f, 0.f, 1.f,  // 11
+        +s, +s, +s, 2, 0.f, 1.f, 0.f, 0.f,  // 12
+        +s, +s, -s, 3, 0.f, 1.f, 0.f, 0.f,  // 13
+        +s, +s, -s, 3, 0.f, 0.f, 0.f, -1.f, // 14
+        -s, +s, -s, 4, 0.f, 0.f, 0.f, -1.f, // 15
+    };
     for (uint i = 0; i < ARR_ONE_DIM_LEN(vx); i += 8)
     {
         vx[i + 0] += x;
@@ -66,15 +85,20 @@ void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4]
         vx[i + 2] += y;
         vx[i + 3] += t.x;
         vx[i + 4] += t.y;
+        vx[i + 3] *= (tileset_tile_w);
+        vx[i + 4] *= (tileset_tile_h);
+        vx[i + 3] /= tileset_tex_w;
+        vx[i + 4] /= tileset_tex_h;
     }
     for (uint i = 0; i < ARR_ONE_DIM_LEN(vx); i++)
     {
         vec_push(*vertices, vx[i]);
     }
-    GLuint cur_idx = cur_pube_idx * 10;
+    GLuint cur_idx = cur_pube_idx * (ARR_ONE_DIM_LEN(vx) / 8);
     if (adj_check[0])
     {
-        GLuint ind[] = {0, 2, 4, 2, 6, 4};
+        //GLuint ind[] = {0, 2, 4, 2, 6, 4};
+        GLuint ind[] = {7, 15, 6, 15, 14, 6};
         for (uint i = 0; i < ARR_ONE_DIM_LEN(ind); i++)
         {
             vec_push(*indices, ind[i] + cur_idx);
@@ -82,7 +106,8 @@ void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4]
     }
     if (adj_check[1])
     {
-        GLuint ind[] = {6, 5, 4, 6, 7, 5};
+        //GLuint ind[] = {6, 5, 4, 6, 7, 5};
+        GLuint ind[] = {13, 4, 5, 13, 12, 4};
         for (uint i = 0; i < ARR_ONE_DIM_LEN(ind); i++)
         {
             vec_push(*indices, ind[i] + cur_idx);
@@ -90,7 +115,8 @@ void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4]
     }
     if (adj_check[2])
     {
-        GLuint ind[] = {7, 3, 5, 3, 1, 5};
+        //GLuint ind[] = {7, 3, 5, 3, 1, 5};
+        GLuint ind[] = {11, 10, 3, 10, 2, 3};
         for (uint i = 0; i < ARR_ONE_DIM_LEN(ind); i++)
         {
             vec_push(*indices, ind[i] + cur_idx);
@@ -98,7 +124,8 @@ void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4]
     }
     if (adj_check[3])
     {
-        GLuint ind[] = {3, 9, 1, 9, 8, 1};
+        //GLuint ind[] = {3, 9, 1, 9, 8, 1};
+        GLuint ind[] = {9, 8, 1, 8, 0, 1};
         for (uint i = 0; i < ARR_ONE_DIM_LEN(ind); i++)
         {
             vec_push(*indices, ind[i] + cur_idx);
@@ -106,300 +133,453 @@ void generate_pube(v_GLfloat_t *vertices, v_GLuint_t *indices, bool adj_check[4]
     }
 }
 
-typedef uint64_t depth_t;
-#define DEPTH_LEVELS (sizeof(depth_t) * CHAR_BIT)
+mapls_register(GLuint);
+typedef struct mls_GLuint_t m_GLuint_t;
 
-static void generate_voxel_side(v_GLfloat_t *vertices, v_GLuint_t *indices, v3_t p0, v3_t p1, v3_t p2, v3_t p3, color color, int cur_idx)
+static void
+obj_parse_face(char *face_name, m_GLuint_t table_faces, uint *cur_id,
+               v_GLfloat_t *vertices, v_GLuint_t *indices, v_GLfloat_t positions, v_GLfloat_t tex_coords, v_GLfloat_t normals)
 {
-    GLfloat vx[] = {
-        p0.x, p0.y, p0.z, color.r, color.g, color.b, 0, 0, 0,
-        p1.x, p1.y, p1.z, color.r, color.g, color.b, 0, 0, 0,
-        p2.x, p2.y, p2.z, color.r, color.g, color.b, 0, 0, 0,
-        p3.x, p3.y, p3.z, color.r, color.g, color.b, 0, 0, 0};
-    GLuint ind[] = {
-        0, 1, 2, 2, 1, 3};
-    for (uint i = 0; i < ARR_ONE_DIM_LEN(ind); i++)
+    GLuint *ptr = mapls_search_ptr(table_faces, face_name);
+    if (ptr)
     {
-        vec_push(*indices, cur_idx + ind[i]);
+        vec_push(*indices, *ptr);
     }
-    for (uint i = 0; i < ARR_ONE_DIM_LEN(vx); i++)
+    else
     {
-        vec_push(*vertices, vx[i]);
-    }
-}
+        mapls_add(table_faces, face_name, *cur_id);
+        vec_push(*indices, *cur_id);
+        (*cur_id)++;
 
-static inline depth_t depth_correct(depth_t* depth, depth_t d_test,
-                                 int base_x, int base_y, int base_w, int base_h,
-                                 int test_x, int test_y)
-{
-    if ((test_x) >= 0 && (test_y) >= 0 && (test_x < base_w) && (test_y < base_h))
-    {
-        d_test &= ~depth[((test_y)*base_w) + (test_x)];
-    }
-    return d_test;
-}
-
-static inline void generate_voxel_face(v_GLfloat_t *vertices, v_GLuint_t *indices,
-                                       int base_x, int base_y, int base_w, int base_h,
-                                       int s_x, int s_y, int e_x, int e_y, int w, int h,
-                                       color color, depth_t depth,
-                                       int *cur_idx, char direction)
-{
-    float32 p_x0, p_x1, p_y0, p_y1;
-    switch (direction)
-    {
-    case 'w':
-        p_x0 = 0;
-        p_x1 = 0;
-        p_y0 = s_y;
-        p_y1 = e_y;
-        break;
-    case 'n':
-        p_x0 = e_x;
-        p_x1 = s_x;
-        p_y0 = 0;
-        p_y1 = 0;
-        break;
-    case 'e':
-        p_x0 = w;
-        p_x1 = w;
-        p_y0 = e_y;
-        p_y1 = s_y;
-        break;
-    case 's':
-        p_x0 = s_x;
-        p_x1 = e_x;
-        p_y0 = h;
-        p_y1 = h;
-        break;
-    }
-    int z_value = -1;
-    for (int j = 0; j < DEPTH_LEVELS; j++)
-    {
-        if (depth & (1ULL << (depth_t)j))
+        int face_indices[3] = {-1, -1, -1};
+        char *ind = strtok(face_name, "/");
+        for (uint i = 0; i < 3 && ind; i++)
         {
-            if (z_value == -1)
-                z_value = j;
+            face_indices[i] = atoi(ind) - 1;
+            ind = strtok(NULL, "/");
+        }
+        //debug("%d %d %d", face_indices[0], face_indices[1], face_indices[2]);
+        vec_push(*vertices, positions.data[face_indices[0] * 3]);
+        vec_push(*vertices, positions.data[face_indices[0] * 3 + 1]);
+        vec_push(*vertices, positions.data[face_indices[0] * 3 + 2]);
+        if (face_indices[1] >= 0)
+        {
+            vec_push(*vertices, tex_coords.data[face_indices[1] * 2 + 0]);
+            vec_push(*vertices, tex_coords.data[face_indices[1] * 2 + 1]);
         }
         else
         {
-            if (z_value != -1)
-            {
-                v3_t p0 = (v3_t){(base_x + p_x0), base_h - (base_y + p_y0), z_value};
-                v3_t p1 = (v3_t){(base_x + p_x1), base_h - (base_y + p_y1), z_value};
-                v3_t p2 = (v3_t){(base_x + p_x0), base_h - (base_y + p_y0), j};
-                v3_t p3 = (v3_t){(base_x + p_x1), base_h - (base_y + p_y1), j};
-                generate_voxel_side(vertices, indices, p0, p1, p2, p3, color, *cur_idx);
-                *cur_idx += 4;
-                z_value = -1;
-            }
+            vec_push(*vertices, 0);
+            vec_push(*vertices, 0);
+        }
+        if (face_indices[2] >= 0)
+        {
+            vec_push(*vertices, normals.data[face_indices[2] * 3]);
+            vec_push(*vertices, normals.data[face_indices[2] * 3 + 1]);
+            vec_push(*vertices, normals.data[face_indices[2] * 3 + 2]);
+        }
+        else
+        {
+            vec_push(*vertices, 0);
+            vec_push(*vertices, 0);
+            vec_push(*vertices, 0);
         }
     }
 }
 
-void generate_voxel_sprite(v_GLfloat_t *vertices, v_GLuint_t *indices, const char *sprite_path, const char *sprite_back_path, const char *depthmap_path, v3_t voxel_dimensions)
+#define obj_line_size 100
+Mesh obj_parse(const char *path)
 {
+    Mesh mesh = {};
+    FILE *obj_file = fopen(path, "r");
+    if (!obj_file)
+        error("Cannot open %s obj file", path);
 
-    SDL_Surface *sprite = IMG_Load(sprite_path);
-    SDL_Surface *sprite_back = NULL;
-    if (!sprite)
-        error("Cannot load sprite %s", sprite_path);
+    uint v_count = 0;
+    uint vt_count = 0;
+    uint vn_count = 0;
+    uint ind_count = 0;
+    char ch = 0;
+    do
+    {
+        ch = fgetc(obj_file);
 
-    const int sprite_size = sprite->w * sprite->h;
-    bool is_conquered[sprite_size];
-    memset(is_conquered, 0, sprite_size);
-    depth_t depth[sprite_size];
-    memset(depth, 0, sprite_size);
-    color *pixels = sprite->pixels;
-    uint8 r = 0, g = 0, b = 0, a = 0;
-    depth_t cur_depth = 0;
-    int cur_idx = 0;
-    if (depthmap_path)
-    {
-        FILE *depthmap = fopen(depthmap_path, "rb");
-        if (!depthmap)
-            error("Cannot open depthmap %s", depthmap_path);
-        fread(depth, sizeof(depth_t) * sprite_size, 1, depthmap);
-        fclose(depthmap);
-    }
-    else
-    {
-        for (int i = 0; i < sprite_size; i++)
+        switch (ch)
         {
-            depth[i] |= (1ULL << 31ULL) | (1ULL << 32ULL);
-        }
-    }
-    if (sprite_back_path)
-    {
-        sprite_back = IMG_Load(sprite_back_path);
-    }
-    else
-    {
-        sprite_back = sprite;
-    }
+        case EOF:
+            break;
 
-    for (int i = 0; i < sprite_size; i++)
-    {
-        r = pixels[i].r;
-        g = pixels[i].g;
-        b = pixels[i].b;
-        a = pixels[i].a;
-        cur_depth = depth[i];
-        if (is_conquered[i] || (a == 0))
-            continue;
-        bool pixels_left = true;
-        int w = 1, h = 1;
-        while (1)
-        {
-            bool is_width_grew = true;
-            for (int j = 0; j < h; j++)
+        case 'v':
+            ch = fgetc(obj_file);
+            switch (ch)
             {
-                is_width_grew &= (r == pixels[i + w + (j * sprite->w)].r) &&
-                                 (g == pixels[i + w + (j * sprite->w)].g) &&
-                                 (b == pixels[i + w + (j * sprite->w)].b) &&
-                                 (a == pixels[i + w + (j * sprite->w)].a) &&
-                                 (cur_depth == depth[i + w + (j * sprite->w)]);
-            }
-            int test_w = w + (is_width_grew == true);
-            bool is_height_grew = true;
-            for (int j = 0; j < test_w; j++)
-            {
-                is_height_grew &= (r == pixels[i + j + ((h)*sprite->w)].r) &&
-                                  (g == pixels[i + j + ((h)*sprite->w)].g) &&
-                                  (b == pixels[i + j + ((h)*sprite->w)].b) &&
-                                  (a == pixels[i + j + ((h)*sprite->w)].a) &&
-                                  (cur_depth == depth[i + j + ((h)*sprite->w)]);
-            }
-            h += (is_height_grew == true);
-            w = test_w;
-
-            if (!is_width_grew && !is_height_grew)
-            {
-                const int i_x = i % sprite->w;
-                const int i_y = i / sprite->w;
-                depth_t segment_depth[w * h];
-                color segment_color = (color){.r = r, .g = g, .b = b, .a = a};
-                for (int k = 0; k < h; k++)
-                {
-                    for (int l = 0; l < w; l++)
-                    {
-                        segment_depth[k * w + l] = depth[(i_y + k) * sprite->w + (i_x + l)];
-                    }
-                }
-                //test frame adjacent pixels, opposite frame direction
-                int prev_x = 0, prev_y = 0;
-                depth_t d_test = segment_depth[prev_y * w + prev_x];
-                depth_t prev_depth = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x - 1, i_y);
-                for (int y = 1; (y <= h); y++) // west faces
-                {
-                    depth_t d = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x - 1, i_y + y);
-                    if (d != prev_depth || y == h)
-                    {
-                        generate_voxel_face(vertices, indices, i_x, i_y, sprite->w, sprite->h, prev_x, prev_y, 0, y, w, h, segment_color, prev_depth, &cur_idx, 'w');
-                        prev_depth = d;
-                        prev_y = y;
-                    }
-                }
-                prev_x = 0, prev_y = 0;
-                d_test = segment_depth[prev_y * w + prev_x];
-                prev_depth = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x, i_y - 1);
-                for (int x = 1; (x <= w); x++) // north faces
-                {
-                    depth_t d = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x + x, i_y - 1);
-                    if (d != prev_depth || x == w)
-                    {
-                        generate_voxel_face(vertices, indices, i_x, i_y, sprite->w, sprite->h, prev_x, prev_y, x, 0, w, h, segment_color, prev_depth, &cur_idx, 'n');
-                        prev_depth = d;
-                        prev_x = x;
-                    }
-                }
-                prev_x = w - 1, prev_y = 0;
-                prev_depth = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x + w, i_y);
-                for (int y = 1; (y <= h); y++) // east faces
-                {
-                    depth_t d = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x + w, i_y + y);
-                    if (d != prev_depth || y == h)
-                    {
-                        generate_voxel_face(vertices, indices, i_x, i_y, sprite->w, sprite->h, prev_x, prev_y, w, y, w, h, segment_color, prev_depth, &cur_idx, 'e');
-                        prev_depth = d;
-                        prev_y = y;
-                    }
-                }
-                prev_x = 0, prev_y = h - 1;
-                prev_depth = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x, i_y + h);
-                for (int x = 1; (x <= w); x++) // south faces
-                {
-                    depth_t d = depth_correct(depth, d_test, i_x, i_y, sprite->w, sprite->h, i_x + x, i_y + h);
-                    if (d != prev_depth || x == w)
-                    {
-                        generate_voxel_face(vertices, indices, i_x, i_y, sprite->w, sprite->h, prev_x, prev_y, x, h, w, h, segment_color, prev_depth, &cur_idx, 's');
-                        prev_depth = d;
-                        prev_x = x;
-                    }
-                }
-                // generate flip-flop faces (+- z faces)
-                depth_t d = segment_depth[0];
-                bool prev_bit = false;
-                for (int j = 0; j <= DEPTH_LEVELS; j++)
-                {
-                    bool bit = d & (1ULL << (depth_t)j) ? true : false;
-                    if (prev_bit == false && bit == true)
-                    {
-                        // -z
-                        v3_t p0 = (v3_t){(i_x + 0), sprite->h - (i_y + 0), j};
-                        v3_t p1 = (v3_t){(i_x + w), sprite->h - (i_y + 0), j};
-                        v3_t p2 = (v3_t){(i_x + 0), sprite->h - (i_y + h), j};
-                        v3_t p3 = (v3_t){(i_x + w), sprite->h - (i_y + h), j};
-                        generate_voxel_side(vertices, indices, p0, p1, p2, p3, ((color *)sprite_back->pixels)[i], cur_idx);
-                        cur_idx += 4;
-                    }
-                    else if (prev_bit == true && (bit == false || j == DEPTH_LEVELS))
-                    {
-                        // +z
-                        v3_t p0 = (v3_t){(i_x + 0), sprite->h - (i_y + h), j};
-                        v3_t p1 = (v3_t){(i_x + w), sprite->h - (i_y + h), j};
-                        v3_t p2 = (v3_t){(i_x + 0), sprite->h - (i_y + 0), j};
-                        v3_t p3 = (v3_t){(i_x + w), sprite->h - (i_y + 0), j};
-                        generate_voxel_side(vertices, indices, p0, p1, p2, p3, segment_color, cur_idx);
-                        cur_idx += 4;
-                    }
-                    prev_bit = bit;
-                }
-                for (int k = 0; k < h; k++)
-                {
-                    for (int l = 0; l < w; l++)
-                    {
-                        is_conquered[(i_y + k) * sprite->w + (i_x + l)] = true;
-                    }
-                }
-                is_conquered[i_y * sprite->w + i_x] = 7;
+            case ' ':
+                v_count++;
+                SKIP_LINE(ch, obj_file);
                 break;
+
+            case 't':
+                vt_count++;
+                SKIP_LINE(ch, obj_file);
+                break;
+
+            case 'n':
+                vn_count++;
+                SKIP_LINE(ch, obj_file);
+                break;
+
+            default:
+                error("Unsupported vertex type, aborting");
+            }
+            break;
+
+        case 'f':
+            ind_count++;
+            SKIP_LINE(ch, obj_file);
+            break;
+
+        default:
+            SKIP_LINE(ch, obj_file);
+            break;
+        }
+
+    } while (ch != EOF);
+
+    m_GLuint_t table_faces;
+
+    mapls_new(GLuint, table_faces, 101);
+
+    v_GLfloat_t positions, tex_coords, normals;
+    vec_new(GLfloat, positions, 3 * v_count);
+    vec_new(GLfloat, tex_coords, 2 * vt_count);
+    vec_new(GLfloat, normals, 3 * vn_count);
+    vec_new(GLuint, mesh.indices, ind_count * 3);
+    vec_new(GLfloat, mesh.vertices, 128 * 8);
+    uint cur_id = 0;
+
+    fseek(obj_file, 0, SEEK_SET);
+
+    do
+    {
+        v3_t v;
+        ch = fgetc(obj_file);
+
+        switch (ch)
+        {
+        case EOF:
+            break;
+
+        case '#':
+            SKIP_LINE(ch, obj_file);
+            break;
+
+        case 'v':
+            ch = fgetc(obj_file);
+            switch (ch)
+            {
+            case ' ':
+                fscanf(obj_file, "%f %f %f\n", &v.x, &v.y, &v.z);
+                vec_push(positions, v.x);
+                vec_push(positions, v.y);
+                vec_push(positions, v.z);
+                break;
+
+            case 't':
+                fscanf(obj_file, " %f %f\n", &v.x, &v.y);
+                v.y = 1 - v.y;
+                //v.x = 1 - v.x;
+                vec_push(tex_coords, v.x);
+                vec_push(tex_coords, v.y);
+                break;
+
+            case 'n':
+                fscanf(obj_file, " %f %f %f\n", &v.x, &v.y, &v.z);
+                vec_push(normals, v.x);
+                vec_push(normals, v.y);
+                vec_push(normals, v.z);
+                break;
+
+            default:
+                error("Unsupported vertex type, aborting");
+            }
+            break;
+
+        case 'f':
+        {
+            char face1[16] = {0};
+            char face2[16] = {0};
+            char face3[16] = {0};
+            fscanf(obj_file, "%15s", face1);
+            fscanf(obj_file, "%15s", face2);
+            fscanf(obj_file, "%15s", face3);
+            obj_parse_face(face1, table_faces, &cur_id, &mesh.vertices, &mesh.indices, positions, tex_coords, normals);
+            obj_parse_face(face2, table_faces, &cur_id, &mesh.vertices, &mesh.indices, positions, tex_coords, normals);
+            obj_parse_face(face3, table_faces, &cur_id, &mesh.vertices, &mesh.indices, positions, tex_coords, normals);
+        }
+        break;
+
+        default:
+            SKIP_LINE(ch, obj_file);
+            break;
+        }
+
+    } while (ch != EOF);
+
+    // for (uint i = 0; i < vertices->size; i+=8)
+    // {
+    //    debug("p: %f %f %f t: %f %f n: %f %f %f", vertices->data[i], vertices->data[i + 1], vertices->data[i + 2], vertices->data[i + 3],
+    //                                              vertices->data[i + 4], vertices->data[i + 5], vertices->data[i + 6], vertices->data[i + 7]);
+    // }
+    // for (uint i = 0; i < indices->size; i++)
+    // {
+    //    printf("%d ", indices->data[i]);
+    // }
+    // debug("\n%d %d", vertices->size, indices->size);
+
+    fclose(obj_file);
+    return mesh;
+}
+
+Mesh generate_sphere(const GLuint num_slices, const GLfloat radius)
+{
+    Mesh mesh = {};
+
+    GLuint numberParallels = num_slices / 2;
+    GLuint numberVertices = (numberParallels + 1u) * (num_slices + 1u);
+    GLuint numberIndices = numberParallels * num_slices * 6u;
+
+    vec_new(GLfloat, mesh.vertices, numberVertices);
+    vec_new(GLuint, mesh.indices, numberIndices);
+
+    GLfloat angleStep = M_PI * 2.f / num_slices;
+
+    for (GLuint i = 0u; i < numberParallels + 1u; i++)
+    {
+        for (GLuint j = 0u; j < num_slices + 1u; j++)
+        {
+            GLuint index = (i * (num_slices + 1u) + j);
+            GLfloat x, y, z;
+            x = radius * sinf(angleStep * (GLfloat)i) * sinf(angleStep * (GLfloat)j);
+            vec_push(mesh.vertices, x);
+            y = radius * cosf(angleStep * (GLfloat)i);
+            vec_push(mesh.vertices, y);
+            z = radius * sinf(angleStep * (GLfloat)i) * cosf(angleStep * (GLfloat)j);
+            vec_push(mesh.vertices, z);
+            vec_push(mesh.vertices, (GLfloat)j / (GLfloat)num_slices); // tex coords
+            vec_push(mesh.vertices, ((GLfloat)i / numberParallels));
+            vec_push(mesh.vertices, x / radius); // normals
+            vec_push(mesh.vertices, y / radius);
+            vec_push(mesh.vertices, z / radius);
+        }
+    }
+
+    GLuint indexIndices = 0u;
+    for (GLuint i = 0u; i < numberParallels; i++)
+    {
+        for (GLuint j = 0u; j < num_slices; j++)
+        {
+            vec_push(mesh.indices, i * (num_slices + 1u) + j);
+            vec_push(mesh.indices, (i + 1u) * (num_slices + 1u) + j);
+            vec_push(mesh.indices, (i + 1u) * (num_slices + 1u) + (j + 1u));
+
+            vec_push(mesh.indices, i * (num_slices + 1u) + j);
+            vec_push(mesh.indices, (i + 1u) * (num_slices + 1u) + (j + 1u));
+            vec_push(mesh.indices, i * (num_slices + 1u) + (j + 1u));
+        }
+    }
+
+    return mesh;
+}
+
+static inline void fill_vertex(v_GLfloat_t *vertices, v3_t pos, v2_t tex, v3_t norm)
+{
+    vec_push(*vertices, pos.x);
+    vec_push(*vertices, pos.y);
+    vec_push(*vertices, pos.z);
+    vec_push(*vertices, tex.x);
+    vec_push(*vertices, tex.y);
+    vec_push(*vertices, norm.x);
+    vec_push(*vertices, norm.y);
+    vec_push(*vertices, norm.z);
+}
+
+Mesh generate_pyramid(const GLfloat base, const GLfloat height)
+{
+    Mesh mesh = {};
+    vec_new(GLfloat, mesh.vertices, 22);
+    vec_new(GLuint, mesh.indices, 18);
+
+    v3_t top = {0, height, 0};
+    v3_t p0 = {-base / 2, 0, -base / 2};
+    v3_t p1 = {base / 2, 0, -base / 2};
+    v3_t p2 = {base / 2, 0, base / 2};
+    v3_t p3 = {-base / 2, 0, base / 2};
+    v3_t normSide0 = v3_norm(v3_cross(v3_sub(top, p3), v3_sub(p0, p3)));
+    v3_t normSide1 = v3_norm(v3_cross(v3_sub(top, p0), v3_sub(p1, p0)));
+    v3_t normSide2 = v3_norm(v3_cross(v3_sub(top, p1), v3_sub(p2, p1)));
+    v3_t normSide3 = v3_norm(v3_cross(v3_sub(top, p2), v3_sub(p3, p2)));
+    v3_t normBottom = v3_norm(v3_cross(v3_sub(p3, p0), v3_sub(p1, p0)));
+
+    fill_vertex(&mesh.vertices, p0, (v2_t){1, 1}, normSide0);
+    fill_vertex(&mesh.vertices, p3, (v2_t){0, 1}, normSide0);
+    fill_vertex(&mesh.vertices, top, (v2_t){0.5, 0}, normSide0);
+
+    fill_vertex(&mesh.vertices, p1, (v2_t){1, 1}, normSide1);
+    fill_vertex(&mesh.vertices, p0, (v2_t){0, 1}, normSide1);
+    fill_vertex(&mesh.vertices, top, (v2_t){0.5, 0}, normSide1);
+
+    fill_vertex(&mesh.vertices, p2, (v2_t){1, 1}, normSide2);
+    fill_vertex(&mesh.vertices, p1, (v2_t){0, 1}, normSide2);
+    fill_vertex(&mesh.vertices, top, (v2_t){0.5, 0}, normSide2);
+
+    fill_vertex(&mesh.vertices, p3, (v2_t){1, 1}, normSide3);
+    fill_vertex(&mesh.vertices, p2, (v2_t){0, 1}, normSide3);
+    fill_vertex(&mesh.vertices, top, (v2_t){0.5, 0}, normSide3);
+
+    fill_vertex(&mesh.vertices, p0, (v2_t){1, 0}, normBottom);
+    fill_vertex(&mesh.vertices, p1, (v2_t){0, 0}, normBottom);
+    fill_vertex(&mesh.vertices, p2, (v2_t){0, 1}, normBottom);
+    fill_vertex(&mesh.vertices, p0, (v2_t){1, 0}, normBottom);
+    fill_vertex(&mesh.vertices, p2, (v2_t){0, 1}, normBottom);
+    fill_vertex(&mesh.vertices, p3, (v2_t){1, 1}, normBottom);
+
+    for (int i = 0; i < 18; i++)
+        vec_push(mesh.indices, i);
+
+    return mesh;
+}
+
+// CW order
+Mesh generate_plane(v3_t p0, v3_t p1, v3_t p2, v3_t p3)
+{
+    Mesh mesh = {};
+    vec_new(GLfloat, mesh.vertices, 4);
+    vec_new(GLuint, mesh.indices, 6);
+
+    fill_vertex(&mesh.vertices, p0, (v2_t){0, 0}, (v3_t){0});
+    fill_vertex(&mesh.vertices, p1, (v2_t){p1.x, 0}, (v3_t){0});
+    fill_vertex(&mesh.vertices, p2, (v2_t){p2.x, p2.z}, (v3_t){0});
+    fill_vertex(&mesh.vertices, p3, (v2_t){0, p3.z}, (v3_t){0});
+    vec_push(mesh.indices, 0);
+    vec_push(mesh.indices, 3);
+    vec_push(mesh.indices, 1);
+    vec_push(mesh.indices, 1);
+    vec_push(mesh.indices, 3);
+    vec_push(mesh.indices, 2);
+
+    return mesh;
+}
+
+Mesh generate_hyperboloid(float32 height, float32 a, float32 b, uint offset, uint num_vertices)
+{
+    Mesh mesh = {};
+    vec_new(GLfloat, mesh.vertices, (num_vertices + 2) * 8);   // +2 centers of circles
+    vec_new(GLuint, mesh.indices, 3 * (2 * num_vertices - 2)); // +2 center triangles of circles
+    float32 zerof = 0;
+    float32 phi = 0;
+    float32 d_phi = 2 * M_PI / (num_vertices - 0);
+    for (uint i = 0; i < 8; i++) // push center 1 coordinates
+        vec_push(mesh.vertices, 0);
+    for (uint i = 0; i < 8; i++) // push center 2 coordinates
+        vec_push(mesh.vertices, 0);
+    mesh.vertices.data[2] = height;
+    mesh.vertices.data[8 + 2] = -height;
+    for (int c = 0; c <= 3; c++)
+    {
+        phi = 0;
+        for (uint i = 0; i <= num_vertices; phi += d_phi, i++)
+        {
+            float32 x = a * cosf(phi);
+            vec_push(mesh.vertices, x);
+            float32 y = b * sinf(phi);
+            vec_push(mesh.vertices, y);
+            vec_push(mesh.vertices, height);
+            if (c > 1)
+            {
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
+            }
+            else
+            {
+                float32 uv[2] = {};
+                uint n = num_vertices;
+                if (height > 0)
+                {
+                    uv[0] = 1 - (float32)((i + offset)) / n;
+                    if (uv[0] < 0)
+                        uv[0] += 1;
+                    uv[1] = 1;
+                }
+                else
+                {
+                    uv[0] = 1 - (float32)(i) / n;
+                    if (uv[0] < 0)
+                        uv[0] += 1;
+                    uv[1] = 0;
+                }
+                vec_push(mesh.vertices, uv[0]);
+                vec_push(mesh.vertices, uv[1]);
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
+                vec_push(mesh.vertices, 0);
             }
         }
+        height *= -1.f;
     }
-    for (int k = 0; k < sprite->h; k++)
+    num_vertices += 1;
+    for (uint i = 2; i < num_vertices + 2; i++)
     {
-        for (int l = 0; l < sprite->w; l++)
-        {
-            printf("%d ", is_conquered[(k * sprite->w) + l]);
-        }
-        printf("\n");
+        uint j = i + num_vertices + offset;
+        if (j >= 2 * num_vertices + 2)
+            j -= num_vertices;
+        uint i_inc = i + 1;
+        uint j_inc = j + 1;
+        if (i_inc >= num_vertices + 2)
+            i_inc = 2;
+        if (j_inc >= 2 * num_vertices + 2)
+            j_inc = num_vertices + 2;
+        vec_push(mesh.indices, i);
+        vec_push(mesh.indices, i_inc);
+        vec_push(mesh.indices, j);
+        vec_push(mesh.indices, j);
+        vec_push(mesh.indices, i_inc);
+        vec_push(mesh.indices, j_inc);
     }
-    printf("Veritces count: %d Triangle count: %d\n", vertices->size / 9, cur_idx / 4);
-
-    for (uint i = 0; i < vertices->size; i += 9)
+    uint center = 0;
+    for (uint i = 2 * num_vertices + 2; i < 3 * num_vertices + 2; i++)
     {
-        vertices->data[i + 0] -= sprite->w / 2;
-        vertices->data[i + 0] *= voxel_dimensions.x;
-        vertices->data[i + 1] -= sprite->h / 2;
-        vertices->data[i + 1] *= voxel_dimensions.y;
-        vertices->data[i + 2] -= DEPTH_LEVELS / 2;
-        vertices->data[i + 2] *= voxel_dimensions.z;
-        vertices->data[i + 3] /= 0xFF;
-        vertices->data[i + 4] /= 0xFF;
-        vertices->data[i + 5] /= 0xFF;
+        vec_push(mesh.indices, i);
+        uint tmp = i + 1;
+        if (tmp >= 3 * num_vertices + 2)
+            tmp = 2 * num_vertices + 2;
+        vec_push(mesh.indices, tmp);
+        vec_push(mesh.indices, center);
     }
-    SDL_FreeSurface(sprite);
-    if (sprite_back_path)
-        SDL_FreeSurface(sprite_back);
+    center = 1;
+    for (uint i = 3 * num_vertices + 2; i < 4 * num_vertices + 2; i++)
+    {
+        vec_push(mesh.indices, i);
+        vec_push(mesh.indices, center);
+        uint tmp = i + 1;
+        if (tmp >= 4 * num_vertices + 2)
+            tmp = 3 * num_vertices + 2;
+        vec_push(mesh.indices, tmp);
+    }
+    //for (uint i = 0; i < vec_get_size(mesh.vertices); i+=8)
+    //{
+    //    debug("%d. p: %f %f %f t: %f %f n: %f %f %f", i / 8, mesh.vertices[i], mesh.vertices[i + 1], mesh.vertices[i + 2], mesh.vertices[i + 3],
+    //                                              mesh.vertices[i + 4], mesh.vertices[i + 5], mesh.vertices[i + 6], mesh.vertices[i + 7]);
+    //}
+    //
+    //for (uint i = 0; i < vec_get_size(mesh.indices) / 3; i+=3)
+    //{
+    //    printf("%d. %d ", i / 3, mesh.indices[i]);
+    //    printf("%d ", mesh.indices[i + 1]);
+    //    printf("%d\n", mesh.indices[i + 2]);
+    //}
+    //debug("\n%d %d", vec_get_size(mesh.vertices), vec_get_size(mesh.indices));
+    return mesh;
 }

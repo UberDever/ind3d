@@ -180,6 +180,13 @@ float32 tmp_swap_float_var_; // Little hack here
 #define PTR_TYPE(type) typedef type* type##ptr
 typedef void (*p_void_func)(void); //convenient pointer to void function(void)
 
+#define SKIP_LINE(c, file)            \
+  do                                  \
+  {                                   \
+    while ((c) != '\n' && (c) != EOF) \
+      c = fgetc(file);                \
+  } while (0)
+
 /*
  *  Keyboard and mouse handling
  */

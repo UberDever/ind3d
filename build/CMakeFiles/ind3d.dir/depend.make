@@ -17,7 +17,13 @@ CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/core.c
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/gl/voxel_sprite.h
+CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/stb_image.h
 
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../include/alphabeta.h
@@ -40,7 +46,13 @@ CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game/projectile.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../include/alphabeta.h
@@ -60,7 +72,13 @@ CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy_states.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../include/alphabeta.h
@@ -79,7 +97,13 @@ CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/game/enemy_states
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/game/enemy_states.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../include/alphabeta.h
@@ -98,7 +122,13 @@ CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.c
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../include/alphabeta.h
@@ -117,7 +147,13 @@ CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.c
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../include/alphabeta.h
@@ -136,7 +172,13 @@ CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.c
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/alphabeta.h
@@ -149,12 +191,36 @@ CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../include/pi.h
-CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/config.h
-CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/core.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.c
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/graphics.h
-CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/stb_image.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o: ../sandbox/gl/graphics.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/config.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/core.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/geometry.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/line_renderer.c
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/line_renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/alphabeta.h
@@ -167,9 +233,88 @@ CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/delta/vec.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/gamma.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/omega.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/graphics.h
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.c
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/stb_image.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/config.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/core.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/geometry.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/line_renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/plane_renderer.c
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/voxel_sprite.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/renderer.c
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/stb_image.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../sandbox/gl/shader.c
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../sandbox/gl/stb_image.h
+
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/alpha.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/alphabeta.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta/deck.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta/hash_table.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta/queue.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta/stack.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/delta/vec.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/gamma.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/omega.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../include/pi.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/geometry.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/voxel_sprite.c
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/voxel_sprite.h
 
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/alpha.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../include/alphabeta.h
@@ -191,7 +336,13 @@ CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/player.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/game/projectile.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/geometry.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/graphics.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/line_renderer.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/model.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/plane_renderer.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/renderer.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/shader.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/stb_image.h
+CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/gl/voxel_sprite.h
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/main.c
 
 CMakeFiles/ind3d.dir/src/alpha.c.o: ../include/alpha.h

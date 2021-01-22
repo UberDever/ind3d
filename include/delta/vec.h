@@ -140,60 +140,60 @@
 
 #endif
 
-#define vec_register(T)                                                 \
-    typedef struct v_##T##_t                                            \
-    {                                                                   \
-        uint size, cap;                                                 \
-        void (*new)(struct v_##T##_t *, uint);                          \
-        void (*free)(struct v_##T##_t *);                               \
-        void (*push)(struct v_##T##_t * this, T element);               \
-        T(*pop)                                                         \
-        (struct v_##T##_t * this);                                      \
-        bool (*full)(struct v_##T##_t * this);                          \
-        bool (*empty)(struct v_##T##_t * this);                         \
-        T(*back)                                                        \
-        (struct v_##T##_t * this);                                      \
-                                                                        \
-        T *data;                                                        \
-    } v_##T##_t;                                                        \
-                                                                        \
-    static void vec_##T##_new(struct v_##T##_t *this, uint cap)         \
-    {                                                                   \
-        ARR_ALLOC(this->data, cap);                                     \
-        ALLOC_CHECK(this->data);                                        \
-        this->cap = cap;                                                \
-        this->size = 0;                                                 \
-    }                                                                   \
-    static void vec_##T##_free(struct v_##T##_t *this)                  \
-    {                                                                   \
-        free(this->data);                                               \
-        this->cap = 0;                                                  \
-        this->size = 0;                                                 \
-    }                                                                   \
-    static void vec_##T##_push(struct v_##T##_t *this, T element)       \
-    {                                                                   \
-        if (this->size >= this->cap)                                    \
-        {                                                               \
-            this->cap *= 2;                                             \
-            this->data = realloc(this->data, this->cap * sizeof(T));    \
-        }                                                               \
-        this->data[this->size++] = element;                             \
-    }                                                                   \
-    static T vec_##T##_pop(struct v_##T##_t *this)                      \
-    {                                                                   \
-        return this->size ? this->data[--this->size] : this->data[0];   \
-    }                                                                   \
-    static bool vec_##T##_full(struct v_##T##_t *this)                  \
-    {                                                                   \
-        return this->size >= this->cap;                                 \
-    }                                                                   \
-    static bool vec_##T##_empty(struct v_##T##_t *this)                 \
-    {                                                                   \
-        return this->size;                                              \
-    }                                                                   \
-    static T vec_##T##_back(struct v_##T##_t *this)                     \
-    {                                                                   \
-        return this->size ? this->data[this->size - 1] : this->data[0]; \
+#define vec_register(T)                                              \
+    typedef struct v_##T##_t                                         \
+    {                                                                \
+        uint size, cap;                                              \
+        void (*new)(struct v_##T##_t *, uint);                       \
+        void (*free)(struct v_##T##_t *);                            \
+        void (*push)(struct v_##T##_t * this, T element);            \
+        T(*pop)                                                      \
+        (struct v_##T##_t * this);                                   \
+        bool (*full)(struct v_##T##_t * this);                       \
+        bool (*empty)(struct v_##T##_t * this);                      \
+        T(*back)                                                     \
+        (struct v_##T##_t * this);                                   \
+                                                                     \
+        T *data;                                                     \
+    } v_##T##_t;                                                     \
+                                                                     \
+    static void vec_##T##_new(struct v_##T##_t *this, uint cap)      \
+    {                                                                \
+        ARR_ALLOC(this->data, cap);                                  \
+        ALLOC_CHECK(this->data);                                     \
+        this->cap = cap;                                             \
+        this->size = 0;                                              \
+    }                                                                \
+    static void vec_##T##_free(struct v_##T##_t *this)               \
+    {                                                                \
+        free(this->data);                                            \
+        this->cap = 0;                                               \
+        this->size = 0;                                              \
+    }                                                                \
+    static void vec_##T##_push(struct v_##T##_t *this, T element)    \
+    {                                                                \
+        if (this->size >= this->cap)                                 \
+        {                                                            \
+            this->cap *= 2;                                          \
+            this->data = realloc(this->data, this->cap * sizeof(T)); \
+        }                                                            \
+        this->data[this->size++] = element;                          \
+    }                                                                \
+    static T vec_##T##_pop(struct v_##T##_t *this)                   \
+    {                                                                \
+        return this->size ? this->data[--this->size] : (T){0};       \
+    }                                                                \
+    static bool vec_##T##_full(struct v_##T##_t *this)               \
+    {                                                                \
+        return this->size >= this->cap;                              \
+    }                                                                \
+    static bool vec_##T##_empty(struct v_##T##_t *this)              \
+    {                                                                \
+        return this->size;                                           \
+    }                                                                \
+    static T vec_##T##_back(struct v_##T##_t *this)                  \
+    {                                                                \
+        return this->size ? this->data[this->size - 1] : (T){0};     \
     }
 
 #define vec_new(T, name, cap)       \
@@ -225,7 +225,7 @@
 #define vec_back(v) (v).back(&(v))
 
 #define vec_free_ptr(v) \
-    (v)->free(v);         \
+    (v)->free(v);       \
     free(v);
 
 #endif //ALPHABETA_VEC_H

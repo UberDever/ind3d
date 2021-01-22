@@ -1,0 +1,5 @@
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:48> OpenGL loaded
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:49> Vendor:   NVIDIA Corporation
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:50> Renderer: GeForce GTX 1050/PCIe/SSE2
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:51> Version:  4.6.0 NVIDIA 450.80.02
+[ERROR] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c:map_init:117> Cannot load map, path: data/huge.map

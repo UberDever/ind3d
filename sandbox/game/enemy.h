@@ -7,13 +7,14 @@
 
 #include "../core.h"
 
-void enemy_init(v_Enemy_t* enemies);
+void enemies_init(v_Enemy_t* enemies, Map* map);
 
-void enemy_create(v_Enemy_t *enemies, v2_t pos, EnemyTypes type);
-void enemy_update(Map* map, Player* player, v_Enemy_t *enemies, v_Projectile_t* projectiles);
+void enemies_create(v_Enemy_t *enemies, v2_t pos, EnemyTypes type);
+void enemies_update(Map* map, Player* player, v_Enemy_t *enemies, v_Projectile_t* projectiles);
+void enemies_render(v_Enemy_t *enemies);
 
 void enemies_process_hit(Map* map, Player* player, v_Enemy_t *enemies);
 
-void enemy_clean(v_Enemy_t* enemies);
+void enemies_clean(v_Enemy_t* enemies);
 
 #endif //IND3D_ENEMY_H

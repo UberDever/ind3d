@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/uberdever/dev/5 sem/cg/ind3d"
+CMAKE_SOURCE_DIR = /home/uberdever/dev/5_sem/cg/ind3d
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/uberdever/dev/5 sem/cg/ind3d/build"
+CMAKE_BINARY_DIR = /home/uberdever/dev/5_sem/cg/ind3d/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles /home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -339,6 +339,60 @@ sandbox/gl/geometry.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s
 .PHONY : sandbox/gl/geometry.c.s
 
+sandbox/gl/graphics.o: sandbox/gl/graphics.c.o
+
+.PHONY : sandbox/gl/graphics.o
+
+# target to build an object file
+sandbox/gl/graphics.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o
+.PHONY : sandbox/gl/graphics.c.o
+
+sandbox/gl/graphics.i: sandbox/gl/graphics.c.i
+
+.PHONY : sandbox/gl/graphics.i
+
+# target to preprocess a source file
+sandbox/gl/graphics.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.i
+.PHONY : sandbox/gl/graphics.c.i
+
+sandbox/gl/graphics.s: sandbox/gl/graphics.c.s
+
+.PHONY : sandbox/gl/graphics.s
+
+# target to generate assembly for a file
+sandbox/gl/graphics.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.s
+.PHONY : sandbox/gl/graphics.c.s
+
+sandbox/gl/line_renderer.o: sandbox/gl/line_renderer.c.o
+
+.PHONY : sandbox/gl/line_renderer.o
+
+# target to build an object file
+sandbox/gl/line_renderer.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o
+.PHONY : sandbox/gl/line_renderer.c.o
+
+sandbox/gl/line_renderer.i: sandbox/gl/line_renderer.c.i
+
+.PHONY : sandbox/gl/line_renderer.i
+
+# target to preprocess a source file
+sandbox/gl/line_renderer.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.i
+.PHONY : sandbox/gl/line_renderer.c.i
+
+sandbox/gl/line_renderer.s: sandbox/gl/line_renderer.c.s
+
+.PHONY : sandbox/gl/line_renderer.s
+
+# target to generate assembly for a file
+sandbox/gl/line_renderer.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.s
+.PHONY : sandbox/gl/line_renderer.c.s
+
 sandbox/gl/model.o: sandbox/gl/model.c.o
 
 .PHONY : sandbox/gl/model.o
@@ -365,6 +419,114 @@ sandbox/gl/model.s: sandbox/gl/model.c.s
 sandbox/gl/model.c.s:
 	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/model.c.s
 .PHONY : sandbox/gl/model.c.s
+
+sandbox/gl/plane_renderer.o: sandbox/gl/plane_renderer.c.o
+
+.PHONY : sandbox/gl/plane_renderer.o
+
+# target to build an object file
+sandbox/gl/plane_renderer.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o
+.PHONY : sandbox/gl/plane_renderer.c.o
+
+sandbox/gl/plane_renderer.i: sandbox/gl/plane_renderer.c.i
+
+.PHONY : sandbox/gl/plane_renderer.i
+
+# target to preprocess a source file
+sandbox/gl/plane_renderer.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.i
+.PHONY : sandbox/gl/plane_renderer.c.i
+
+sandbox/gl/plane_renderer.s: sandbox/gl/plane_renderer.c.s
+
+.PHONY : sandbox/gl/plane_renderer.s
+
+# target to generate assembly for a file
+sandbox/gl/plane_renderer.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.s
+.PHONY : sandbox/gl/plane_renderer.c.s
+
+sandbox/gl/renderer.o: sandbox/gl/renderer.c.o
+
+.PHONY : sandbox/gl/renderer.o
+
+# target to build an object file
+sandbox/gl/renderer.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o
+.PHONY : sandbox/gl/renderer.c.o
+
+sandbox/gl/renderer.i: sandbox/gl/renderer.c.i
+
+.PHONY : sandbox/gl/renderer.i
+
+# target to preprocess a source file
+sandbox/gl/renderer.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.i
+.PHONY : sandbox/gl/renderer.c.i
+
+sandbox/gl/renderer.s: sandbox/gl/renderer.c.s
+
+.PHONY : sandbox/gl/renderer.s
+
+# target to generate assembly for a file
+sandbox/gl/renderer.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.s
+.PHONY : sandbox/gl/renderer.c.s
+
+sandbox/gl/shader.o: sandbox/gl/shader.c.o
+
+.PHONY : sandbox/gl/shader.o
+
+# target to build an object file
+sandbox/gl/shader.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o
+.PHONY : sandbox/gl/shader.c.o
+
+sandbox/gl/shader.i: sandbox/gl/shader.c.i
+
+.PHONY : sandbox/gl/shader.i
+
+# target to preprocess a source file
+sandbox/gl/shader.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/shader.c.i
+.PHONY : sandbox/gl/shader.c.i
+
+sandbox/gl/shader.s: sandbox/gl/shader.c.s
+
+.PHONY : sandbox/gl/shader.s
+
+# target to generate assembly for a file
+sandbox/gl/shader.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/shader.c.s
+.PHONY : sandbox/gl/shader.c.s
+
+sandbox/gl/voxel_sprite.o: sandbox/gl/voxel_sprite.c.o
+
+.PHONY : sandbox/gl/voxel_sprite.o
+
+# target to build an object file
+sandbox/gl/voxel_sprite.c.o:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o
+.PHONY : sandbox/gl/voxel_sprite.c.o
+
+sandbox/gl/voxel_sprite.i: sandbox/gl/voxel_sprite.c.i
+
+.PHONY : sandbox/gl/voxel_sprite.i
+
+# target to preprocess a source file
+sandbox/gl/voxel_sprite.c.i:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.i
+.PHONY : sandbox/gl/voxel_sprite.c.i
+
+sandbox/gl/voxel_sprite.s: sandbox/gl/voxel_sprite.c.s
+
+.PHONY : sandbox/gl/voxel_sprite.s
+
+# target to generate assembly for a file
+sandbox/gl/voxel_sprite.c.s:
+	$(MAKE) -f CMakeFiles/ind3d.dir/build.make CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.s
+.PHONY : sandbox/gl/voxel_sprite.c.s
 
 sandbox/main.o: sandbox/main.c.o
 
@@ -534,9 +696,27 @@ help:
 	@echo "... sandbox/gl/geometry.o"
 	@echo "... sandbox/gl/geometry.i"
 	@echo "... sandbox/gl/geometry.s"
+	@echo "... sandbox/gl/graphics.o"
+	@echo "... sandbox/gl/graphics.i"
+	@echo "... sandbox/gl/graphics.s"
+	@echo "... sandbox/gl/line_renderer.o"
+	@echo "... sandbox/gl/line_renderer.i"
+	@echo "... sandbox/gl/line_renderer.s"
 	@echo "... sandbox/gl/model.o"
 	@echo "... sandbox/gl/model.i"
 	@echo "... sandbox/gl/model.s"
+	@echo "... sandbox/gl/plane_renderer.o"
+	@echo "... sandbox/gl/plane_renderer.i"
+	@echo "... sandbox/gl/plane_renderer.s"
+	@echo "... sandbox/gl/renderer.o"
+	@echo "... sandbox/gl/renderer.i"
+	@echo "... sandbox/gl/renderer.s"
+	@echo "... sandbox/gl/shader.o"
+	@echo "... sandbox/gl/shader.i"
+	@echo "... sandbox/gl/shader.s"
+	@echo "... sandbox/gl/voxel_sprite.o"
+	@echo "... sandbox/gl/voxel_sprite.i"
+	@echo "... sandbox/gl/voxel_sprite.s"
 	@echo "... sandbox/main.o"
 	@echo "... sandbox/main.i"
 	@echo "... sandbox/main.s"

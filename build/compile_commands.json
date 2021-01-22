@@ -1,72 +1,102 @@
 [
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/alpha.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/alpha.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/alpha.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/src/alpha.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/alphabeta.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/src/alphabeta.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/src/alphabeta.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/alphabeta.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/alphabeta.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/src/alphabeta.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/gamma.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/gamma.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/src/gamma/alphabet.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma/alphabet.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/gamma/alphabet.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/src/gamma/alphabet.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/map.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/map.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/player.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/player.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/core.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/core.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/game.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/main.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/main.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/main.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/main.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/geometry.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/geometry.c"
 },
 {
-  "directory": "/home/uberdever/dev/5 sem/cg/ind3d/build",
-  "command": "/usr/bin/x86_64-linux-gnu-gcc-7  -I\"/home/uberdever/dev/5 sem/cg/ind3d/src\" -I\"/home/uberdever/dev/5 sem/cg/ind3d/include\" -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.o   -c \"/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c\"",
-  "file": "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c"
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/graphics.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/graphics.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/model.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/model.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/plane_renderer.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/plane_renderer.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/renderer.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/renderer.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c"
+},
+{
+  "directory": "/home/uberdever/dev/5_sem/cg/ind3d/build",
+  "command": "/usr/bin/gcc-7  -I/home/uberdever/dev/5_sem/cg/ind3d/src -I/home/uberdever/dev/5_sem/cg/ind3d/include -I/usr/local/include/SDL2 -I/usr/include/SDL2  -g   -std=gnu99 -o CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/voxel_sprite.c",
+  "file": "/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/voxel_sprite.c"
 }
 ]

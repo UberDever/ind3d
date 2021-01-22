@@ -6,93 +6,157 @@
 #include <GL/glew.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include "stb_image.h"
+
+// Common names for shader uniforms
+static const char *u_model_name = "u_model";
+static const char *u_view_name = "u_view";
+static const char *u_projection_name = "u_projection";
+static const char *u_iModel_name = "u_iModel";
 
 //Generic vector registers
 vec_register(GLfloat);
 vec_register(GLuint);
+vec_register(v3_t);
+typedef v_v3_t_t vec_v3_t;
 
-static char *shader_load(const char *path)
+typedef v3_t* v3p_t;
+vec_register(v3p_t);
+typedef v_v3p_t_t vec_v3p_t;
+
+typedef const char *pConstChar_t; // This should go to separate string class in alphabeta.h
+vec_register(pConstChar_t);
+typedef v_pConstChar_t_t v_pConstChar_t;
+
+// 3d typedefs
+typedef GLuint shader_t;
+
+typedef struct Camera
 {
-    FILE *shader_file = NULL;
-    char *shader_stream = NULL;
-    shader_file = fopen(path, "r");
+    v3_t pos;
+    v3_t dir;
+    v3_t plane;
+    v3_t up;
+    m4_t view_matrix;
+    m4_t projection_matrix;
 
-    if (shader_file)
+    float32 sensitivity;
+
+    float32 horisontal_rotation;
+    float32 vertrical_rotation;
+} Camera;
+
+typedef GLuint texture_t;
+typedef struct Texture
+{
+    texture_t id;
+    int w, h;
+} Texture;
+vec_register(Texture);
+
+typedef struct Mesh
+{
+    v_GLfloat_t vertices;
+    v_GLuint_t indices;
+} Mesh;
+
+typedef struct BufferInfo
+{
+    GLuint vao;
+    GLsizei idx_count;
+} BufferInfo;
+
+typedef struct Model
+{
+    BufferInfo info;
+    v_Texture_t textures;
+} Model;
+vec_register(Model);
+
+typedef struct ModelInstance
+{
+    Model model;
+    m4_t transform;
+} ModelInstance;
+vec_register(ModelInstance);
+#define MI(model_class, m4_transform) \
+    (ModelInstance) { .transform = (m4_transform), .model = (model_class) }
+
+static m4_t transform_instance(v3_t translation, v3_t rotation, v3_t scaling){
+    m4_t tr_m4 = m4_translation(translation);
+    m4_t ro_m4 = quaternion_rot_mat(quaternion_from_euler(rotation));
+    m4_t sc_m4 = m4_scaling(scaling);
+    return m4_mul(tr_m4, m4_mul(ro_m4, sc_m4));
+}
+
+mapl_register(v_ModelInstance_t, uint);
+typedef struct ml_v_ModelInstance_tuint_t ml_VAO_to_Instance_t;
+
+static inline Texture texture_load(char const *path)
+{
+    Texture texture = {};
+    texture_t textureID;
+    glGenTextures(1, &textureID);
+
+    int width, height, nrComponents;
+    unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
+    if (data)
     {
-        fseek(shader_file, 0, SEEK_END);
-        uint length = ftell(shader_file);
-        fseek(shader_file, 0, SEEK_SET);
-        shader_stream = malloc((length + 1) * sizeof(char));
-        if (shader_stream)
-        {
-            fread(shader_stream, 1, length, shader_file);
-        }
-        shader_stream[length] = 0;
-        fclose(shader_file);
-        return shader_stream;
+        GLenum format;
+        if (nrComponents == 1)
+            format = GL_RED;
+        else if (nrComponents == 3)
+            format = GL_RGB;
+        else if (nrComponents == 4)
+            format = GL_RGBA;
+
+        glBindTexture(GL_TEXTURE_2D, textureID);
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        stbi_image_free(data);
     }
     else
     {
-        error("Impossible to open %s!\n", path);
-        return 0;
+        error("Texture failed to load at path: %s", path);
+        stbi_image_free(data);
     }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+    texture.id = textureID;
+    texture.w = width;
+    texture.h = height;
+    return texture;
 }
 
-static void check_error(GLuint id)
+typedef struct Light
 {
-    GLint result;
-    int log_len;
-    glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    glGetShaderiv(id, GL_INFO_LOG_LENGTH, &log_len);
-    if (log_len > 0)
-    {
-        char error_message[log_len + 1];
-        glGetShaderInfoLog(id, log_len, NULL, &error_message[0]);
-        error("%s", error_message);
-    }
-}
+    v3_t ambient;
+    v3_t diffuse;
+    v3_t specular;
+    v3_t color;
+    float brightness;
+} Light;
 
-static void shader_compile(const char *path, GLuint id, char const *stream)
+typedef struct DirLight
 {
-    printf("Compiling shader : %s\n", path);
-    glShaderSource(id, 1, &stream, NULL);
-    glCompileShader(id);
+    Light properties;
+    v3_t direction;
+} DirLight;
 
-    check_error(id);
-}
-
-static GLuint shader_load_all(const char *vertex_file_path, const char *fragment_file_path)
+typedef struct PointLight
 {
+    Light properties;
+    v3_t position;
+    v3_t attenuation;
+} PointLight;
 
-    // Create the shaders
-    GLuint vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
-    GLuint fragment_shader_id = glCreateShader(GL_FRAGMENT_SHADER);
-
-    debug("Loading shaders");
-    char const *vertex_shader_stream = shader_load(vertex_file_path);
-    char const *fragment_shader_stream = shader_load(fragment_file_path);
-
-    debug("Compiling shaders");
-    shader_compile(vertex_file_path, vertex_shader_id, vertex_shader_stream);
-    shader_compile(fragment_file_path, fragment_shader_id, fragment_shader_stream);
-
-    // Link the program
-    debug("Linking program");
-    GLuint program_id = glCreateProgram();
-    glAttachShader(program_id, vertex_shader_id);
-    glAttachShader(program_id, fragment_shader_id);
-    glLinkProgram(program_id);
-
-    // Check the program
-    check_error(program_id);
-
-    glDetachShader(program_id, vertex_shader_id);
-    glDetachShader(program_id, fragment_shader_id);
-
-    glDeleteShader(vertex_shader_id);
-    glDeleteShader(fragment_shader_id);
-
-    return program_id;
-}
+vec_register(DirLight);
+vec_register(PointLight);
 
 #endif

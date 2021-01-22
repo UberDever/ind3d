@@ -43,10 +43,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/uberdever/dev/5 sem/cg/ind3d"
+CMAKE_SOURCE_DIR = /home/uberdever/dev/5_sem/cg/ind3d
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/uberdever/dev/5 sem/cg/ind3d/build"
+CMAKE_BINARY_DIR = /home/uberdever/dev/5_sem/cg/ind3d/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ind3d.dir/depend.make
@@ -59,185 +59,263 @@ include CMakeFiles/ind3d.dir/flags.make
 
 CMakeFiles/ind3d.dir/src/alpha.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/src/alpha.c.o: ../src/alpha.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ind3d.dir/src/alpha.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/alpha.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ind3d.dir/src/alpha.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/alpha.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/alpha.c
 
 CMakeFiles/ind3d.dir/src/alpha.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/src/alpha.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c" > CMakeFiles/ind3d.dir/src/alpha.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/src/alpha.c > CMakeFiles/ind3d.dir/src/alpha.c.i
 
 CMakeFiles/ind3d.dir/src/alpha.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/src/alpha.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/src/alpha.c" -o CMakeFiles/ind3d.dir/src/alpha.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/src/alpha.c -o CMakeFiles/ind3d.dir/src/alpha.c.s
 
 CMakeFiles/ind3d.dir/src/alphabeta.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/src/alphabeta.c.o: ../src/alphabeta.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ind3d.dir/src/alphabeta.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/alphabeta.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/src/alphabeta.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ind3d.dir/src/alphabeta.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/alphabeta.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/alphabeta.c
 
 CMakeFiles/ind3d.dir/src/alphabeta.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/src/alphabeta.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/src/alphabeta.c" > CMakeFiles/ind3d.dir/src/alphabeta.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/src/alphabeta.c > CMakeFiles/ind3d.dir/src/alphabeta.c.i
 
 CMakeFiles/ind3d.dir/src/alphabeta.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/src/alphabeta.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/src/alphabeta.c" -o CMakeFiles/ind3d.dir/src/alphabeta.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/src/alphabeta.c -o CMakeFiles/ind3d.dir/src/alphabeta.c.s
 
 CMakeFiles/ind3d.dir/src/gamma.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/src/gamma.c.o: ../src/gamma.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ind3d.dir/src/gamma.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/gamma.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ind3d.dir/src/gamma.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/gamma.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c
 
 CMakeFiles/ind3d.dir/src/gamma.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/src/gamma.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c" > CMakeFiles/ind3d.dir/src/gamma.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c > CMakeFiles/ind3d.dir/src/gamma.c.i
 
 CMakeFiles/ind3d.dir/src/gamma.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/src/gamma.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c" -o CMakeFiles/ind3d.dir/src/gamma.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c -o CMakeFiles/ind3d.dir/src/gamma.c.s
 
 CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o: ../src/gamma/alphabet.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma/alphabet.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/src/gamma/alphabet.c
 
 CMakeFiles/ind3d.dir/src/gamma/alphabet.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/src/gamma/alphabet.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma/alphabet.c" > CMakeFiles/ind3d.dir/src/gamma/alphabet.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/src/gamma/alphabet.c > CMakeFiles/ind3d.dir/src/gamma/alphabet.c.i
 
 CMakeFiles/ind3d.dir/src/gamma/alphabet.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/src/gamma/alphabet.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/src/gamma/alphabet.c" -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/src/gamma/alphabet.c -o CMakeFiles/ind3d.dir/src/gamma/alphabet.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o: ../sandbox/game/enemy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.c
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game/enemy.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c" > CMakeFiles/ind3d.dir/sandbox/game/enemy.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.c > CMakeFiles/ind3d.dir/sandbox/game/enemy.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game/enemy.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy.c" -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.c -o CMakeFiles/ind3d.dir/sandbox/game/enemy.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o: ../sandbox/game/enemy_states.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.c" > CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c > CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/enemy_states.c" -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c -o CMakeFiles/ind3d.dir/sandbox/game/enemy_states.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game/map.c.o: ../sandbox/game/map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ind3d.dir/sandbox/game/map.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/map.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/ind3d.dir/sandbox/game/map.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/map.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.c
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game/map.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c" > CMakeFiles/ind3d.dir/sandbox/game/map.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.c > CMakeFiles/ind3d.dir/sandbox/game/map.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game/map.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/map.c" -o CMakeFiles/ind3d.dir/sandbox/game/map.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.c -o CMakeFiles/ind3d.dir/sandbox/game/map.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game/player.c.o: ../sandbox/game/player.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ind3d.dir/sandbox/game/player.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/player.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ind3d.dir/sandbox/game/player.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/player.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.c
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game/player.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c" > CMakeFiles/ind3d.dir/sandbox/game/player.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.c > CMakeFiles/ind3d.dir/sandbox/game/player.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game/player.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game/player.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/player.c" -o CMakeFiles/ind3d.dir/sandbox/game/player.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.c -o CMakeFiles/ind3d.dir/sandbox/game/player.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o: ../sandbox/game/projectile.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.c
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game/projectile.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c" > CMakeFiles/ind3d.dir/sandbox/game/projectile.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.c > CMakeFiles/ind3d.dir/sandbox/game/projectile.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/projectile.c" -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.c -o CMakeFiles/ind3d.dir/sandbox/game/projectile.c.s
 
 CMakeFiles/ind3d.dir/sandbox/core.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/core.c.o: ../sandbox/core.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/ind3d.dir/sandbox/core.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/core.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/ind3d.dir/sandbox/core.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/core.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.c
 
 CMakeFiles/ind3d.dir/sandbox/core.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/core.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.c" > CMakeFiles/ind3d.dir/sandbox/core.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.c > CMakeFiles/ind3d.dir/sandbox/core.c.i
 
 CMakeFiles/ind3d.dir/sandbox/core.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/core.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/core.c" -o CMakeFiles/ind3d.dir/sandbox/core.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.c -o CMakeFiles/ind3d.dir/sandbox/core.c.s
 
 CMakeFiles/ind3d.dir/sandbox/game.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/game.c.o: ../sandbox/game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ind3d.dir/sandbox/game.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/ind3d.dir/sandbox/game.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/game.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c
 
 CMakeFiles/ind3d.dir/sandbox/game.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/game.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c" > CMakeFiles/ind3d.dir/sandbox/game.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c > CMakeFiles/ind3d.dir/sandbox/game.c.i
 
 CMakeFiles/ind3d.dir/sandbox/game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/game.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c" -o CMakeFiles/ind3d.dir/sandbox/game.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c -o CMakeFiles/ind3d.dir/sandbox/game.c.s
 
 CMakeFiles/ind3d.dir/sandbox/main.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/main.c.o: ../sandbox/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ind3d.dir/sandbox/main.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/main.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ind3d.dir/sandbox/main.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/main.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/main.c
 
 CMakeFiles/ind3d.dir/sandbox/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/main.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c" > CMakeFiles/ind3d.dir/sandbox/main.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/main.c > CMakeFiles/ind3d.dir/sandbox/main.c.i
 
 CMakeFiles/ind3d.dir/sandbox/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/main.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/main.c" -o CMakeFiles/ind3d.dir/sandbox/main.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/main.c -o CMakeFiles/ind3d.dir/sandbox/main.c.s
 
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o: ../sandbox/gl/geometry.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/geometry.c
 
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c" > CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/geometry.c > CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.i
 
 CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/geometry.c" -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/geometry.c -o CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o: ../sandbox/gl/graphics.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/graphics.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/graphics.c > CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/graphics.c -o CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o: ../sandbox/gl/line_renderer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c > CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c -o CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.s
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: CMakeFiles/ind3d.dir/flags.make
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.o: ../sandbox/gl/model.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.o   -c "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/model.c
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/model.c.i"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c" > CMakeFiles/ind3d.dir/sandbox/gl/model.c.i
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/model.c > CMakeFiles/ind3d.dir/sandbox/gl/model.c.i
 
 CMakeFiles/ind3d.dir/sandbox/gl/model.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/model.c.s"
-	/usr/bin/x86_64-linux-gnu-gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/model.c" -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.s
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/model.c -o CMakeFiles/ind3d.dir/sandbox/gl/model.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o: ../sandbox/gl/plane_renderer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/plane_renderer.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/plane_renderer.c > CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/plane_renderer.c -o CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o: ../sandbox/gl/renderer.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/renderer.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/renderer.c > CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/renderer.c -o CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o: ../sandbox/gl/shader.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/shader.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c > CMakeFiles/ind3d.dir/sandbox/gl/shader.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/shader.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/shader.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c -o CMakeFiles/ind3d.dir/sandbox/gl/shader.c.s
+
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: CMakeFiles/ind3d.dir/flags.make
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o: ../sandbox/gl/voxel_sprite.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o   -c /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/voxel_sprite.c
+
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/voxel_sprite.c > CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.i
+
+CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/voxel_sprite.c -o CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.s
 
 # Object files for target ind3d
 ind3d_OBJECTS = \
@@ -254,7 +332,13 @@ ind3d_OBJECTS = \
 "CMakeFiles/ind3d.dir/sandbox/game.c.o" \
 "CMakeFiles/ind3d.dir/sandbox/main.c.o" \
 "CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o" \
-"CMakeFiles/ind3d.dir/sandbox/gl/model.c.o"
+"CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/model.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o" \
+"CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o"
 
 # External object files for target ind3d
 ind3d_EXTERNAL_OBJECTS =
@@ -272,15 +356,21 @@ debug/ind3d: CMakeFiles/ind3d.dir/sandbox/core.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/game.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/main.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/geometry.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/graphics.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/line_renderer.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/model.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/plane_renderer.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/renderer.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/shader.c.o
+debug/ind3d: CMakeFiles/ind3d.dir/sandbox/gl/voxel_sprite.c.o
 debug/ind3d: CMakeFiles/ind3d.dir/build.make
-debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2main.a
-debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2.so
+debug/ind3d: /usr/local/lib/libSDL2main.a
+debug/ind3d: /usr/local/lib/libSDL2.so
 debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2_image.so
 debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2_ttf.so
 debug/ind3d: /usr/lib/x86_64-linux-gnu/libSDL2_mixer.so
 debug/ind3d: CMakeFiles/ind3d.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable debug/ind3d"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking C executable debug/ind3d"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ind3d.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -293,6 +383,6 @@ CMakeFiles/ind3d.dir/clean:
 .PHONY : CMakeFiles/ind3d.dir/clean
 
 CMakeFiles/ind3d.dir/depend:
-	cd "/home/uberdever/dev/5 sem/cg/ind3d/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/uberdever/dev/5 sem/cg/ind3d" "/home/uberdever/dev/5 sem/cg/ind3d" "/home/uberdever/dev/5 sem/cg/ind3d/build" "/home/uberdever/dev/5 sem/cg/ind3d/build" "/home/uberdever/dev/5 sem/cg/ind3d/build/CMakeFiles/ind3d.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/uberdever/dev/5_sem/cg/ind3d/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/uberdever/dev/5_sem/cg/ind3d /home/uberdever/dev/5_sem/cg/ind3d /home/uberdever/dev/5_sem/cg/ind3d/build /home/uberdever/dev/5_sem/cg/ind3d/build /home/uberdever/dev/5_sem/cg/ind3d/build/CMakeFiles/ind3d.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ind3d.dir/depend
 

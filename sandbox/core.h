@@ -4,51 +4,51 @@
 #ifndef IND3D_CORE_H
 #define IND3D_CORE_H
 
-//#include "gl/math_3d.h"
 #include "../include/alphabeta.h"
-#include "gl/model.h"
+
 #include "gl/geometry.h"
+#include "gl/shader.h"
+#include "gl/model.h"
+#include "gl/renderer.h"
+#include "gl/line_renderer.h"
+#include "gl/plane_renderer.h"
+
+#include "gl/voxel_sprite.h"
 
 #include "config.h"
 
-// 3d typedefs
-typedef struct Camera
-{
-    v3_t dir;
-    v3_t plane;
-    m4_t view_matrix;
-    m4_t projection_matrix;
-
-    float32 sensitivity;
-
-    float32 horisontal_rotation;
-    float32 vertrical_rotation;
-} Camera;
-
-typedef struct Texture
-{
-    GLuint id;
-    int w, h;
-    uint8* data;
-} Texture;
-
 //Global typedefs
+typedef struct Weapon
+{
+    v3_t position;
+    v3_t recoil_pos;
+    float recoil_speed;
+    float return_speed;
+    float recoil_rotation;
+    v3_t cur_recoil_pos;
+    float cur_recoil_rotation;
+    bool is_recoil;
+    int cur_frame;
+    int cur_frame_inc;
+    int bullet_count;
+    Model model;
+} Weapon;
+vec_register(Weapon);
+
 typedef struct Player
 {
     v2_t pos, momentum;
-    v2_t left_frustum_ray, right_frustum_ray;
+    v2_t dir, plane; // This is very bad design - almost never mix 2d and 3d together, good lesson
+    v2_t left_frustum, right_frustum;
     float32 hitbox_radius;
     Camera camera;
     // Game variables
     float32 hp, max_hp;
     float32 hitscan_range;
-} Player;
+    bool shots_fired;
 
-typedef struct Chunk
-{
-    Model model;
-} Chunk;
-vec_register(Chunk);
+    Weapon *cur_weapon;
+} Player;
 
 typedef struct Map
 {
@@ -57,8 +57,13 @@ typedef struct Map
     int tile_w, tile_h;
     // OpenGl stuff
     int chunks_w, chunks_h;
+    v_Model_t chunks;
     Texture tileset;
-    v_Chunk_t chunks;
+    vec_v3_t light_positions;
+    vec_v3_t door_positions;
+    vec_v3_t medpack_positions;
+    vec_v3_t bullets_positions;
+    v3_t exit_position;
 } Map;
 
 typedef struct Projectile
@@ -104,6 +109,7 @@ typedef struct EnemyBehaviour
 
 struct Enemy
 {
+    Model model;
     v2_t pos, momentum, dir_to_player;
     float32 hitbox_radius, speed, len_to_player;
     uint state_frame;
@@ -121,6 +127,15 @@ vec_register(EnemyBehaviour);
 //Globals
 extern int half_w, half_h;
 extern uint frames;
+extern suseconds_t framerate;
+extern bool is_player_exited;
+extern bool is_all_enemies_dead;
+extern bool is_player_dead;
+
+extern Shader shader;
+extern Shader light_shader;
+
+extern PointLight point_light;
 
 // TODO: remove later
 extern float player_height_debug;
@@ -130,7 +145,22 @@ static bool tile_is_wall(Map *map, int x, int y)
     const int index = y * map->w + x;
     return map->data[index] != 0 &&
            map->data[index] != 'P' &&
-           map->data[index] != 'E';
+           map->data[index] != 'R' - '0' &&
+           map->data[index] != 'D' - '0' &&
+           map->data[index] != '3' - '0' &&
+           map->data[index] != 'M' - '0' &&
+           map->data[index] != 'B' - '0' &&
+           map->data[index] != 'M' &&
+           map->data[index] != 'B' &&
+           map->data[index] != 'E' &&
+           map->data[index] != 'L' - '0';
+}
+
+static bool tile_is_collectable(Map *map, int x, int y)
+{
+    const int index = y * map->w + x;
+    return map->data[index] == 'M' ||
+           map->data[index] == 'B';
 }
 
 static bool near_player(v2_t entity_pos, v2_t player_pos, int range)

@@ -1,10 +1,8 @@
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:37> OpenGL loaded
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:38> Vendor:   NVIDIA Corporation
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:39> Renderer: GeForce GTX 1050/PCIe/SSE2
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:40> Version:  4.6.0 NVIDIA 450.80.02
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:71> Loading shaders
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:75> Compiling shaders
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:80> Linking program
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:71> Loading shaders
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:75> Compiling shaders
-[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game/../gl/graphics.h:shader_load_all:80> Linking program
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/src/gamma.c:g_init:33> 2 0 14
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:71> OpenGL loaded
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:72> Vendor:   NVIDIA Corporation
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:73> Renderer: GeForce GTX 1050/PCIe/SSE2
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/game.c:init:74> Version:  3.3.0 NVIDIA 450.80.02
+[DEBUG] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/shader.c:shader_init:89> Loading shaders from file
+[ERROR] </home/uberdever/dev/5 sem/cg/ind3d/sandbox/gl/shader.c:shader_load:26> Impossible to open graphics/shaders/vs.vs!
+

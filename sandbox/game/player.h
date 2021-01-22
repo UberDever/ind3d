@@ -11,6 +11,7 @@ void player_init(Player* player);
 
 void player_event(Player* player);
 void player_update(Map* map, Player* player);
+void player_render(Player *player);
 
 void player_raycast(Map* map, Player* player);
 

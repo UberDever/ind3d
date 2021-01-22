@@ -1,44 +1,25 @@
 #ifndef IND3D_MODEL_H
 #define IND3D_MODEL_H
 
-#include "graphics.h"
+#include "geometry.h"
+#include "shader.h"
 
-typedef struct ModelInfo
-{
-    GLuint vao;
-    GLsizei idx_count;
-    GLenum draw_mode;
-} ModelInfo;
+#define model_vx_attr0 3
+#define model_vx_attr1 2
+#define model_vx_attr2 3
+#define model_vx_count (model_vx_attr0 + model_vx_attr1 + model_vx_attr2)
 
-static void model_info_reset(ModelInfo *info)
+Model model_build(Mesh mesh);
+
+static void model_add_texture(Model* model, Texture texture)
 {
-    info->vao = 0;
-    info->idx_count = 0;
-    info->draw_mode = 0;
+    vec_push(model->textures, texture);
 }
 
-typedef struct Mesh
+static void model_clean(Model model)
 {
-    v_GLfloat_t positions;
-    v_GLfloat_t texture_coordinates;
-    v_GLuint_t indices;
-} Mesh;
+    vec_free(model.textures);
+}
 
-typedef struct Model
-{
-    ModelInfo info;
-    v_GLuint_t buffers;
-} Model;
-
-void model_generate(Model *model, Mesh *mesh);
-void model_clear(Model *model);
-ModelInfo model_get_info(Model *model);
-
-typedef struct ChunkVx
-{
-    v3_t p;
-    v2_t t;
-    v3_t n;
-} ChunkVx;
 
 #endif

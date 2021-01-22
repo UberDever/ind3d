@@ -1,63 +1,57 @@
 #include "model.h"
 
-static void gen_vao(Model *model)
+Model model_build(Mesh mesh)
 {
-    if (model->info.vao != 0)
-        model_clear(model);
+    Model model = {};
 
-    glGenVertexArrays(1, &model->info.vao);
-    glBindVertexArray(model->info.vao);
-}
+    glGenVertexArrays(1, &model.info.vao);
+    glBindVertexArray(model.info.vao);
 
-static void add_vbo(Model *model, GLuint dimensions, GLfloat *data, uint data_count)
-{
-    GLuint vbo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, data_count * sizeof(*data), data,
-                 GL_STATIC_DRAW);
+    GLuint vbo_id = 0;
 
-    glVertexAttribPointer(model->buffers.size, dimensions, GL_FLOAT,
-                          GL_FALSE, 0, (GLvoid *)0);
+    glGenBuffers(1, &vbo_id);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
+    glBufferData(GL_ARRAY_BUFFER, mesh.vertices.size * sizeof(*mesh.vertices.data), mesh.vertices.data, GL_STATIC_DRAW);
 
-    glEnableVertexAttribArray(model->buffers.size);
+    GLuint ibo_id = 0;
 
-    vec_push(model->buffers, vbo);
-}
+    glGenBuffers(1, &ibo_id);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_id);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size * sizeof(*mesh.indices.data), mesh.indices.data, GL_STATIC_DRAW);
 
-static void add_ibo(Model *model, GLuint *data, uint data_count)
-{
-    model->info.idx_count = data_count;
-    GLuint ibo;
-    glGenBuffers(1, &ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, data_count * sizeof(*data),
-                 data, GL_STATIC_DRAW);
-}
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(
+        0,
+        model_vx_attr0, // positions
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx_count * sizeof(GLfloat),
+        (GLvoid *)0);
 
-void model_generate(Model *model, Mesh *mesh)
-{
-    gen_vao(model);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(
+        1,
+        model_vx_attr1, // texture coordinates
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx_count * sizeof(GLfloat),
+        (GLvoid *)(model_vx_attr0 * sizeof(GLfloat)));
 
-    vec_new(GLuint, model->buffers, 4);
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(
+        2,
+        model_vx_attr2, // normals
+        GL_FLOAT,
+        GL_FALSE,
+        model_vx_count * sizeof(GLfloat),
+        (GLvoid *)((model_vx_attr0 + model_vx_attr1) * sizeof(GLfloat)));
 
-    add_vbo(model, 3, mesh->positions.data, mesh->positions.size);
-    add_vbo(model, 2, mesh->texture_coordinates.data, mesh->texture_coordinates.size);
-    add_ibo(model, mesh->indices.data, mesh->indices.size);
-}
+    model.info.idx_count = mesh.indices.size;
 
-ModelInfo model_get_info(Model *model) {
-    return model->info;
-}
+    vec_new(Texture, model.textures, 2);
 
-void model_clear(Model *model)
-{
-    if (model->info.vao)
-        glDeleteVertexArrays(1, &model->info.vao);
-    if (model->buffers.size > 0)
-        glDeleteBuffers(model->buffers.size,
-                        model->buffers.data);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 
-    model->buffers.size = 0;
-    model_info_reset(&model->info);
+    return model;
 }

@@ -1,4 +1,5 @@
 
 #include "core.h"
-//#define MATH_3D_IMPLEMENTATION
-//#include "gl/math_3d.h"
+#define STB_IMAGE_IMPLEMENTATION
+#define STBI_ONLY_PNG
+#include "stb_image.h"

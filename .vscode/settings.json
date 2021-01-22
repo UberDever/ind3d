@@ -1,13 +1,34 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "files.associations": {
-        "fstream": "cpp",
-        "sstream": "cpp",
-        "map": "c",
-        "array": "cpp",
-        "deque": "cpp",
-        "vector": "cpp",
-        "string_view": "cpp"
+    // "files.associations": {
+    //     "fstream": "cpp",
+    //     "sstream": "cpp",
+    //     "map": "c",
+    //     "array": "cpp",
+    //     "deque": "cpp",
+    //     "vector": "cpp",
+    //     "string_view": "cpp",
+    //     "*.tcc": "c",
+    //     "iosfwd": "c",
+    //     "streambuf": "c",
+    //     "string": "cpp"
+    // },
+    "editor.selectionHighlight": false,
+    "telemetry.enableTelemetry": false,
+    "cmake.debugConfig": {
+       "cwd": "${workspaceFolder}"
     },
-    "editor.selectionHighlight": false
+    "files.associations": {
+        "ostream": "cpp",
+        "map": "cpp",
+        "typeinfo": "cpp",
+        "array": "c",
+        "hash_map": "c",
+        "hash_set": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "*.tcc": "c",
+        "cmath": "c"
+    }
 }
