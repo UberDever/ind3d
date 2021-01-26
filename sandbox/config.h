@@ -20,7 +20,8 @@
 #define C_PLAYER_HITSCAN_RANGE 0.3f
 #define C_PLAYER_WEAPON_COUNT 4
 #define C_PLAYER_MEDPACK_HEALTH 25
-#define C_PLAYER_BULLET_COUNT 5
+#define C_PLAYER_BULLET_COUNT 2
+#define C_PLAYER_CELLS_COUNT 1
 #define C_PLAYER_WEAPON_RECOIL_ROTATION_SPEED 15 //in frames
 #define C_PLAYER_WEAPON_RECOIL_SPEED 15          //in frames
 #define C_PLAYER_WEAPON_RETURN_SPEED 60
@@ -32,7 +33,7 @@
 #define C_MAP_TILE_RATIO_W (1.f / 100)
 #define C_MAP_TILE_RATIO_H (1.f / 100)
 
-#define C_PROJECTILE_RADIUS 0.3f
+#define C_PROJECTILE_RADIUS 0.1f
 #define C_PROJECTILE_SPEED 0.1f
 
 #define C_ENEMYTYPE_COMMON                    \
@@ -40,8 +41,9 @@
     {                                         \
         .type = EnemyTypes_Common,            \
         .speed = 0.05,                        \
-        .hitbox_radius = 0.45,                \
+        .hitbox_radius = 0.2,                \
         .max_hp = 50,                         \
+        .damage = 10,                         \
         .model = voxel_sprite_construct(      \
             "graphics/sprites/robot_all.png", \
             "graphics/depthmaps/robot.zaxis", \

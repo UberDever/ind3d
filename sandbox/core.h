@@ -18,8 +18,15 @@
 #include "config.h"
 
 //Global typedefs
+typedef enum
+{
+    WeaponType_Pistol,
+    WeaponType_TeslaGun
+} WeaponTypes;
+
 typedef struct Weapon
 {
+    WeaponTypes type;
     v3_t position;
     v3_t recoil_pos;
     float recoil_speed;
@@ -30,7 +37,7 @@ typedef struct Weapon
     bool is_recoil;
     int cur_frame;
     int cur_frame_inc;
-    int bullet_count;
+    int *bullets;
     Model model;
 } Weapon;
 vec_register(Weapon);
@@ -45,7 +52,10 @@ typedef struct Player
     // Game variables
     float32 hp, max_hp;
     float32 hitscan_range;
+    int bullet_count;
+    int cells_count;
     bool shots_fired;
+    bool has_red_key, has_green_key, has_blue_key;
 
     Weapon *cur_weapon;
 } Player;
@@ -63,7 +73,9 @@ typedef struct Map
     vec_v3_t door_positions;
     vec_v3_t medpack_positions;
     vec_v3_t bullets_positions;
+    vec_v3_t cells_positions;
     v3_t exit_position;
+    v3_t keys_position[3];
 } Map;
 
 typedef struct Projectile
@@ -118,6 +130,7 @@ struct Enemy
     bool is_alive;
     // Game variables
     float32 hp, max_hp;
+    float32 damage;
 };
 PTR_TYPE(Enemy);
 vec_register(Enemyptr);
@@ -131,6 +144,7 @@ extern suseconds_t framerate;
 extern bool is_player_exited;
 extern bool is_all_enemies_dead;
 extern bool is_player_dead;
+extern bool is_beginning;
 
 extern Shader shader;
 extern Shader light_shader;
@@ -144,15 +158,23 @@ static bool tile_is_wall(Map *map, int x, int y)
 {
     const int index = y * map->w + x;
     return map->data[index] != 0 &&
-           map->data[index] != 'P' &&
            map->data[index] != 'R' - '0' &&
            map->data[index] != 'D' - '0' &&
            map->data[index] != '3' - '0' &&
            map->data[index] != 'M' - '0' &&
            map->data[index] != 'B' - '0' &&
+           map->data[index] != 'C' - '0' &&
+           map->data[index] != 'X' - '0' &&
+           map->data[index] != 'Y' - '0' &&
+           map->data[index] != 'Z' - '0' &&
+           map->data[index] != 'P' &&
            map->data[index] != 'M' &&
            map->data[index] != 'B' &&
+           map->data[index] != 'C' &&
            map->data[index] != 'E' &&
+           map->data[index] != 'X' &&
+           map->data[index] != 'Y' &&
+           map->data[index] != 'Z' &&
            map->data[index] != 'L' - '0';
 }
 
@@ -160,6 +182,10 @@ static bool tile_is_collectable(Map *map, int x, int y)
 {
     const int index = y * map->w + x;
     return map->data[index] == 'M' ||
+           map->data[index] == 'C' ||
+           map->data[index] == 'X' ||
+           map->data[index] == 'Y' ||
+           map->data[index] == 'Z' ||
            map->data[index] == 'B';
 }
 

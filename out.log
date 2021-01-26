@@ -1,8 +1,8 @@
 [DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/src/gamma.c:g_init:33> SDL Version: 2.0.14
-[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:120> OpenGL loaded
-[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:121> Vendor:   NVIDIA Corporation
-[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:122> Renderer: GeForce GTX 1050/PCIe/SSE2
-[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:123> Version:  3.3.0 NVIDIA 450.80.02
+[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:175> OpenGL loaded
+[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:176> Vendor:   NVIDIA Corporation
+[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:177> Renderer: GeForce GTX 1050/PCIe/SSE2
+[DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c:init:178> Version:  3.3.0 NVIDIA 450.80.02
 [DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c:shader_init:89> Loading shaders from file
 [DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c:shader_init_str:61> Compiling shaders
 [DEBUG] </home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/shader.c:shader_init_str:66> Linking program

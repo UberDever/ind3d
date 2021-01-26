@@ -133,6 +133,7 @@ static inline void shader_find_samplers2D(Shader *shader, v_pConstChar_t sampler
         Uniform uniform = {};
         strncpy(uniform.name, samplers_names.data[i], UNIFORM_NAME_SIZE);
         vec_push(shader->samplers_location, uniform_get_location(*shader, uniform));
+        glUniform1i(vec_back(shader->samplers_location), i);
     }
 }
 
@@ -140,6 +141,5 @@ static inline void shader_bind_texture(Shader shader, texture_t texture, int slo
 {
     glActiveTexture(GL_TEXTURE0 + slot);
     glBindTexture(GL_TEXTURE_2D, texture);
-    glUniform1i(shader.samplers_location.data[slot], slot);
 }
 #endif

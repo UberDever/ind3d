@@ -26,14 +26,13 @@ int main()
             time = SDL_GetTicks();
             begin_frame();
             events_process();
-            while ((is_player_exited || is_player_dead) && is_program_running)
+            while ((is_player_exited || is_player_dead || is_beginning) && is_program_running)
             {
                 events_process();
             }
             update();
             render();
             end_frame();
-
             struct timeval tv1;
             gettimeofday(&tv1, NULL);
             framerate = tv1.tv_usec - tv0.tv_usec;

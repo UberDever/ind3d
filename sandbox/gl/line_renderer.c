@@ -79,6 +79,26 @@ void line_renderer_add(int x0, int y0, int x1, int y1, color color)
                           color);
 }
 
+void line_renderer_add_quat(int x0, int y0, int w, int h, color color)
+{
+    line_renderer_add(x0, y0, x0 + w, y0, color);
+    line_renderer_add(x0, y0, x0, y0 + h, color);
+    line_renderer_add(x0 + w, y0, x0 + w, y0 + h, color);
+    line_renderer_add(x0, y0 + h, x0 + w, y0 + h, color);
+}
+
+void line_renderer_add_circle(int x0, int y0, int radius, color color)
+{
+    int line_count = 8;
+    for (int i = 0; i < line_count; i++)
+    {
+        float ang_start = 2 * M_PI * (float)(i) / line_count;
+        float ang_end = 2 * M_PI * (float)(i + 1) / line_count;
+        line_renderer_add(x0 + (float)(radius)*cosf(ang_start), y0 + (float)(radius)*sinf(ang_start),
+                          x0 + (float)(radius)*cosf(ang_end), y0 + (float)(radius)*sinf(ang_end), color);
+    }
+}
+
 void line_renderer_render()
 {
     glDisable(GL_DEPTH_TEST);
@@ -107,6 +127,11 @@ void line_renderer_clean()
 void draw_cross(v3_t pos, float width, float height, color color)
 {
     line_renderer_add_NDC((v3_t){pos.x + width / 2, pos.y, pos.z}, (v3_t){pos.x + width / 2, pos.y + height, pos.z}, color);
+    line_renderer_add_NDC((v3_t){pos.x, pos.y + height / 2, pos.z}, (v3_t){pos.x + width, pos.y + height / 2, pos.z}, color);
+}
+
+void draw_minus(v3_t pos, float width, float height, color color)
+{
     line_renderer_add_NDC((v3_t){pos.x, pos.y + height / 2, pos.z}, (v3_t){pos.x + width, pos.y + height / 2, pos.z}, color);
 }
 
@@ -197,6 +222,11 @@ void draw_symbol(char symbol, v3_t pos, float width, float height, color color)
     case '+':
         draw_cross(pos, width, height, color);
         break;
+
+    case '-':
+        draw_minus(pos, width, height, color);
+        break;
+
     case '1':
         draw_one(pos, width, height, color);
         break;

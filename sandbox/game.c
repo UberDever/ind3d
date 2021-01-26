@@ -11,6 +11,7 @@ int half_h;
 bool is_player_exited = false;
 bool is_player_dead = false;
 bool is_all_enemies_dead = false;
+bool is_beginning = true;
 
 Shader shader;
 Shader model_shader;
@@ -19,13 +20,24 @@ Model map_skybox = {};
 Model door = {};
 Model medpack = {};
 Model bulletpack = {};
+Model cellspack = {};
 PointLight point_light;
 static Texture muzzle_flash;
+static Texture map_border_texture = {0};
+static Model red_key = {0};
+static Model green_key = {0};
+static Model blue_key = {0};
 
-static Map map;
-static Player player;
-static v_Enemy_t enemies;
-static v_Projectile_t projectiles;
+static Texture game_over_screen;
+static Texture win_screen;
+static Texture bad_end_screen;
+static Texture intermission_screen;
+static Texture beginning_screen;
+
+static Map map = {0};
+static Player player = {0};
+static v_Enemy_t enemies = {0};
+static v_Projectile_t projectiles = {0};
 static vec_v3p_t active_doors;
 
 static void gl_init()
@@ -34,6 +46,7 @@ static void gl_init()
     vec_new(pConstChar_t, samplers_names, 2);
     vec_push(samplers_names, "u_material.diffuse");
     vec_push(samplers_names, "u_material.specular");
+    vec_push(samplers_names, "u_material.emission");
 
     shader = shader_init("graphics/shaders/vs.vs", "graphics/shaders/fs.fs");
     shader_bind(shader);
@@ -57,6 +70,7 @@ static void gl_init()
     door = model_build(door_mesh);
     model_add_texture(&door, texture_load("graphics/textures/door.png"));
     model_add_texture(&door, texture_load("graphics/textures/door.png"));
+    model_add_texture(&door, texture_load("graphics/textures/door_emissive.png"));
     point_light = (PointLight){
         .properties = (Light){
             .ambient = C_P_AMBIENT,
@@ -72,6 +86,7 @@ static void gl_init()
                                      (v3_t){0.1f, 0.1f, 0.1f});
     model_add_texture(&medpack, texture_load("graphics/sprites/medpack.png"));
     model_add_texture(&medpack, texture_load("graphics/sprites/medpack.png"));
+    model_add_texture(&medpack, texture_load("graphics/sprites/medpack_emissive.png"));
 
     bulletpack = voxel_sprite_construct("graphics/sprites/bulletpack.png",
                                         "graphics/depthmaps/bulletpack.zaxis",
@@ -79,8 +94,48 @@ static void gl_init()
                                         (v3_t){0.06f, 0.06f, 0.06f});
     model_add_texture(&bulletpack, texture_load("graphics/sprites/bulletpack.png"));
     model_add_texture(&bulletpack, texture_load("graphics/sprites/bulletpack.png"));
+    model_add_texture(&bulletpack, texture_load("graphics/sprites/bulletpack_emissive.png"));
+
+    cellspack = voxel_sprite_construct("graphics/sprites/cellspack.png",
+                                       "graphics/depthmaps/cellspack.zaxis",
+                                       false,
+                                       (v3_t){0.06f, 0.06f, 0.06f});
+    model_add_texture(&cellspack, texture_load("graphics/sprites/cellspack.png"));
+    model_add_texture(&cellspack, texture_load("graphics/sprites/cellspack.png"));
+    model_add_texture(&cellspack, texture_load("graphics/sprites/cellspack_emissive.png"));
+
+    red_key = voxel_sprite_construct("graphics/sprites/red_keycard.png",
+                                     "graphics/depthmaps/red_keycard.zaxis",
+                                     false,
+                                     (v3_t){0.06f, 0.06f, 0.06f});
+    model_add_texture(&red_key, texture_load("graphics/sprites/red_keycard.png"));
+    model_add_texture(&red_key, texture_load("graphics/sprites/red_keycard.png"));
+    model_add_texture(&red_key, texture_load("graphics/sprites/red_keycard.png"));
+
+    green_key = voxel_sprite_construct("graphics/sprites/green_keycard.png",
+                                       "graphics/depthmaps/green_keycard.zaxis",
+                                       false,
+                                       (v3_t){0.06f, 0.06f, 0.06f});
+    model_add_texture(&green_key, texture_load("graphics/sprites/green_keycard.png"));
+    model_add_texture(&green_key, texture_load("graphics/sprites/green_keycard.png"));
+    model_add_texture(&green_key, texture_load("graphics/sprites/green_keycard.png"));
+
+    blue_key = voxel_sprite_construct("graphics/sprites/blue_keycard.png",
+                                      "graphics/depthmaps/blue_keycard.zaxis",
+                                      false,
+                                      (v3_t){0.06f, 0.06f, 0.06f});
+    model_add_texture(&blue_key, texture_load("graphics/sprites/blue_keycard.png"));
+    model_add_texture(&blue_key, texture_load("graphics/sprites/blue_keycard.png"));
+    model_add_texture(&blue_key, texture_load("graphics/sprites/blue_keycard.png"));
 
     muzzle_flash = texture_load("graphics/textures/muzzle_flash.png");
+    map_border_texture = texture_load("graphics/textures/minimap_border.png");
+
+    game_over_screen = texture_load("graphics/textures/game_over.png");
+    win_screen = texture_load("graphics/textures/win.png");
+    bad_end_screen = texture_load("graphics/textures/bad_end.png");
+    intermission_screen = texture_load("graphics/textures/intermission.png");
+    beginning_screen = texture_load("graphics/textures/beginning.png");
 
     model_shader = shader_init("graphics/shaders/model.vs", "graphics/shaders/model.fs");
 
@@ -161,25 +216,63 @@ void end_frame(void)
 void event_handler(void)
 {
     //if (kbd_key_pressed(SDLK_ESCAPE))
-    //    is_program_running = false;
+    //    is_program_running = false
 
     player_event(&player);
+    if (is_beginning)
+    {
+        plane_renderer_add(0, 0, g_scr.w, g_scr.h, intermission_screen.id);
+        plane_renderer_add(0, 0, g_scr.w, g_scr.h, beginning_screen.id);
+        plane_renderer_render();
+        end_frame();
+    }
 
     if (mouse_left_down())
     {
-        if (!player.cur_weapon->is_recoil && player.cur_weapon->bullet_count > 0)
+        if (!player.cur_weapon->is_recoil && (*player.cur_weapon->bullets) > 0)
         {
-            enemies_process_hit(&map, &player, &enemies);
+            switch (player.cur_weapon->type)
+            {
+            case WeaponType_Pistol:
+            {
+                enemies_process_hit(&map, &player, &enemies);
+            }
+            break;
+
+            case WeaponType_TeslaGun:
+            {
+                projectile_create(&projectiles, v2_add(player.pos, v2_muls(player.dir, 0.5f)), player.dir);
+            }
+            break;
+
+            default:
+                break;
+            }
             player.shots_fired = true;
             player.cur_weapon->is_recoil = true;
-            player.cur_weapon->bullet_count--;
+            (*player.cur_weapon->bullets)--;
         }
 
-        //projectile_create(&projectiles, player.pos, player.dir);
+        //
     }
     if (kbd_key_pushed(SDLK_e))
     {
         v2_t action_pos = (v2_t){player.pos.x + player.dir.x, player.pos.y + player.dir.y};
+        if (map.data[(int)action_pos.y * map.w + (int)action_pos.x] == '4' - '0')
+        {
+            if (player.has_red_key)
+                player.pos = (v2_t){(int)action_pos.x + .5f, (int)action_pos.y + 1.f * (player.dir.y > 0 ? 1 : -1) + .5f};
+        }
+        else if (map.data[(int)action_pos.y * map.w + (int)action_pos.x] == '5' - '0')
+        {
+            if (player.has_green_key)
+                player.pos = (v2_t){(int)action_pos.x + 1.f * (player.dir.x > 0 ? 1 : -1) + .5f, (int)action_pos.y + .5f};
+        }
+        else if (map.data[(int)action_pos.y * map.w + (int)action_pos.x] == '6' - '0')
+        {
+            if (player.has_blue_key)
+                player.pos = (v2_t){(int)action_pos.x + .5f, (int)action_pos.y + 1.f * (player.dir.y > 0 ? 1 : -1) + .5f};
+        }
         if (map.data[(int)action_pos.y * map.w + (int)action_pos.x] == 'D')
             map.data[(int)action_pos.y * map.w + (int)action_pos.x] = 0;
         for (int i = 0; i < map.door_positions.size; i++)
@@ -203,20 +296,11 @@ void event_handler(void)
             }
         }
     }
-    if (kbd_key_pushed(SDLK_c))
-    {
-        // map.tile_w += 5;
-        // map.tile_h += 5;
-    }
-    if (kbd_key_pushed(SDLK_z))
-    {
-        // map.tile_w -= 5;
-        // map.tile_h -= 5;
-    }
 }
 
 void update(void)
 {
+
     for (int x = 0; x < map.w; x++)
     {
         for (int y = 0; y < map.h; y++)
@@ -234,7 +318,6 @@ void update(void)
                 active_doors.data[i] = NULL;
         }
     }
-
     for (int i = 0; i < map.door_positions.size; i++)
     {
         if (map.door_positions.data[i].y < 0.5)
@@ -277,6 +360,7 @@ void render(void)
     }
 
     //renderer_add_point_light_to_scene(point_light, (ModelInstance){.transform = m4_translation(point_light.position)});
+
     renderer_bind_light_shader(&light_shader);
     shader_set_m4(&light_shader, u_projection_name, player.camera.projection_matrix);
     shader_set_m4(&light_shader, u_view_name, player.camera.view_matrix);
@@ -288,6 +372,7 @@ void render(void)
         point_light.position = map.light_positions.data[i];
         renderer_add_point_light_to_shader(point_light);
     }
+    projectile_render(&projectiles);
     //renderer_add_point_light_to_shader(point_light);
 
     shader_set_m4(&shader, u_projection_name, player.camera.projection_matrix);
@@ -313,6 +398,18 @@ void render(void)
             continue;
         renderer_add(bulletpack.info.vao, MI(bulletpack, transform_instance(map.bullets_positions.data[i], (v3_t){0}, (v3_t){.1, .1, .1})));
     }
+    for (int i = 0; i < map.cells_positions.size; i++)
+    {
+        if (map.cells_positions.data[i].y > -.4)
+            continue;
+        renderer_add(cellspack.info.vao, MI(cellspack, transform_instance(map.cells_positions.data[i], (v3_t){0}, (v3_t){.1, .1, .1})));
+    }
+    if (map.keys_position[0].y <= -.4)
+        renderer_add(red_key.info.vao, MI(red_key, transform_instance(map.keys_position[0], (v3_t){M_PI_2}, (v3_t){.1, .1, .1})));
+    if (map.keys_position[1].y <= -.4)
+        renderer_add(green_key.info.vao, MI(green_key, transform_instance(map.keys_position[1], (v3_t){M_PI_2}, (v3_t){.1, .1, .1})));
+    if (map.keys_position[2].y <= -.4)
+        renderer_add(blue_key.info.vao, MI(blue_key, transform_instance(map.keys_position[2], (v3_t){M_PI_2}, (v3_t){.1, .1, .1})));
 
     map_render(&map, &player, &enemies, &projectiles, player_screen_pos_x, player_screen_pos_y, map_size_x, map_size_y);
     enemies_render(&enemies);
@@ -321,7 +418,7 @@ void render(void)
 
     renderer_clear_all();
 
-    if (player.shots_fired)
+    if (player.shots_fired && player.cur_weapon->type == WeaponType_Pistol)
     {
         plane_renderer_add(0.6f * g_scr.w, 0.5 * g_scr.h, 0.7 * g_scr.w, 0.6 * g_scr.h, muzzle_flash.id);
         plane_renderer_render();
@@ -330,15 +427,36 @@ void render(void)
     renderer_bind_shader(&shader);
     player_render(&player); //Render weapon on top of everything else
 
+    if (is_player_exited)
+    {
+        plane_renderer_add(0, 0, g_scr.w, g_scr.h, intermission_screen.id);
+        if (is_all_enemies_dead)
+            plane_renderer_add(0, 0, g_scr.w, g_scr.h, win_screen.id);
+        else
+            plane_renderer_add(0, 0, g_scr.w, g_scr.h, bad_end_screen.id);
+    }
+    if (is_player_dead)
+    {
+        plane_renderer_add(0, 0, g_scr.w, g_scr.h, intermission_screen.id);
+        plane_renderer_add(0, 0, g_scr.w, g_scr.h, game_over_screen.id);
+    }
+
+    if (is_player_dead || is_player_exited)
+        glClear(GL_DEPTH_BUFFER_BIT);
     plane_renderer_render();
     if (!is_player_dead && !is_player_exited)
     {
 
         line_renderer_render();
-
+        const int map_w = 2 * map_size_x + 1, map_h = 2 * map_size_y + 1;
+        plane_renderer_add(g_scr.w - (map_w + 1) * map.tile_w, 0, g_scr.w, (map_h + 1) * map.tile_h, map_border_texture.id);
+        plane_renderer_render();
         //UI
         glLineWidth(2);
         draw_symbol('+', (v3_t){0}, .03, .06, COLOR(gray));
+        draw_symbol((player.has_red_key ? '+' : '-'), (v3_t){.85, -1, 0}, .03, .06, COLOR(red));
+        draw_symbol((player.has_green_key ? '+' : '-'), (v3_t){.9, -1, 0}, .03, .06, COLOR(green));
+        draw_symbol((player.has_blue_key ? '+' : '-'), (v3_t){.95, -1, 0}, .03, .06, COLOR(blue));
         color player_hp_color_start = COLOR(red);
         color player_hp_color_end = COLOR(green);
         color player_hp_color;
@@ -347,7 +465,7 @@ void render(void)
         player_hp_color.b = pi_lerp(player_hp_color_start.b, player_hp_color_end.b, MAX(player.hp / player.max_hp, 0));
         draw_number(player.hp, 0.05, (v3_t){0, -.1, 0}, .03, .06, player_hp_color);
 
-        draw_number(player.cur_weapon->bullet_count, 0.05, (v3_t){0, .1, 0}, .03, .06, COLOR(orange));
+        draw_number((*player.cur_weapon->bullets), 0.05, (v3_t){0, .1, 0}, .03, .06, COLOR(orange));
 
         line_renderer_render();
         glLineWidth(1);

@@ -41,6 +41,7 @@ void enemies_init(v_Enemy_t *enemies, Map *map)
         enemy_type.hp = enemy_type.max_hp;
         model_add_texture(&enemy_type.model, texture_load("graphics/sprites/robot_all.png"));
         model_add_texture(&enemy_type.model, texture_load("graphics/sprites/robot_all.png"));
+        model_add_texture(&enemy_type.model, texture_load("graphics/sprites/robot_all_emissive.png"));
         vec_push(enemy_database, enemy_type);
     }
     {
@@ -92,10 +93,17 @@ void enemies_update(Map *map, Player *player, v_Enemy_t *enemies, v_Projectile_t
             //Process all projectiles
             for (uint j = 0; j < projectiles->cap; j++)
             {
-                v2_t rel_pos = v2_sub(enemies->data[i].pos, projectiles->data[j].pos);
-                const float32 hit_radius = enemies->data[i].hitbox_radius + projectiles->data[j].radius;
-                if (v2_len_sq(rel_pos) <= hit_radius * hit_radius)
-                    enemies->data[i].is_alive = false;
+                if (projectiles->data[j].is_alive)
+                {
+                    v2_t rel_pos = v2_sub(enemies->data[i].pos, projectiles->data[j].pos);
+                    const float32 hit_radius = enemies->data[i].hitbox_radius + projectiles->data[j].radius;
+                    if (v2_len_sq(rel_pos) <= hit_radius * hit_radius)
+                    {
+                        enemies->data[i].is_alive = false;
+                        projectiles->data[j].is_alive = false;
+                        continue;
+                    }
+                }
             }
             enemies->data[i].state_frame = enemies->data[i].state_frame < 10000 ? enemies->data[i].state_frame + 1 : 0;
             // Process states

@@ -14,7 +14,7 @@ static uint point_lights_in_shader = 0;
 
 void renderer_init()
 {
-    mapl_new(v_ModelInstance_t, uint, renderer_bunch, 31);
+    mapl_new(v_ModelInstance_t, uint, renderer_bunch, 101);
 
     vec_new(DirLight, dir_lights, 4);
     vec_new(PointLight, point_lights, 4);
@@ -65,6 +65,8 @@ static void bind_model(Model model)
     glBindVertexArray(model.info.vao);
     for (int i = 0; i < model.textures.size; i++)
         shader_bind_texture(*bound_shader, model.textures.data[i].id, i);
+    if (model.textures.size != 3)
+        shader_bind_texture(*bound_shader, 0, 2); // A dirty hack
 }
 
 static void prepare_instance(ModelInstance *instance)
@@ -80,6 +82,10 @@ static void prepare_instance(ModelInstance *instance)
 static void unbind_model()
 {
     glActiveTexture(GL_TEXTURE0);
+    glBindTexture(0, GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(0, GL_TEXTURE_2D);
+    glActiveTexture(GL_TEXTURE2);
     glBindTexture(0, GL_TEXTURE_2D);
     glActiveTexture(0);
     glBindVertexArray(0);
@@ -220,8 +226,13 @@ void renderer_clear_all()
     {
         if (renderer_bunch.data[i].is_filled)
         {
-            v_ModelInstance_t *instances = &renderer_bunch.data[i].data;
-            instances->size = 0;
+            ml_bucket_v_ModelInstance_tuint_t *ptr = &renderer_bunch.data[i];
+            while (ptr)
+            {
+                v_ModelInstance_t *instances = &ptr->data;
+                instances->size = 0;
+                ptr = ptr->n;
+            }
         }
     }
     dir_light_instances.size = 0;

@@ -26,7 +26,10 @@ static const char *fragment_shader = "\
     uniform sampler2D u_texture;\
                       \
     void main(){      \
-        f_color = texture(u_texture, v_texCoords); }\
+        f_color = texture(u_texture, v_texCoords); \
+        if (f_color.w == 0)\
+            discard;\
+    }\
 ";
 static Shader shader_planes;
 static v_GLfloat_t plane_instances[MAX_TEXTURES] = {0};

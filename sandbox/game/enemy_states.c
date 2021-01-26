@@ -92,7 +92,7 @@ void state_attack(Map *map, Player *player, Enemy *enemy)
     // TODO: make this parametrized
     if (enemy->state_frame % 10 == 0)
     {
-        player->hp--;
+        player->hp -= enemy->damage;
         if (player->hp <= 0)
             is_player_dead = true;
     }

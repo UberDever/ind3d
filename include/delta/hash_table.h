@@ -465,7 +465,7 @@ static uint32 hash_f(const char *data, uint len) //nginx murmur hash function
         }                                                                                              \
         ptr->n = malloc(sizeof(ml_bucket_##T##K##_t));                                                 \
         ALLOC_CHECK(ptr->n);                                                                           \
-        ptr->key = *key;                                                                               \
+        ptr->n->key = *key;                                                                               \
         ptr->n->data = element;                                                                        \
         ptr->n->is_filled = true;                                                                      \
         ptr->n->n = NULL;                                                                              \

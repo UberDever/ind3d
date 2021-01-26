@@ -29,6 +29,7 @@
         "initializer_list": "c",
         "utility": "c",
         "*.tcc": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "string": "c"
     }
 }

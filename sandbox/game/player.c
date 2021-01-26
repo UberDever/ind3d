@@ -4,12 +4,8 @@
 
 #include "player.h"
 
-static Texture game_over_screen;
-static Texture win_screen;
-static Texture bad_end_screen;
-static Weapon weapons[C_PLAYER_WEAPON_COUNT];
 
-float player_height_debug = 0;
+static Weapon weapons[C_PLAYER_WEAPON_COUNT];
 
 void player_init(Player *player)
 {
@@ -45,6 +41,8 @@ void player_init(Player *player)
     //Texture tex = texture_load("graphics/textures/wall.png");
     // weapon = model_build(vertices, indices);
     // weapon.texture = tex;
+    player->bullet_count = 3;
+    player->cells_count = 0;
 
     weapons[0].model = voxel_sprite_construct(
         "graphics/sprites/hi_power.png",
@@ -62,13 +60,31 @@ void player_init(Player *player)
     weapons[0].cur_recoil_pos = weapons[0].position;
     weapons[0].cur_recoil_rotation = 0;
     weapons[0].cur_frame_inc = 1;
-    weapons[0].bullet_count = 10;
+    weapons[0].bullets = &player->bullet_count;
+    weapons[0].type = WeaponType_Pistol;
+
+    weapons[1].model = voxel_sprite_construct(
+        "graphics/sprites/tesla_gun.png",
+        "graphics/depthmaps/tesla_gun.zaxis",
+        false,
+        (v3_t){0.1f, 0.1f, 0.1f});
+    model_add_texture(&weapons[1].model, texture_load("graphics/sprites/tesla_gun.png"));
+    model_add_texture(&weapons[1].model, texture_load("graphics/sprites/tesla_gun.png"));
+    model_add_texture(&weapons[1].model, texture_load("graphics/sprites/tesla_gun_emissive.png"));
+    weapons[1].position = (v3_t){-.25, -.2, -.55};
+    weapons[1].recoil_pos = (v3_t){-.28, -.18, -.57};
+    weapons[1].recoil_speed = C_PLAYER_WEAPON_RECOIL_SPEED;
+    weapons[1].return_speed = C_PLAYER_WEAPON_RETURN_SPEED;
+    weapons[1].recoil_rotation = DEG2RAD(7);
+    weapons[1].is_recoil = false;
+    weapons[1].cur_recoil_pos = weapons[1].position;
+    weapons[1].cur_recoil_rotation = 0;
+    weapons[1].cur_frame_inc = 1;
+    weapons[1].bullets = &player->cells_count;
+    weapons[1].type = WeaponType_TeslaGun;
 
     player->cur_weapon = &weapons[0];
 
-    game_over_screen = texture_load("graphics/textures/game_over.png");
-    win_screen = texture_load("graphics/textures/win.png");
-    bad_end_screen = texture_load("graphics/textures/bad_end.png");
 }
 
 void player_event(Player *player)
@@ -122,14 +138,14 @@ void player_event(Player *player)
     {
         player->momentum.x = -C_PLAYER_SPEED;
     }
-    // TODO remove
-    if (kbd_key_pressed(SDLK_z))
+
+    if (kbd_key_pressed(SDLK_1))
     {
-        player_height_debug -= 0.1f;
+        player->cur_weapon = &weapons[0];
     }
-    if (kbd_key_pressed(SDLK_c))
+    if (kbd_key_pressed(SDLK_2))
     {
-        player_height_debug += 0.1f;
+        player->cur_weapon = &weapons[1];
     }
 
     if (is_player_exited)
@@ -139,11 +155,18 @@ void player_event(Player *player)
             is_program_running = false;
         }
     }
-    if (is_player_dead)
-    {
+    //if (is_player_dead)
+    //{
         if (kbd_key_pushed(SDLK_ESCAPE))
         {
             is_program_running = false;
+        }
+    //}
+    if (is_beginning)
+    {
+        if (kbd_key_pushed(SDLK_SPACE))
+        {
+            is_beginning = false;
         }
     }
 }
@@ -195,7 +218,7 @@ void player_update(Map *map, Player *player)
         step.y = 0;
     }
     player->pos = v2_add(player->pos, step);
-    player->camera.pos = (v3_t){player->pos.x, player_height_debug, player->pos.y};
+    player->camera.pos = (v3_t){player->pos.x, 0, player->pos.y};
 
     player->momentum.x = 0;
     player->momentum.y = 0;
@@ -216,7 +239,7 @@ void player_update(Map *map, Player *player)
     }
     else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'B')
     {
-        player->cur_weapon->bullet_count += C_PLAYER_BULLET_COUNT;
+        player->bullet_count += C_PLAYER_BULLET_COUNT;
         for (int i = 0; i < map->bullets_positions.size; i++)
         {
             if ((int)player->pos.x + .5 == map->bullets_positions.data[i].x &&
@@ -225,6 +248,33 @@ void player_update(Map *map, Player *player)
                 map->bullets_positions.data[i].y = 1;
             }
         }
+    }
+    else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'C')
+    {
+        player->cells_count += C_PLAYER_CELLS_COUNT;
+        for (int i = 0; i < map->cells_positions.size; i++)
+        {
+            if ((int)player->pos.x + .5 == map->cells_positions.data[i].x &&
+                (int)player->pos.y + .5 == map->cells_positions.data[i].z)
+            {
+                map->cells_positions.data[i].y = 1;
+            }
+        }
+    }
+    else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'X')
+    {
+        player->has_red_key = true;
+        map->keys_position[0].y = 1;
+    }
+    else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'Y')
+    {
+        player->has_green_key = true;
+        map->keys_position[1].y = 1;
+    }
+    else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'Z')
+    {
+        player->has_blue_key = true;
+        map->keys_position[2].y = 1;
     }
     else if (map->data[(int)player->pos.y * map->w + (int)player->pos.x] == 'E') //Exit door
     {
@@ -364,7 +414,7 @@ void player_render(Player *player)
 
     //const v3_t tr_world = {};
     const v3_t tr_world = {player->pos.x + player->camera.dir.x,
-                           player_height_debug + player->camera.dir.y,
+                           player->camera.dir.y,
                            player->pos.y + player->camera.dir.z};
     const quaternion_t ro_world = quaternion_axis((v3_t){0, 1, 0}, -M_PI_2);
 
@@ -391,16 +441,6 @@ void player_render(Player *player)
 
     renderer_clear_model(player->cur_weapon->model.info.vao);
 #endif
-
-    if (is_player_exited)
-    {
-        if (is_all_enemies_dead)
-            plane_renderer_add(0, 0, g_scr.w, g_scr.h, win_screen.id);
-        else
-            plane_renderer_add(0, 0, g_scr.w, g_scr.h, bad_end_screen.id);
-    }
-    if (is_player_dead)
-        plane_renderer_add(0, 0, g_scr.w, g_scr.h, game_over_screen.id);
 
 #if 0
     v3_t tr_world = {player->pos.x + (player->camera.dir.x), player_height_debug + player->camera.dir.y, player->pos.y + player->camera.dir.z};
