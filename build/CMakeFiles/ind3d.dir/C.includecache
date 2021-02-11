@@ -104,35 +104,11 @@ gl/voxel_sprite.h
 config.h
 /home/uberdever/dev/5_sem/cg/ind3d/sandbox/config.h
 
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.c
-game.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.h
+/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.c
+enemy_states.h
+/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.h
 
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game.h
-core.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.h
-game/map.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.h
-game/player.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.h
-game/projectile.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.h
-game/enemy.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.h
-
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy.h
-../core.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.h
-
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/map.h
-../core.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.h
-
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/player.h
-../core.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.h
-
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/projectile.h
+/home/uberdever/dev/5_sem/cg/ind3d/sandbox/game/enemy_states.h
 ../core.h
 /home/uberdever/dev/5_sem/cg/ind3d/sandbox/core.h
 
@@ -151,10 +127,6 @@ GL/glu.h
 -
 stb_image.h
 /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/stb_image.h
-
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.c
-line_renderer.h
-/home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.h
 
 /home/uberdever/dev/5_sem/cg/ind3d/sandbox/gl/line_renderer.h
 ../core.h

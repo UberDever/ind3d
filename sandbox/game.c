@@ -451,7 +451,7 @@ void render(void)
         const int map_w = 2 * map_size_x + 1, map_h = 2 * map_size_y + 1;
         plane_renderer_add(g_scr.w - (map_w + 1) * map.tile_w, 0, g_scr.w, (map_h + 1) * map.tile_h, map_border_texture.id);
         plane_renderer_render();
-        //UI
+        //HUD
         glLineWidth(2);
         draw_symbol('+', (v3_t){0}, .03, .06, COLOR(gray));
         draw_symbol((player.has_red_key ? '+' : '-'), (v3_t){.85, -1, 0}, .03, .06, COLOR(red));
